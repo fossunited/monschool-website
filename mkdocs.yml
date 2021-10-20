@@ -1,0 +1,17 @@
+site_name: Mon School Courses
+theme:
+  features:
+  - navigation.tabs
+  - navigation.sections
+  name: material
+plugins:
+  - mkdocs-simple-hooks:
+      hooks:
+        on_files: "monctl.nav:on_files"
+
+docs_dir: courses
+
+markdown_extensions:
+  - meta
+
+repo_url: https://github.com/fossunited/monschool-website
