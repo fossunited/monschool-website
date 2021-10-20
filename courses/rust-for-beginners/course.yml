@@ -1,0 +1,42 @@
+name: rust-for-beginners
+title: Rust for Beginners
+instructor: devdutt
+is_published: 0
+suffix: rs
+short_introduction: A gentle introduction to the Rust programming language
+description: |
+  Rust has been voted the most loved programming language by participants in the
+  Stack overflow Developer Survey for the last 5 years in a row. This has a lot
+  to do with how the language helps developers write quick and clean programs that
+  don't sacrifice much on performance, powered by a state of the art compiler and
+  set of tools that help you make awesome software.
+
+  In this course, we have curated learning resources and practice problems that will
+  help you get started quickly and understand how to write, compile and optimise
+  programs in rust-lang.
+
+chapters:
+- name: introduction
+  title: fn main() -> IntroducingRust
+  description: Installing Rust and running your first Rust program.
+  lessons:
+  - introduction/welcome.md
+  - introduction/rustup.md
+  - introduction/first-rust-program.md
+  - introduction/why-rust.md
+- name: control-flow
+  title: Doing some control flow
+  description: Learn conditionals, loops and pattern matching
+  lessons: []
+- name: types-and-traits
+  title: Types & Traits
+  description: Get to know about types, traits and generics
+  lessons: []
+- name: package-management
+  title: Package Management
+  description: Package management in rust-lang
+  lessons: []
+- name: project
+  title: Capstone Project
+  description: Writing our first crate, a CLI game called twozero48, based on the popular game 2048.
+  lessons: []
