@@ -1,2 +1,5 @@
 mkdocs-material
 mkdocs-simple-hooks
+click
+python-frontmatter
+git+https://github.com/frappe/frappe-client#egg=frappeclient
