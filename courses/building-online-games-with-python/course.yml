@@ -1,0 +1,64 @@
+name: building-online-games-with-python
+suffix: pg
+is_published: 1
+title: Building Online Games with Python
+short_introduction: Build online games with Python and impress your friends
+description: |
+  Have you ever wanted to write your own game?
+  Ever wondered if your friends could enjoy a gaming experience that you crafted?
+  Modern games are very complex pieces of software. But you could still learn
+  the fundamentals of game development, if you are familiar with Python - one of
+  the most beginner friendly programming languages. This course starts from
+  the very basics of creating animations and progresses until you could build
+  a fully interactive game. Unlike other Python based games, these games run
+  completely in the browser and are easy to share with your friends.
+chapters:
+- name: introduction
+  title: Introduction
+  description: Introduction to the course.
+  lessons:
+  - introduction/audience.md
+  - introduction/setting-up.md
+  - introduction/canvas.md
+- name: movement
+  title: Movement
+  description: Learn how to draw shapes and move them on the screen.
+  lessons:
+  - movement/animation-basics.md
+  - movement/draw-update-loop.md
+  - movement/drawing-primitives.md
+  - movement/illusion-of-movement.md
+  - movement/bouncing-ball.md
+- name: collision
+  title: Collision
+  description: Learn how to detect collisions in the game.
+  lessons:
+  - collision/basic-collision-math.md
+  - collision/bounds-check.md
+  - collision/hit-check.md
+- name: control
+  title: Control
+  description: Learn how to control the game using keyboard and mouse.
+  lessons:
+  - control/key-controls.md
+  - control/key-up-vs-down.md
+  - control/mouse-controls.md
+- name: adding-characters
+  title: Adding Characters
+  description: Learn how to keep track of score and multiple lives in the game.
+  lessons:
+  - adding-characters/getting-points.md
+  - adding-characters/losing-lives.md
+- name: interface
+  title: Interface
+  description: Learn how to keep track of score and multiple lives in the game.
+  lessons:
+  - interface/display.md
+  - interface/state-machines.md
+  - interface/start-and-end-screens.md
+- name: publish
+  title: Publish
+  description: Publish you game and share it your friends.
+  lessons:
+  - publish/share-with-friends.md
+  - publish/whats-next.md
