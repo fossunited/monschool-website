@@ -65,7 +65,7 @@ class API:
         }
         old_doc = self.get_doc(doctype, name)
         old_doc = old_doc and self.subdict(old_doc, doc.keys()) or {}
-        old_doc = self.trim_tables(doc)
+        old_doc = self.trim_tables(old_doc)
 
         if old_doc == doc:
             print(doctype, name, "no changes found")
