@@ -48,7 +48,7 @@ class TestWorkspace:
             "description": "Practical introduction to Python",
             "instructor": "foobar",
             "is_published": 1,
-            "chapters": ["introduction-pp", "datatypes-pp"]
+            "chapters": [{"chapter": "introduction-pp"}, {"chapter": "datatypes-pp"}]
         }
 
     def test_chapter_doc(self, tmp_path):
@@ -64,7 +64,7 @@ class TestWorkspace:
             "name": "introduction-pp",
             "title": "Introduction",
             "description": "Introduction to Python",
-            "lessons": ["getting-started-pp", "hello-world-pp"]
+            "lessons": [{"lesson": "getting-started-pp"}, {"lesson": "hello-world-pp"}]
         }
 
     def test_read_lesson(self, tmp_path):
