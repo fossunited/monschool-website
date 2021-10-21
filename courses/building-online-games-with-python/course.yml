@@ -2,6 +2,7 @@ name: building-online-games-with-python
 suffix: pg
 is_published: 1
 title: Building Online Games with Python
+instructor: arun_ravindran
 short_introduction: Build online games with Python and impress your friends
 description: |
   Have you ever wanted to write your own game?
