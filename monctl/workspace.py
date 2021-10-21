@@ -22,6 +22,9 @@ class Workspace:
         data = self.cache[path]
         return dict(data)
 
+    def list_courses(self):
+        return [p.name for p in self.root.iterdir() if p.joinpath("course.yml").exists()]
+
     def read_course(self, name: str) -> Course:
         path = self.root.joinpath(name, "course.yml")
         data = self.read_yaml_file(path)
@@ -79,7 +82,7 @@ class Course:
             description=self.description,
             instructor=self.instructor,
             is_published=int(self.is_published),
-            chapters=[c.docname for c in self.chapters]
+            chapters=[{"chapter": c.docname} for c in self.chapters]
         )
         return asdict(doc)
 
@@ -89,8 +92,8 @@ class Course:
 
     def dict(self):
         d = dict(self.__dict__)
-        d['chapters'] = [c.dict() for c in d['chapters']]
         del d['root']
+        d['chapters'] = [c.dict() for c in self.chapters]
         return d
 
 @dataclass
@@ -117,6 +120,9 @@ class Chapter:
     def docname(self):
         return self.name + "-" + self.course.suffix
 
+    def get_lessons(self):
+        return [Lesson.from_file(chapter=self, path=self.course.root.joinpath(str(p))) for p in self.lessons]
+
     def get_lesson(self, name):
         paths = {p.stem: p for p in self.lessons}
         path = self.course.root / str(paths[name])
@@ -128,7 +134,7 @@ class Chapter:
             name=self.docname,
             title=self.title,
             description=self.description,
-            lessons=[p.stem + "-" + self.course.suffix for p in self.lessons]
+            lessons=[{"lesson": p.stem + "-" + self.course.suffix} for p in self.lessons]
         )
         return asdict(doc)
 
@@ -173,7 +179,7 @@ class Lesson:
             name=path.stem,
             title=data['title'],
             body=data.content.strip(),
-            include_in_preview=data.get('include_in_preview')
+            include_in_preview=data.get('include_in_preview') or False
         )
 
     def get_doc(self):
