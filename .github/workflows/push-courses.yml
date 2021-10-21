@@ -1,0 +1,25 @@
+name: Push Courses
+on:
+  push:
+    paths:
+      - "courses/**"
+    branches:
+      - main
+jobs:
+  tests:
+    name: Push Courses
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+    - name: Push courses
+      run: python manage.py push
+      env:
+        MON_SCHOOL_URL: ${{secrets.MON_SCHOOL_URL}}
+        MON_SCHOOL_API_KEY: ${{secrets.MON_SCHOOL_API_KEY}}
+        MON_SCHOOL_API_SECRET: ${{secrets.MON_SCHOOL_API_SECRET}}
