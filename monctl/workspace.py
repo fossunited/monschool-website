@@ -90,7 +90,7 @@ class Course:
             is_published=int(self.is_published),
             upcoming=self.upcoming,
             video_link=self.video_link,
-            tags=self.tags,
+            tags=",".join(self.tags),
             chapters=[{"chapter": c.docname} for c in self.chapters]
         )
         return asdict(doc)
@@ -117,7 +117,8 @@ class CourseDoc:
     is_published: int
     chapters: List[str]
     upcoming: bool
-    tags: List[str]
+    # tags are separated by commas
+    tags: str
     video_link: str
 
 @dataclass

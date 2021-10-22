@@ -12,6 +12,7 @@ is_published: true
 upcoming: true
 tags:
   - python
+  - beginner
 video_link:
 chapters:
   - name: introduction
@@ -53,7 +54,7 @@ class TestWorkspace:
             "instructor": "foobar",
             "is_published": 1,
             "upcoming": 1,
-            "tags": ["python"],
+            "tags": "python,beginner",
             "video_link": None,
             "chapters": [{"chapter": "introduction-pp"}, {"chapter": "datatypes-pp"}]
         }
