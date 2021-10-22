@@ -9,6 +9,11 @@ short_introduction: Introduction to Python
 description: Practical introduction to Python
 instructor: foobar
 is_published: true
+upcoming: true
+tags:
+  - python
+  - beginner
+video_link:
 chapters:
   - name: introduction
     title: Introduction
@@ -48,6 +53,9 @@ class TestWorkspace:
             "description": "Practical introduction to Python",
             "instructor": "foobar",
             "is_published": 1,
+            "upcoming": 1,
+            "tags": "python,beginner",
+            "video_link": None,
             "chapters": [{"chapter": "introduction-pp"}, {"chapter": "datatypes-pp"}]
         }
 
