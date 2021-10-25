@@ -1,0 +1,39 @@
+name: mypy-primer
+suffix: py
+is_published: true
+upcoming: true
+tags:
+  - python
+  - typing
+video_link:
+title: Mypy Primer
+instructor: arun_ravindran
+short_introduction: Learn how to implement static type checking in Python
+description: |
+  It should be no surprise that Python is a dynamically typed language. And
+  indeed, having dynamic types in your code is one of the best features of
+  Python. But dynamic types has its own problems as well, as it takes away a
+  great feature that statically typed languages like C++ and Java provide: You
+  can't accidentally pass the wrong types in them. If you pass an integer where
+  a string is expected in Java, your code won't compile. But in Python, your
+  code will start just fine, until it crashes with a TypeError while running.
+  Wouldn't it be great, if you could optionally write types in Python, to get
+  the same type checking guarantees that statically typed languages have? Mypy
+  lets you do exactly that!
+
+  Mypy is Python's official type checker. It's a really valuable and mature tool
+  that interacts seamlessly with Python, to provide really powerful features
+  like type safety, null safety, static duck typing, and generics, allowing you
+  to have your Python code checked with a solid type system.
+
+  Mypy Primer will take you from knowing nothing about mypy, to being able to
+  skillfully implement static type checking in your projects.
+chapters:
+- name: introduction
+  title: Introduction to mypy
+  description: What is mypy, and how can I use it?
+  lessons:
+  - introduction/what-is-mypy.md
+  - introduction/intro-to-type-annotations.md
+  - introduction/using-mypy.md
+  - introduction/installing-mypy.md
