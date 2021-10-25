@@ -7,7 +7,7 @@ tags:
   - typing
 video_link:
 title: Mypy Primer
-instructor: arun_ravindran
+instructor: tusharsadhwani
 short_introduction: Learn how to implement static type checking in Python
 description: |
   It should be no surprise that Python is a dynamically typed language. And
