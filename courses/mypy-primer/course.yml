@@ -1,6 +1,6 @@
 name: mypy-primer
 suffix: py
-is_published: true
+is_published: false
 upcoming: true
 tags:
   - python
