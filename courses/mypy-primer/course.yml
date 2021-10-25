@@ -1,5 +1,5 @@
 name: mypy-primer
-suffix: py
+suffix: mypy
 is_published: false
 upcoming: true
 tags:
