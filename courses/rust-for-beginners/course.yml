@@ -2,6 +2,10 @@ name: rust-for-beginners
 title: Rust for Beginners
 instructor: devdutt
 is_published: 0
+upcoming: true
+tags:
+  - rust
+video_link:
 suffix: rs
 short_introduction: A gentle introduction to the Rust programming language
 description: |

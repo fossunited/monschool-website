@@ -38,6 +38,9 @@ class Workspace:
             description=data['description'],
             instructor=data['instructor'],
             is_published=data['is_published'],
+            upcoming=data['upcoming'],
+            tags=data['tags'],
+            video_link=data['video_link'],
             chapters=[])
 
         course.chapters = [self.parse_chapter(course, c) for c in data['chapters']]
@@ -72,6 +75,9 @@ class Course:
     description: str
     instructor: str
     is_published: bool
+    upcoming: bool
+    tags: List[str]
+    video_link: str
     chapters: List[Chapter]
 
     def get_doc(self) -> dict:
@@ -82,6 +88,9 @@ class Course:
             description=self.description,
             instructor=self.instructor,
             is_published=int(self.is_published),
+            upcoming=self.upcoming,
+            video_link=self.video_link,
+            tags=",".join(self.tags),
             chapters=[{"chapter": c.docname} for c in self.chapters]
         )
         return asdict(doc)
@@ -107,6 +116,10 @@ class CourseDoc:
     instructor: str
     is_published: int
     chapters: List[str]
+    upcoming: bool
+    # tags are separated by commas
+    tags: str
+    video_link: str
 
 @dataclass
 class Chapter:
