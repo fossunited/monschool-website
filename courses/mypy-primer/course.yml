@@ -1,6 +1,6 @@
 name: mypy-primer
 suffix: mypy
-is_published: false
+is_published: true
 upcoming: true
 tags:
   - python
@@ -8,6 +8,7 @@ tags:
 video_link:
 title: Mypy Primer
 instructor: tusharsadhwani
+image: mypy-image.png
 short_introduction: Learn how to implement static type checking in Python
 description: |
   It should be no surprise that Python is a dynamically typed language. And
