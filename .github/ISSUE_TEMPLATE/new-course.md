@@ -1,12 +1,22 @@
 ---
-name: New Course
-about: Add or suggest a new course on mon.school
+name: Propose a New Course
+about: Propose a new course on mon.school (even if you want someone else to author the course)
 title: 'New Course: <course-title>'
 labels: 
 assignees: ''
 
----
+---  
 
+<!-- Please uncomment one the following lines. -->
+
+<!--  
+I'm interested to create this course.
+-->
+  
+<!--
+I want someone else to create this course. 
+-->
+  
 ## About the course
 
 **Title**
