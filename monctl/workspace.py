@@ -99,6 +99,12 @@ class Course:
         chapters = {c.name: c for c in self.chapters}
         return chapters[name]
 
+    def generate_lesson_stubs(self):
+        """Generate stub files for lessons.
+        """
+        for c in self.chapters:
+            c.generate_lesson_stubs()
+
     def dict(self):
         d = dict(self.__dict__)
         del d['root']
@@ -121,6 +127,15 @@ class CourseDoc:
     tags: str
     video_link: str
 
+LESSON_TEMPLATE = """\
+---
+title: {title}
+include_in_preview: false
+---
+
+.
+"""
+
 @dataclass
 class Chapter:
     name: str
@@ -135,6 +150,19 @@ class Chapter:
 
     def get_lessons(self):
         return [Lesson.from_file(chapter=self, path=self.course.root.joinpath(str(p))) for p in self.lessons]
+
+    def generate_lesson_stubs(self):
+        """Generate stub files for lessons.
+        """
+        for path in self.lessons:
+            path = self.course.root.joinpath(str(path))
+            if path.exists():
+                continue
+            path.parent.mkdir(exist_ok=True)
+            title = path.stem.replace("_", " ").replace("-", " ").title()
+            content = LESSON_TEMPLATE.format(title=title)
+            path.write_text(content)
+            print("generated", path)
 
     def get_lesson(self, name):
         paths = {p.stem: p for p in self.lessons}
