@@ -1,0 +1,52 @@
+.CodeMirror {
+    border: 1px solid #ddd;
+    background: #ffe;
+    height: auto;
+}
+.CodeMirror-scroll {
+    max-height: 300px;
+    min-height: 208px;
+}
+.controls {
+    padding: 10px 0px;
+}
+.code-wrapper {
+    min-height: 200px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.livecode-editor {
+  margin: 20px 0px;
+  clear: both;
+}
+
+.code-wrapper {
+    min-width: 300px;
+    flex: 1;
+}
+.output-wrapper {
+  background: #eee;
+  padding: 5px 20px;
+}
+
+button {
+  cursor: pointer;
+  background: #eee;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+}
+
+.output {
+  overflow-x: auto;
+  width: 200px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: 0.8em;
+}
+
+header {
+  z-index: 10 !important;
+}

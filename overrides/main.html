@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+  {{ super() }}
+
+  <template id="livecode-template">
+    <div class="livecode-editor">
+      <div class="controls"><button class="run">Run</button></div>
+      <div class="code-editor">
+        <div class="code-wrapper">
+          <textarea class="code"></textarea>
+        </div>
+        <div class="output-wrapper">
+          <pre class="output"></pre>
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script type="text/javascript">
+  const CODEMIRROR_OPTIONS = {
+      lineNumbers: true,
+      keyMap: "sublime",
+      matchBrackets: true,
+      indentWithTabs: false,
+      tabSize: 4,
+      indentUnit: 4,
+      extraKeys: {
+        Tab: (cm) => {
+          cm.somethingSelected()
+          ? cm.execCommand('indentMore')
+          : cm.execCommand('insertSoftTab');
+        }
+      }
+    }
+
+    $(function() {
+      var editorLookup = {};
+
+      function setupRun(livecodeElement, codemirror) {
+        var runtime = $(livecodeElement).find("code").attr("class").replace("language-", "");
+        var server = "https://falcon.mon.school";
+        var url = `${server}/runtimes/${runtime}`;
+
+        $(livecodeElement).find(".run").click(function() {
+          var code = codemirror.doc.getValue();
+
+          fetch(url, {
+            method: "POST",
+            body: code
+          })
+          .then(response => response.text())
+          .then(output => {
+            $(livecodeElement).find(".output").text(output);
+          });
+        });
+      }
+
+      $("pre.example").each((i, e) => {
+        var code = $(e).text();
+
+        var template = document.querySelector('#livecode-template');
+        var clone = template.content.cloneNode(true);
+
+        $(e)
+        .wrap('<div></div>')
+        .hide()
+        .parent()
+        .append(clone)
+        .find("textarea.code")
+        .val(code);
+
+        var languageClass = $(e).find("code").attr("class");
+        var language = null;
+        if (languageClass) {
+          language = languageClass.replace("language-", "");
+        }
+
+        var modeMapping = {
+          golang: "go"
+        };
+        var mode = language in modeMapping ? modeMapping[language]: language;
+
+        var textarea = $(e).parent().find("textarea.code")[0];
+
+        var options = {...CODEMIRROR_OPTIONS, mode: mode};
+        var codemirror = CodeMirror.fromTextArea(textarea, options);
+
+        setupRun($(e).parent(), codemirror);
+      });
+    });
+</script>
+
+{% endblock %}
