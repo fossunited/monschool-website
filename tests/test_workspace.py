@@ -8,6 +8,7 @@ suffix: pp
 short_introduction: Introduction to Python
 description: Practical introduction to Python
 instructor: foobar
+draft: false,
 is_published: true
 upcoming: true
 tags:
