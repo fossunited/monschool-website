@@ -1,0 +1,58 @@
+name: let-us-go
+title: Let Us Go
+instructor: abpillai
+is_published: false
+upcoming: true
+tags:
+  - golang
+video_link:
+suffix: go
+short_introduction: Getting started with the Go programming language
+description: |
+  This course will teach the basics of Go and also cover a few advanced
+  topics like concurrency with Go using channels and go-routines.
+
+chapters:
+- name: getting-to-go
+  title: Getting to Go
+  description: Let us get a taste of Go
+  lessons:
+  - getting-to-go/hello-world.md
+  - getting-to-go/data-types.md
+  - getting-to-go/variables.md
+- name: exploring
+  title: Exploring Go
+  description: We explore the fundamentals of Go
+  lessons:
+    - exploring/control-flow.md
+    - explorng/functions.md
+- name: going-deep
+  title: Going Deep
+  description: We Go a bit deep to dig out the hidden gems of Go
+  lessons:
+    - going-deep/arrays-maps.md
+    - going-deep/structures.md
+    - going-deep/methods.md
+- name: practical-go
+  title: Practial Go
+  description: >
+    We look at some real life practical examples such as handling files,
+    URLs and how to manage errors in code.
+  lessons:
+    - practical-go/streams-files.md
+    - practical-go/error-handling.md
+    - practical-go/text-file-game.md
+- name: go-in-parallel
+  title: Go in Parallel
+  description: Let us see how we can get Going in parallel and write concurrent code
+  lessons:
+    - go-in-parallel/concurrency.md
+    - go-in-parallel/goroutines-and-channels.md
+    - go-in-parallel/card-game.md
+- name: go-out-in-style
+  title: Go Out in Style
+  description: How to package and write your Go code in style
+  lessons:
+    - go-out-in-style/coding-style.md
+    - go-out-in-style/gofmt.md
+    - go-out-in-style/packaging.md
