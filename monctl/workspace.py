@@ -37,6 +37,7 @@ class Workspace:
             short_introduction=data['short_introduction'],
             description=data['description'],
             instructor=data['instructor'],
+            draft=data.get('draft', False),
             is_published=data['is_published'],
             upcoming=data['upcoming'],
             tags=data['tags'],
@@ -79,6 +80,7 @@ class Course:
     tags: List[str]
     video_link: str
     chapters: List[Chapter]
+    draft: bool = False
 
     def get_doc(self) -> dict:
         doc = CourseDoc(

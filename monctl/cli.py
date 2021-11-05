@@ -25,7 +25,8 @@ def push(course_name=None):
 
     for name in names:
         course = w.read_course(name)
-        api.update_course(course)
+        if not course.draft:
+            api.update_course(course)
 
 @cli.command()
 @click.argument("filenames", type=click.Path(exists=True), nargs=-1, required=True)
