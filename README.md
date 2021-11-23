@@ -17,7 +17,7 @@ To setup a dev instance:
 Step 1: Clone the Repository
 
 ```
-$ git clonehttps://github.com/fossunited/monschool-website
+$ git clone https://github.com/fossunited/monschool-website
 ```
 
 Step 2: Install dependencies
