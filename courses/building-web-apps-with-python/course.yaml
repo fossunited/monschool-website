@@ -1,0 +1,73 @@
+name: building-web-apps-with-python
+suffix: webapp
+is_published: false
+upcoming: true
+tags:
+  - Web
+  - Flask
+  - Python
+video_link:
+title: Build Web Applications with Python
+instructor: thejeshgn
+short_introduction: Build Web Applications with Python
+description: |
+    The web is the ultimate platform to build applications. You don't need permission to make an application for the web, and it's the platform anyone can build an application and publish it without anyone's approval.  The best part is web development is very beginner-friendly. In this course, we will learn to make websites that you can share with your friends and family.  We will also create web applications that respond to users using Python - the friendliest programming language. 
+chapters:
+- name: basic-html
+  title: Basic HTML
+  description: Learn how to create an HTML document.
+  lessons:
+  - basic-html/html-document-introduction.md    
+  - basic-html/head-body.md
+  - basic-html/handling-text.md
+  - basic-html/links.md
+  - basic-html/lists.md
+  - basic-html/tables.md
+  - basic-html/images.md
+- name: dynamic-html-using-jinja
+  title: Dynamic HTML Using Jinja
+  description: Learn to create the HTML documents programmatically using templates.
+  lessons:
+  - dynamic-html-using-jinja/formatting-in-python.md
+  - dynamic-html-using-jinja/jinja2.md
+  - dynamic-html-using-jinja/simple-jinja2-template.md
+  - dynamic-html-using-jinja/conditions-and-loops.md
+  - dynamic-html-using-jinja/creating-tables.md
+  - dynamic-html-using-jinja/build-static-site.md
+- name: getting-started-with-flask
+  title: Getting Started with Flask
+  description: Learn how to creating and serving HTML documents from a server.
+  lessons:
+  - getting-started-with-flask/introduction.md
+  - getting-started-with-flask/routing-controllers.md
+  - getting-started-with-flask/responding-to-users.md
+  - getting-started-with-flask/return-html.md
+  - getting-started-with-flask/return-html-using-jinja.md
+  - getting-started-with-flask/build-a-simple-site.md
+- name: interacting-with-users
+  title: Interacting with Users
+  description: Learn how to interact with your web application users.
+  lessons:
+  - interacting-with-users/forms.md
+  - interacting-with-users/submitting-form.md
+  - interacting-with-users/responsing-to-user-submission.md
+  - interacting-with-users/build-a-guestbook.md
+- name: styling
+  title: Styling
+  description: Learn how to make your web application look good
+  lessons:
+  - styling/introduction.md
+  - styling/style-tag.md
+  - styling/applying-style-to-html.md
+  - styling/using-bootstrap.md
+- name: build-web-app
+  title: Build a Web Application
+  description: Build a full-fledged application with everything we have learnt until now.
+  lessons:
+  - build-an-app/problem.md
+  - build-an-app/approach.md
+- name: next
+  title: What next?
+  description: What to do next?
+  lessons:
+  - next/what-to-do.md
