@@ -1,4 +1,4 @@
-from monctl import workspace
+from build import workspace
 import yaml
 
 COURSE_YML = """
