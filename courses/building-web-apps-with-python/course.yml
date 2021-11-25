@@ -36,7 +36,7 @@ chapters:
   - dynamic-html-using-jinja/build-static-site.md
 - name: getting-started-with-flask
   title: Getting Started with Flask
-  description: Learn how to creating and serving HTML documents from a server.
+  description: Learn how to create and serve HTML documents from a server.
   lessons:
   - getting-started-with-flask/introduction.md
   - getting-started-with-flask/routing-controllers.md
@@ -60,12 +60,12 @@ chapters:
   - styling/style-tag.md
   - styling/applying-style-to-html.md
   - styling/using-bootstrap.md
-- name: build-web-app
-  title: Build a Web Application
+- name: capstone-project
+  title: Capstone Project
   description: Build a full-fledged application with everything we have learnt until now.
   lessons:
-  - build-an-app/problem.md
-  - build-an-app/approach.md
+  - capstone-project/problem.md
+  - capstone-project/approach.md
 - name: next
   title: What next?
   description: What to do next?
