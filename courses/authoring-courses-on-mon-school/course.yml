@@ -1,0 +1,41 @@
+name: authoring-courses-on-mon-school
+suffix: ms
+is_published: false
+upcoming: false
+tags:
+  - Mon School
+video_link:
+title: Authoring Courses on Mon School
+instructor: anand_chitipothu
+short_introduction: Learn the process, tools, and best practices for authoring courses on Mon School
+description: |
+  This course is meant for people interested in creating courses on Mon School.
+  It covers the process that we follow at Mon School to create courses, the tools that are available and
+  the recommended approach for creating courses.
+
+chapters:
+- name: welcome
+  title: Welcome to Mon School
+  description: Introduction to the Mon School platform
+  lessons:
+    - welcome/monschool.md
+
+- name: what-makes-a-good-course
+  title: What Makes a Good Course
+  description: ""
+  lessons: []
+
+- name: proposing-a-new-course
+  title: Proposing a New Course
+  description: "How to propose a new course to be included in Mon School?"
+  lessons: []
+
+- name: creating
+  title: Creating the Course
+  description: Learn how to start creating the course and how to add each kind of ingredient that goes into it.
+  lessons:
+  - content/outline.md
+  - content/generating-files.md
+  - content/lessons.md
+  - content/examples.md
+  - content/exercises.md

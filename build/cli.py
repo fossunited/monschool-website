@@ -59,5 +59,14 @@ def generate(course_name):
     course = w.read_course(course_name)
     course.generate_lesson_stubs()
 
+@cli.command()
+@click.argument("source_path", type=click.Path(exists=True))
+@click.argument("dest_path", type=click.Path())
+def prepare_image(source_path, dest_path):
+    """Takes an image and resizes it as suitable for course preview on mon.school.
+    """
+    from . import image
+    image.prepare_image(source_path, dest_path)
+
 def main():
     cli()
