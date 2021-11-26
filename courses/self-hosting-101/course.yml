@@ -1,0 +1,50 @@
+name: self-hosting-101
+title: Self Hosting 101
+instructor: mrkaran
+is_published: false
+upcoming: true
+tags:
+  - Self Hosting
+video_link:
+suffix: sh
+short_introduction: Learn how to self host and manage applications on servers.
+description: |
+  This course is aimed towards beginners who are new to self hosting journey.
+  The course starts with fundamentals like setting up a server, installing apps,
+  configuring the machine, installing dependencies, setting up web server and goes
+  further in explaining Day 2 tasks like setting up background services, debugging
+  breaking applications using logs etc.
+
+chapters:
+- name: week0
+  title: Week 0
+  description: Some reading material will be shared to ignite interest in Self Hosting.
+  lessons:
+    - week0/why-self-host.md
+    - week0/what-things-can-self-host.md
+    - week0/self-hosting-communities.md
+- name: week1
+  title: Week 1
+  description: Setup and configure a VPS.
+  lessons: []
+- name: week2
+  title: Week 2
+  description: Deploy a static website with HTML, CSS, JS
+  lessons: []
+- name: week3
+  title: Week 3
+  description: Deploy a Python application
+  lessons: []
+- name: week4
+  title: Week 4
+  description: Understanding and setting up system services
+  lessons: []
+- name: week5
+  title: Week 5
+  description: Logs, Debugging and Fixing
+  lessons: []
+- name: week6
+  title: Week 6
+  description: Recap + Further Reads
+  lessons: []
+
