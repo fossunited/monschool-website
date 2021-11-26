@@ -9,7 +9,7 @@ theme:
 plugins:
   - mkdocs-simple-hooks:
       hooks:
-        on_files: "monctl.nav:on_files"
+        on_files: "build.nav:on_files"
 
 docs_dir: courses
 
