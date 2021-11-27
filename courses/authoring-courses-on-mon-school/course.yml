@@ -36,6 +36,7 @@ chapters:
   lessons:
   - content/outline.md
   - content/generating-files.md
+  - content/preview-image.md
   - content/lessons.md
   - content/examples.md
   - content/exercises.md
