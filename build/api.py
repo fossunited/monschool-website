@@ -6,6 +6,7 @@ Client library to push courses to mon.school.
 """
 import os
 from pathlib import Path
+from urllib.parse import urljoin
 
 import frontmatter
 from frappeclient import FrappeClient
@@ -73,6 +74,19 @@ class API:
             print(doctype, name, "saving...")
             return self.invoke_method("mon_school.api.save_document", data=data)
 
+    def add_attachment(self, filename, doctype, docname, fieldname):
+        files = {"file": open(filename, "rb")}
+        data = {
+            "is_private": 0,
+            "doctype": doctype,
+            "docname": docname,
+            "fieldname": fieldname,
+            "folder": "Home"
+        }
+        url = urljoin(self.frappe.url, "/api/method/upload_file")
+        r = self.frappe.session.post(url, files=files, data=data)
+        return r.json()['message']['file_url']
+
     def trim_tables(self, doc):
         def trim(d):
             ignore = "name owner creation modified modified_by parent parentfield parenttype idx docstatus doctype".split()
@@ -117,6 +131,8 @@ class API:
         for chapter in course.chapters:
             self.update_chapter(chapter)
 
+        self.update_course_preview_image(course)
+
     def update_chapter(self, chapter: Chapter):
         doc = chapter.get_doc()
         self.ensure_doc("Course Chapter", doc['name'], course=doc['course'])
@@ -149,3 +165,13 @@ class API:
         if not self.exists(doctype, name):
             doc = dict(DEFAULTS[doctype], **fields)
             self.save_document(doctype, name, doc)
+
+    def update_course_preview_image(self, course: Course):
+        if course.preview_image:
+            path = str(course.root / course.preview_image)
+            print("upload preview_image", path)
+            file_url = self.add_attachment(path,
+                doctype="LMS Course",
+                docname=course.name,
+                fieldname="image")
+            self.save_document("LMS Course", course.name, {"image": file_url})

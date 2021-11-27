@@ -11,6 +11,7 @@ instructor: foobar
 draft: false,
 is_published: true
 upcoming: true
+preview_image: null
 tags:
   - python
   - beginner
