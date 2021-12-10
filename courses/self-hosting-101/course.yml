@@ -26,11 +26,19 @@ chapters:
 - name: week1
   title: Week 1
   description: Setup and configure a VPS.
-  lessons: []
+  lessons:
+    - week1/overview.md
+    - week1/creating-droplet.md
+    - week1/editing-files.md
+    - week1/creating-users.md
+    - week1/setting-up-ssh.md
+    - week1/installing-packages.md
+    - week1/using-tmux.md
 - name: week2
   title: Week 2
   description: Deploy a static website with HTML, CSS, JS
-  lessons: []
+  lessons:
+    - week2/configure-nginx.md
 - name: week3
   title: Week 3
   description: Deploy a Python application
