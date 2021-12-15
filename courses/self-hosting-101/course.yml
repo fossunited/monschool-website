@@ -16,43 +16,42 @@ description: |
   breaking applications using logs etc.
 
 chapters:
-- name: week0
-  title: Week 0
-  description: Some reading material will be shared to ignite interest in Self Hosting.
-  lessons:
-    - week0/why-self-host.md
-    - week0/what-things-can-self-host.md
-    - week0/self-hosting-communities.md
-- name: week1
-  title: Week 1
-  description: Setup and configure a VPS.
-  lessons:
-    - week1/overview.md
-    - week1/creating-droplet.md
-    - week1/editing-files.md
-    - week1/creating-users.md
-    - week1/setting-up-ssh.md
-    - week1/installing-packages.md
-    - week1/using-tmux.md
-- name: week2
-  title: Week 2
-  description: Deploy a static website with HTML, CSS, JS
-  lessons:
-    - week2/configure-nginx.md
-- name: week3
-  title: Week 3
-  description: Deploy a Python application
-  lessons: []
-- name: week4
-  title: Week 4
-  description: Understanding and setting up system services
-  lessons: []
-- name: week5
-  title: Week 5
-  description: Logs, Debugging and Fixing
-  lessons: []
-- name: week6
-  title: Week 6
-  description: Recap + Further Reads
-  lessons: []
-
+  - name: week0
+    title: Week 0
+    description: Some reading material will be shared to ignite interest in Self Hosting.
+    lessons:
+      - week0/why-self-host.md
+      - week0/what-things-can-self-host.md
+      - week0/self-hosting-communities.md
+  - name: week1
+    title: Week 1
+    description: Setup and configure a VPS.
+    lessons:
+      - week1/overview.md
+      - week1/creating-droplet.md
+      - week1/creating-users.md
+      - week1/installing-packages.md
+      - week1/working-with-files-directories.md
+      - week1/setting-up-ssh.md
+      - week1/using-tmux.md
+  - name: week2
+    title: Week 2
+    description: Deploy a static website with HTML, CSS, JS
+    lessons:
+      - week2/configure-nginx.md
+  - name: week3
+    title: Week 3
+    description: Deploy a Python application
+    lessons: []
+  - name: week4
+    title: Week 4
+    description: Understanding and setting up system services
+    lessons: []
+  - name: week5
+    title: Week 5
+    description: Logs, Debugging and Fixing
+    lessons: []
+  - name: week6
+    title: Week 6
+    description: Recap + Further Reads
+    lessons: []

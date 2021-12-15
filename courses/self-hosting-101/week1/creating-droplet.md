@@ -65,13 +65,8 @@ root@143.244.130.76's password:
 root@playground:~#
 ```
 
-### Using DigitalOcean Console
+**NOTE**: If you're doing this course on a Windows machine which doesn't have `ssh` agent, you can follow [this tutorial](https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/putty/) to setup and use PuTTY.
 
-Click on the droplet name once it's ready and you'll be taken to a page that has a bunch of different knobs to tweak your droplet. For now, we just want to access it, so visit `Access > Droplet Console`. Click on `Launch Droplet Console` and wait for a minute for the connection to establish.
-
-A new browser window should open which would have a UI like that of a Terminal. 
-
-![img](./img/do_console.png)
 
 ---
 

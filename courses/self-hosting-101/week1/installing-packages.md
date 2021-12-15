@@ -7,34 +7,49 @@ In Linux, different distributions have different ways of managing software packa
 
 Since this course is targetted for Ubuntu which is a `Debian` flavour distribution, it comes with Advanced Packaging Tool (APT) package manager. With `apt` you can add/remove packages or update existing ones and even upgrade your entire Ubuntu server.
 
-Some examples to showcase:
+Our task for this lesson is to install a tool called `fortune`. `fortune` is a very old, popular and entertaining utility. The tool does exactly what the name says - it prints random fortune cookies to the terminal.
 
-## Update software repositories
+## Step 1: Update software repositories
 
-The APT package index is database of all packages under each repository present inside `/etc/apt/sources.list`. Whenever any package update happens in any repository, we must update the index first before `apt` can pull the new package updates.
+Before we install any package, we must ensure that our package respository is up-to date. The APT package index is database of all packages under each repository present inside `/etc/apt/sources.list`. When a package gets updated, we need to update our local index before we can install the latest package versions. To do that, run the following command:
 
 ```
 sudo apt-get update
 ```
 
-After running the above command, we can now run `apt-get upgrade` which will upgrade all the older packages in your system to their latest versions. It's a good practice to keep your servers updated as they contain security patches as well.
+After running the above command our package list got update. Now, we can run `apt-get upgrade` which will upgrade all the older packages in your system to their latest versions. It's a good practice to keep your servers updated as they contain security patches as well.
 
 ```
 sudo apt-get upgrade
 ```
 
-## Installing packages
+## Step 2: Installing packages
 
-Now that we learnt how to update our server, it's time to install a software package from the Ubuntu repository.
-
-Let's install `jq`. `jq` is a CLI which is used to parse JSON. It's quite a handy utility as you can use it with combination with other utilities and parse/extract specific data from a JSON output.
+Now that we learnt how to keep our package repositories updated and also install latest updates, it's time for us to install a `fortune` from the Ubuntu repository.
 
 ```
-sudo apt-get install jq
+sudo apt-get install fortune-mod
 ```
 
-We can verify that it's installed with:
+We can verify that it's installed by running:
 
+```bash
+❯ fortune
+Is this really happening?
 ```
-jq --help
+
+Congrats! You learnt how to update packages and even install one yourself. Here's an exercise for you:
+
+Install the famous utility `cowsay` and print this message "I like learning new things". The output would look something similar to:
+
+```bash
+❯ cowsay I like learning new things
+ ____________________________
+< I like learning new things >
+ ----------------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
 ```
