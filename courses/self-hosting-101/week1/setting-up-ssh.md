@@ -19,6 +19,9 @@ Now that we understand how SSH Key Exchange works in theory, let's create a key 
 
 ### Step 1: Generate a SSH Key
 
+TODO: ssh-keygent no args
+TODO: Warn about prev keys
+
 ```
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
@@ -119,7 +122,7 @@ ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF1mu97d97beaTuY6/DEYEfwG9ETv+71e49RmPzEoDVO
 Perfect! Now let's actually try to login to this server using the SSH key.
 
 ```
-ssh ubuntu@<ip>
+$ ssh ubuntu@<ip>
 ```
 
 You are now logged in to the server without being asked for a password!

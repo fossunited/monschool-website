@@ -1,16 +1,13 @@
 ---
-title: Setting up NGINX
+title: Overview
 include_in_preview: false
 ---
 
 ## Actionable Tasks
 
 - [ ] Install NGINX
-  - [ ] Verify if 
 - [ ] Editing default `index.html`
-  - [ ] "Hello world"
 - [ ] Setting up a sitename (vhost) `blue.user.monschool.net`
-  - [ ] `/var/www/blue.user.monschool.net`
 - [ ] `red.user.monschool.net` from a `.git` repo.
   - [ ] symlink
   - [ ] nginx config

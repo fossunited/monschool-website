@@ -38,7 +38,11 @@ chapters:
     title: Week 2
     description: Deploy a static website with HTML, CSS, JS
     lessons:
-      - week2/configure-nginx.md
+      - week2/_overview.md
+      - week2/installing-nginx.md
+      - week2/customising-index.md
+      - week2/creating-a-site.md
+      - week2/setup-using-git.md.md
   - name: week3
     title: Week 3
     description: Deploy a Python application

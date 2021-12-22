@@ -11,6 +11,8 @@ Our task for this lesson is to install a tool called `fortune`. `fortune` is a v
 
 ## Step 1: Update software repositories
 
+TODO: Reword directory path.
+
 Before we install any package, we must ensure that our package respository is up-to date. The APT package index is database of all packages under each repository present inside `/etc/apt/sources.list`. When a package gets updated, we need to update our local index before we can install the latest package versions. To do that, run the following command:
 
 ```
@@ -37,6 +39,8 @@ We can verify that it's installed by running:
 ❯ fortune
 Is this really happening?
 ```
+
+# TODO: Mention `fortune` can print random string.
 
 Congrats! You learnt how to update packages and even install one yourself. Here's an exercise for you:
 

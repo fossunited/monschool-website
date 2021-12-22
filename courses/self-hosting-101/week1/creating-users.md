@@ -11,6 +11,8 @@ Our task for this lesson is to create a non root user called `ubuntu`.
 
 ## Creating a User
 
+## TODO: Explain adduser prompts.
+
 In order to create a new user, we'll use `adduser $USERNAME`:
 
 ```
@@ -42,6 +44,8 @@ At this moment, our `ubuntu` user doesn't have any privileged permissions. But w
 
 That's where `sudo` comes in the picture. Using `sudo` you can _become_ an admin user and perform administrative tasks. Now you must be wondering how is this safe as we have bypassed the `root` user login completely.
 
+TODO: Remove `/etc/sudoers` part.
+
 For any user to do `sudo`, the user must be present in the `sudoers` list which is present inside `/etc/sudoers`. Let's create an entry for `ubuntu` user:
 
 ```
@@ -55,6 +59,8 @@ su ubuntu
 ```
 
 ### Viewing user ID
+
+TODO: Talk about `whoami`
 
 Each user on Linux get's its own user ID. To find the ID of the current user:
 

@@ -38,6 +38,8 @@ We need to scroll to the bottom, so keep hitting `down` arrow key or `Pg Down` a
 
 Next, copy paste this exact snippet:
 
+TODO: Make the script easier
+
 ```bash
 if [ -x /usr/games/cowsay -a -x /usr/games/fortune ]; then
     fortune | cowsay
@@ -80,3 +82,5 @@ man ls
 ```
 
 There are some useful resources like https://tldr.sh/ and https://explainshell.com/ which can help you not feel overwhelmed with too much of docs suddenly and find out the flag/information about each command quickly.
+
+// TODO: Add some more content around mkdir,ls,cd,rm and directory structure.
