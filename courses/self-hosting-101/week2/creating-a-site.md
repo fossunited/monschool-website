@@ -136,3 +136,8 @@ $ sudo nginx -s reload
 Let's visit the browser and type the URL http://blue.<user>.monschool.net/ in the address bar:
 
 ![img](./img/nginx-blue-site.png)
+
+
+todo: add conf.d note
+todo: remove location/
+todo: remove host header explanation

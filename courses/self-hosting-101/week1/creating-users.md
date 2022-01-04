@@ -3,78 +3,103 @@ title: Creating Users
 include_in_preview: false
 ---
 
-So far, you would have observed that we are logged into our server using a `root` user. The `root` user is like an Admin user which is the most privilidged user on your system. That means it has access to modify/remove any of the file across all directories, terminate a process, spawn new processes, create new user accounts, install software packages etc.
+## Lesson Objectives
 
-It's a bad practice to run any process as a `root` user or to even login as a `root` user. If the server gets compromised, then the attacker has access to do any kind of task on your system. However, if we create another user which has restricted permissions, isolated filesystem access it'll help us to limit the damage in case of a compromised system.
+- [ ] Create a non-root user
+- [ ] Understanding Access Levels and Controls
+- [ ] Access droplet with non root user
 
-Our task for this lesson is to create a non root user called `ubuntu`.
+### Refresher
+
+We'll use some concepts here that was learned in the previous lesson. You can take a quick look at them to refresh them:
+
+- `ssh user@ip` command to login from [Creating droplet lesson](./creating-droplet.md)
+
+
+In the previous lesson, you would have observed that we logged in to the server using a `root` user. The `root` user is an _Adminstrator_ which is the most privileged user on the system. This means that it has the access to modify/remove any file across all directories, create/destroy processes, modify user accounts, install software packages etc.
+
+It's generally a bad practice to run any process as a `root` user unless it's required. There are some tasks in Linux that can only be performed by a root user. However, besides that kind of task, we should not be running anything with a `root` user. In case the server gets compromised, then the attacker has full access to your system and the blast radius of the attack is widened. A good thumb of rule is to follow _Principle of Least Privilege_ to limit the blast radius in an attack. Creating a secondary, non-root user will help us achieve that.
+
+Let's begin to do that, by _adding_ a new user to our system:
 
 ## Creating a User
 
-## TODO: Explain adduser prompts.
 
-In order to create a new user, we'll use `adduser $USERNAME`:
+To create a new user, we'll use the command `adduser`:
+
+**NOTE**: Remember to substitute the word `karan` with your username in the following commands:
 
 ```
-root@playground:~# adduser ubuntu
-Adding user `ubuntu' ...
-Adding new group `ubuntu' (1000) ...
-Adding new user `ubuntu' (1000) with group `ubuntu' ...
-Creating home directory `/home/ubuntu' ...
+root@143.110.178.40's password: 
+root@playground:~# adduser karan
+Adding user `karan' ...
+Adding new group `karan' (1000) ...
+Adding new user `karan' (1000) with group `karan' ...
+Creating home directory `/home/karan' ...
 Copying files from `/etc/skel' ...
 New password: 
 Retype new password: 
 passwd: password updated successfully
-Changing the user information for ubuntu
+Changing the user information for karan
 Enter the new value, or press ENTER for the default
-	Full Name []: Ubuntu
-	Room Number []: 
-	Work Phone []: 
-	Home Phone []: 
-	Other []: 
+    Full Name []: 
+    Room Number []: 
+    Work Phone []: 
+    Home Phone []: 
+    Other []: 
 Is the information correct? [Y/n] Y
-root@playground:~#
 ```
 
-We can find the list of all users on the system using `less /etc/passwd`. There should be an entry for the user you just created. You can ignore all other users in this list as they are system users.
+`adduser` opens an interactive prompt and asks for a few basic questions:
 
+- `Password`: Type in a password that you will use to log in to this user.
+- `Full Name`: You can enter your full name for the system to add more details.
+
+Rest of the details you can leave empty as they are not required. Confirm the information with `Y` (_Yes_) and you're good to go!
 ### Granting privileges
 
-At this moment, our `ubuntu` user doesn't have any privileged permissions. But we do need some of these permissions in order to do tasks like installing packages, for example. Now, we can either do that by logging as a `root` user or by using `su` (_substitute users_). Logging as `root` user everytime you need to perform administrative tasks is a bit of hassle. And `su` doesn't give complete admin privileges.
+At this moment, our `ubuntu` user doesn't have any privileged permissions. But to self-host applications, we'll need to perform tasks like installing packages, editing system files etc. We'll need to allow our `ubuntu` user to _become_ a privileged user to perform these tasks.
 
-That's where `sudo` comes in the picture. Using `sudo` you can _become_ an admin user and perform administrative tasks. Now you must be wondering how is this safe as we have bypassed the `root` user login completely.
+That's where `sudo` comes in the picture. Using `sudo` you can _become_ a root user and perform administrative tasks.
 
-TODO: Remove `/etc/sudoers` part.
-
-For any user to do `sudo`, the user must be present in the `sudoers` list which is present inside `/etc/sudoers`. Let's create an entry for `ubuntu` user:
+**NOTE**: Remember to substitute the word `karan` with your username in the following commands:
 
 ```
-root@playground:~# usermod -aG sudo ubuntu
+$ usermod -aG sudo karan
 ```
 
-Let's switch to `ubuntu` user using `su`:
+Perfect! We have added the user `karan` to a list of users who can use `sudo` (that list is called a `sudoers` file)
+
+Let's switch to the user you created using `su`:
+
+**NOTE**: Remember to substitute the word `karan` with your username in the following commands:
 
 ```
-su ubuntu
+$ su karan
 ```
 
 ### Viewing user ID
 
-TODO: Talk about `whoami`
-
-Each user on Linux get's its own user ID. To find the ID of the current user:
+Using the command `whoami` you can view the current user:
 
 ```
-ubuntu@playground:~$ id -u
-1000
+$ whoami
+karan
 ```
 
-`root` user however is a special user and it's ID is always `0` on all systems.
+This shows that we are currently logged in as `karan` user.
+
+### Accessing droplet with non-root user
+
+In the previous lesson, we used `ssh root@<ip>` to access our droplet. Since we have now created another user for ourselves, we'll use that to access the droplet from now:
 
 ```
-ubuntu@playground:~$ sudo su
-root@playground:/home/ubuntu# id -u
-0
+$ ssh karan@143.110.178.40
+karan@143.110.178.40's password: 
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+karan@playground:~$
 ```
 
-Congrats! You created a non root user and used that to login to the server.
+Congrats! In this lesson, you have created a non-root user and learnt a bit about privilege escalation. In the next lesson, we'll learn how to install system packages and the concepts explained in this lesson like `sudo` will be used to perform some of the commands in that listen.

@@ -22,7 +22,6 @@ chapters:
     lessons:
       - week0/why-self-host.md
       - week0/what-things-can-self-host.md
-      - week0/self-hosting-communities.md
   - name: week1
     title: Week 1
     description: Setup and configure a VPS.
@@ -42,7 +41,7 @@ chapters:
       - week2/installing-nginx.md
       - week2/customising-index.md
       - week2/creating-a-site.md
-      - week2/setup-using-git.md.md
+      - week2/setup-using-git.md
   - name: week3
     title: Week 3
     description: Deploy a Python application
