@@ -72,3 +72,11 @@ root@playground:~#
 Congrats! Give yourself a pat on the back. You've registered with a cloud provider, created a new droplet and learnt how to access it!
 
 In the upcoming lesson, we'll learn how to create additional users to access the server.
+
+## Additional Note
+
+TODO: Where should this be present? 
+
+Monschool Self Hosting Course aims to be practical and give a more hands-on experience for the students taking this course. There's a `monschool-agent` program that can be installed from [fossunited/monschool-agent/](https://github.com/fossunited/monschool-agent/). This agent is a diagnostic agent that helps mentors troubleshoot any errors faced by you while doing the lessons.
+
+You can follow the [installation instructions](https://github.com/fossunited/monschool-agent/#install) and set it up before the next lesson.
