@@ -21,7 +21,8 @@ chapters:
     description: Some reading material will be shared to ignite interest in Self Hosting.
     lessons:
       - week0/why-self-host.md
-      - week0/what-things-can-self-host.md
+      - week0/what-things-can-you-self-host.md
+      - week0/course-outline.md
   - name: week1
     title: Week 1
     description: Setup and configure a VPS.

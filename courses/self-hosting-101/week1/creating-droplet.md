@@ -3,11 +3,9 @@ title: Creating a droplet
 include_in_preview: false
 ---
 
-## Lesson Objectives
+In this lesson, we will create a _Droplet_ (server) on DigitalOcean. After creating the droplet, we'll learn how to access it from your local machine.
 
-- [ ] Create a DigitalOcean Account
-- [ ] Create a DigitalOcean Droplet
-- [ ] Access the droplet
+---
 
 To get started with self-hosting, you'll need a _server_ to run the applications. There are multiple options on how you can host a server:
 
@@ -28,6 +26,7 @@ To keep things consistent across cohorts of students at Mon School, we will be u
 ## Step 1: Create a new account at DigitalOcean
 
 To create a Droplet, you'll need to signup for a DigitalOcean account. Head over to [DigitalOcean](https://www.digitalocean.com/) website and signup with your email/password. You'll need to enter your Credit Card details but you'll only be charged at the end of the billing cycle (monthly) for the resources you have created.
+
 ## Step 2: Create a new Droplet
 
 Let's create a new droplet by visiting "Droplets" in the sidebar.
@@ -50,22 +49,28 @@ Here's how it should look once you enter all the details:
 ![img](./img/create_droplet_form.png)
 
 Once you verify the details are correct, click on **Create Project** and wait for a minute or so for the droplet creation to happen. You will be able to access it soon after.
+
 ## Step 3: Log in to the droplet
 
 ### Using your local machine
 
 Visit the [Droplets](https://cloud.digitalocean.com/droplets?i=a49aab) page and you'll find the droplet that you just created. Copy the _IP Address_ of your droplet and use that to log in as shown in the command below:
 
-*NOTE*: Run this command on your local machine. You'll be prompted for a password and after that, you'll be able to log in to the server.
+_NOTE_: Run this command on your local machine. You'll be prompted for a password and after that, you'll be able to log in to the server.
 
 ```
-$ ssh root@143.110.178.40
-root@143.110.178.40's password: 
+$ ssh root@1.2.3.4
+root@1.2.3.4's password:
 root@playground:~#
 ```
 
-**NOTE**: If you're doing this course on a Windows machine that doesn't have an `ssh-agent`, you can follow [this tutorial](https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/putty/) use PuTTY instead.
+**NOTE**: If you're doing this course on a Windows machine, you can follow [this tutorial](https://docs.digitalocean.com/products/droplets/how-to/connect-with-ssh/putty/) and use PuTTY instead of `ssh`.
 
+## Install Monschool Agent
+
+Monschool Self Hosting Course aims to be practical and give a more hands-on experience for the students taking this course. There's a `monschool-agent` program that can be installed from [fossunited/monschool-agent/](https://github.com/fossunited/monschool-agent/). This agent is a diagnostic agent that helps mentors troubleshoot any errors faced by you while doing the lessons.
+
+You can follow the [installation instructions](https://github.com/fossunited/monschool-agent/#install) and set it up before the next lesson.
 
 ---
 
@@ -73,10 +78,8 @@ Congrats! Give yourself a pat on the back. You've registered with a cloud provid
 
 In the upcoming lesson, we'll learn how to create additional users to access the server.
 
-## Additional Note
-
-TODO: Where should this be present? 
-
-Monschool Self Hosting Course aims to be practical and give a more hands-on experience for the students taking this course. There's a `monschool-agent` program that can be installed from [fossunited/monschool-agent/](https://github.com/fossunited/monschool-agent/). This agent is a diagnostic agent that helps mentors troubleshoot any errors faced by you while doing the lessons.
-
-You can follow the [installation instructions](https://github.com/fossunited/monschool-agent/#install) and set it up before the next lesson.
+| Task     |      Status      |
+|----------|:-------------:|
+| Create Droplet |  Pending      |
+| Access Droplet |    Pending   |
+| Install `monschool-agent` | Pending |

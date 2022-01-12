@@ -5,23 +5,21 @@ include_in_preview: false
 
 ## Actionable Tasks
 
-- [ ] Install NGINX
-- [ ] Editing default `index.html`
-- [ ] Setting up a sitename (vhost) `blue.user.monschool.net`
-- [ ] `red.user.monschool.net` from a `.git` repo.
-  - [ ] symlink
-  - [ ] nginx config
-- [ ] Configure SSL for `red.user.monschool.net`
-- [ ] Project: Setup Hugo
-  - [ ] https://gohugo.io/getting-started/installing/
+-Install NGINX
+-Editing default `index.html`
+-Setting up a sitename (vhost) `blue.user.monschool.net` -`red.user.monschool.net` from a `.git` repo.
+-symlink
+-nginx config
+-Configure SSL for `red.user.monschool.net`
+-Project: Setup Hugo -https://gohugo.io/getting-started/installing/
 
 ## Tests
 
-- [ ] curl `<public-ip>:80` from outside
-- [ ] verify the content of response body
-- [ ] Verify the site is running
-  - [ ] check if symlink is proper
-- [ ] Check file permission not belonging to root user
+-curl `<public-ip>:80` from outside
+-verify the content of response body
+-Verify the site is running
+-check if symlink is proper
+-Check file permission not belonging to root user
 
 ## What is NGINX
 
@@ -72,4 +70,3 @@ Since the website is running on port 80, we need to configure a firewall rule wh
 ### Configure SSL
 
 <TODO: Certbot steps>
-

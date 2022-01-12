@@ -9,11 +9,11 @@ In the first week, we'll begin our self-hosting journey by starting with setting
 
 The learning objectives for Week 1 are:
 
-- [ ] [Creating a droplet on DigitalOcean](./creating-droplet.md).
-- [ ] [Creating Users](./creating-users.md)
-- [ ] [Installing Packages](./installing-packages.md)
-- [ ] [Learning the filesystem](./working-with-files-directories.md)
-- [ ] [Setting up SSH](./setting-up-ssh.md)
-- [ ] [Using tmux](./using-tmux.md)
+- [Creating a droplet on DigitalOcean](./creating-droplet.md).
+- [Creating Users](./creating-users.md)
+- [Installing Packages](./installing-packages.md)
+- [Learning the filesystem](./working-with-files-directories.md)
+- [Setting up SSH](./setting-up-ssh.md)
+- [Using tmux](./using-tmux.md)
 
 After covering the objectives laid out this week and completing all exercises, we should be able to grasp a basic understanding of the tasks planned for the next upcoming weeks.

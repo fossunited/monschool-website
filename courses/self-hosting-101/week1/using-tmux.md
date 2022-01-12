@@ -3,9 +3,7 @@ title: Using tmux
 include_in_preview: false
 ---
 
-## Lesson Objectives
-
-- [ ] Run a long-running command
+In this lesson, we'll learn how to use `tmux` to run a long running command.
 
 ### Refresher
 
@@ -16,11 +14,12 @@ We'll use some concepts here that was learned in the previous lesson. You can ta
 
 ---
 
-`tmux` is a terminal multiplexer, which allows you to create and persist "shell sessions" on the server. This is helpful if you have to run a long-running command and don't want the process to be killed if your SSH connection is interuppted for any reason. This is also helpful if you have more than 1 person logging in to your server and you together need to work on the same session.
+`tmux` is a terminal multiplexer, which allows you to create and persist "shell sessions" on the server. This is helpful if you have to run a long-running command and don't want the process to be killed if your SSH connection is interuppted for any reason.
+This is also helpful if you have more than 1 person logging in to your server and you together need to work on the same session.
 
 `tmux` allows you to _attach_ multiple shells to the same terminal session. That means you can open a `tmux` window, split it into multiple parts (_panes_) and run different commands on each of them.
 
-Our task for this lesson is to run a command `fortune; sleep 60`. This command prints the message on the terminal but takes 60 seconds to complete.
+Our task for this lesson is to run a command `nano week1/hello.txt`. This command prints the message on the terminal but takes 60 seconds to complete.
 
 Let's create a new session with:
 
@@ -34,25 +33,31 @@ You'll be logged into your current user account. `tmux` is controlled using what
 
 ### Running Commands
 
-Let's run our command `fortune; sleep 60`. You'll notice the output gets printed immediately to the terminal but the prompt will be returned only after 60 seconds.
+Let's run our command `nano week1/hello.txt`. You'll notice the editor is opened right now.
+
+```bash
+$ nano week1/hello.txt
+```
+
+Let's _deattach_ from this session and return to our normal prompt. To do that, you'll need to use `mod d`. Once you do that, you'll be returned to the prompt from where you started the `tmux` session.
+
+#### Deattach a session
 
 ```
-$ fortune; sleep 60
+mod d
 ```
 
-Since we don't want to wait for a minute, we can just _deattach_ from this session and return to our normal prompt. To do that, you'll need to use `mod d`. Once you press that, you'll be returned to the prompt from where you started the `tmux` session.
+#### List sessions
 
-Here you can even list active sessions with:
-
-```
+```bash
 $ tmux ls
 0: 1 windows (created Tue Dec 14 18:19:10 2021)
 ```
 
-To attach to the session we just created:
+#### Attaching sessions
 
 ```
-$ tmux a -t 0
+$ tmux a
 ```
 
 Congrats! You completed the task for this lesson. We used `tmux` to run a long-running command and learnt how to attach/detach sessions.

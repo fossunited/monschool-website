@@ -3,11 +3,7 @@ title: Working with files and directories
 include_in_preview: false
 ---
 
-## Lesson Objectives
-
-- [ ] Editing files
-- [ ] Understand Linux Directory Structure
-- [ ] Learning basic CLIs to navigate filesystem
+In this lesson, we'll learn about the directory structure in Linux. We'll also learn how to edit files, navigate your way around the filesystem and more file operations.
 
 ### Refresher
 
@@ -15,38 +11,39 @@ We'll use some concepts here that was learned in the previous lesson. You can ta
 
 - `ssh user@ip` command to login from [Creating droplet lesson](./creating-droplet.md)
 
+---
+
 One of the most fundamental tasks that we should know while dealing with Linux is to navigate the filesystem. Common use cases include editing a config file for web servers, modifying app config, editing system files to setup cron etc, viewing logs and checking for errors etc.
 
 To learn how to navigate your way around the filesystem, there are a few commands that you should know about. However, instead of learning these commands all at once, let's think about a real-world scenario where you will need to make use of these commands.
 
 We had used `fortune` in our previous lesson where we learnt how to use `fortune` to print a random fortune cookie on the terminal. Our task for this lesson would be to print a new fortune cookie every time you log in to the server. To achieve that, we will need to edit a config file (present at the location `~/.bashrc/`) and make some changes.
 
-Before we begin editing `~/.bashrc` (don't worry, we'll get on to what `~` actually means), we should first know where we are. Our first command in our toolset is `pwd`:
+Before we begin editing `.bashrc`, we should first know where we are. Our first command in our toolset is `pwd`:
 
 ## Editing Files
+
 ### `pwd`: _Print Working Directory_
 
 This command simply tells which _directory_ you are currently in the filesystem.
 
 ```
 $ pwd
-/home/ubuntu
+/home/karan
 ```
 
-As shown in the above output, we are inside `/home/ubuntu` directory. This directory is also called as `HOME` directory. Shell-like `bash` expand the character `~` to the full `/home/ubuntu` path, so you can also use `~` as an alias if you don't want to type the full path of the `HOME` directory.
+Each user gets their own `HOME` directory and if you want to find the `HOME` directory for a particular user programmatically, you can also read the environment variable `$HOME` which also points to `/home/karan`.
 
-Each user gets their own `HOME` directory and if you want to find the `HOME` directory for a particular user programmatically, you can also read the environment variable `$HOME` which also points to `/home/ubuntu`.
-
-Now we know that we are inside `/home/ubuntu`, and we need to edit `~/.bashrc` file, how do we do that? We'll need to use a **text editor** to open this file and modify it.
+Now we know that we are inside `/home/karan`, and we need to edit `.bashrc` file, how do we do that? We'll need to use a **text editor** to open this file and modify it.
 To keep things simple and easier for beginners, we'll use `nano`. If you know `vim`/`emacs` already you can of course choose your poison, but for most people doing this course, `nano` is an excellent choice.
 
 Let's open the file with the command:
 
 ```
-$ nano ~/.bashrc
+$ nano .bashrc
 ```
 
-Now you can see the contents of `~/.bashrc`.
+Now you can see the contents of `.bashrc`.
 
 ![img](./img/nano_bashrc.png)
 
@@ -54,8 +51,18 @@ We need to scroll to the bottom, so keep hitting `down` arrow key or `Pg Down` a
 
 Next, enter this on a new line:
 
-```
-fortune
+```bash
+$ ssh karan@1.2.3.4
+karan@1.2.3.4's password: 
+ ______________________
+< Welcome to Monschool >
+ ----------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+karan@playground:~$
 ```
 
 Now we need to save the file with the changes we made. Hit `Ctrl+X` and you'll be prompted for confirmation. Hit `Y` (_Yes_) to confirm that you want to save these changes.
@@ -68,9 +75,9 @@ cat ~/.bashrc
 
 To see a new fortune cookie, simply log out and log in to the server again. You'll be greeted with a message like this:
 
-```
-$ ssh karan@143.110.178.40
-karan@143.110.178.40's password: 
+```bash
+$ ssh karan@1.2.3.4
+karan@1.2.3.4's password:
 A is for Apple.
         -- Hester Pryne
 ```
@@ -121,35 +128,54 @@ Let's use the above commands in our toolset to do the following exercise:
 
 > Create an empty file inside `/tmp` and move it to our `$HOME` directory.
 
-1. Since we need to create the file inside `/tmp`, let's `cd` to it:
+1. Let's list all the files in our current directory. We can use `ls` to _list_ files:
 
-```
-$ cd /tmp
+```bash
+$ ls
+monschool-agent
 ```
 
-2. Next, let's create a dummy file with `nano`:
+So, I only have `monschool-agent` in my current directory.
+
+2. Let's create a directory called `week1` here. We can use `mkdir` for it:
+
+```bash
+$ mkdir week1
+```
+
+To verify it's created, let's run `ls` again and we should find `week1 listed here:
+
+```bash
+$ ls
+monschool-agent week1
+```
+
+3. Let's _enter_ inside that directory. To do that we'll use `cd` (change directory):
+
+```bash
+$ cd week1
+```
+
+4. Now, let's create an empty file using `touch`:
+
+```bash
+$ touch hello.txt
+```
+
+To see if the file got created, we'll again use `ls` and see the output:
+
+```bash
+$ ls
+hello.txt
+```
+
+5. Next, let's edit the file using `nano`:
 
 ```
 $ nano hello.txt
 ```
 
-Enter some dummy content and save it. We can see the file is present inside `/tmp` using ls:
-
-```
-$ ls /tmp
-```
-
-3. Finally, let's move it to our `$HOME` directory
-
-```
-$ mv /tmp/hello.txt ~/
-```
-
-We can see the file is moved to the $HOME directory using `ls`:
-
-```
-$ ls ~/
-```
+---
 
 Congrats! In this lesson, we learnt the basics of Linux filesystem and directories, but we have barely scratched the surface of the commands that will help you manage files/directories.
 
@@ -157,8 +183,8 @@ You are encouraged to read `man` pages of these commands. [Manual pages](https:/
 
 To read the man page of `ls`, for example, simply enter and a manual doc will open in your terminal:
 
-```
-man ls
+```bash
+$ man ls
 ```
 
-There are some useful resources like https://tldr.sh/ and https://explainshell.com/ which can help you not feel overwhelmed with too many docs suddenly and find out the flag/information about each command quickly.
+There are some useful resources like [https://tldr.sh/](https://tldr.sh/) and [https://explainshell.com/](https://explainshell.com/) which can help you not feel overwhelmed with too many docs suddenly and find out the flag/information about each command quickly.
