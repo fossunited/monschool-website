@@ -1,0 +1,85 @@
+name: git-github-for-beginners
+title: Git & GitHub for beginners
+instructor: HarshCasper
+is_published: false
+upcoming: true
+tags:
+  - git
+  - github
+  - open-source
+suffix: git
+video_link:
+short_introduction: Get started with learning how to version control and collaborate on your projects with Git & GitHub.
+description: |
+  As a developer, writer, or creator, you all deal with files every day. At some point, 
+  you are dealing with making new files or changing the old files and then saving it all 
+  over again. But how do you track the file changes that are being made over time? It was 
+  this simple question that prompted the development of version control systems.
+
+  Linus Torvalds, the creator of the Linux kernel, was prompted to develop a distributed version 
+  control system when the license for BitKeeper, an existing version control system, was revoked, 
+  which is today known as Git. Today, Git is universally used worldwide for version controlling the 
+  files and is now integrated into various popular services to manage applications and data.
+
+  However, the technical jargon around Git is quite challenging to understand. You might know how 
+  to make a commit to save your changes, but how do you squash your commits? How do you resolve a 
+  merge conflict and collaborate with other developers?
+
+  These are some of the questions that leave developers prowling across Stack Overflow threads 
+  looking for answers. This course aims to get you started with Git from a completely non-technical 
+  perspective and help you upskill yourself in Git with real-world examples.
+
+  You don't need to prowl for commands any longer, and you will understand how you can develop 
+  mental models around Git and its practical usage. With interactive lessons, real-world analogies, 
+  and scenario-based exercises, you will learn how to use Git with GitHub, a Git hosting service, 
+  while employing a host of services.
+chapters:
+- name: version-control-system-and-git
+  title: Version Control System & Git
+  description: Develop an understanding of version control systems and Git.
+  lessons:
+  - version-control-system-and-git/why-version-control-system.md
+  - version-control-system-and-git/what-is-git.md
+  - version-control-system-and-git/git-workflow.md
+  - version-control-system-and-git/git-objects.md
+  - version-control-system-and-git/installing-configuring-git.md
+  - version-control-system-and-git/git-github.md
+- name: getting-started-with-git
+  title: Getting Started with Git
+  description: Learn how to use Git to manage your projects.
+  lessons:
+  - getting-started-with-git/git-repository.md
+  - getting-started-with-git/git-cloning.md
+  - getting-started-with-git/git-committing.md
+  - getting-started-with-git/best-practises.md
+  - getting-started-with-git/pushing-commits.md
+  - getting-started-with-git/time-travelling-with-git.md
+- name: git-and-github
+  title: Git & GitHub
+  description: Learn how to use Git and GitHub to collaborate on your projects.
+  lessons:
+  - git-and-github/managing-collaborators.md
+  - git-and-github/pulling-changes.md
+  - git-and-github/merging.md
+  - git-and-github/resolving-merge-conflicts.md
+  - git-and-github/parallel-development.md
+  - git-and-github/code-reviews-pull-requests.md
+- name: contributing-git-github
+  title: Contributing using Git & GitHub
+  description: Learn how to use GitHub flow of contribution to contribute to your projects.
+  lessons:
+  - contributing-git-github/fork-cloning.md
+  - contributing-git-github/managing-remote-repositories.md
+  - contributing-git-github/fork-updating.md
+  - contributing-git-github/git-rebasing.md
+  - contributing-git-github/git-stashing.md
+- name: open-source
+  title: Open Source
+  description: Contributing to open source projects.
+  lessons:
+  - open-source/open-source-software.md
+  - open-source/leveraging-documentation.md
+  - open-source/good-first-issues.md
+  - open-source/fixing-issues-with-pull-requests.md
+  - open-source/automated-tests.md
+  - open-source/open-source-etiquette.md
