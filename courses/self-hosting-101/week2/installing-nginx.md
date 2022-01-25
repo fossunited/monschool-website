@@ -63,10 +63,6 @@ Dec 21 22:46:38 pop-os systemd[1]: Starting A high performance web server and a 
 Dec 21 22:46:38 pop-os systemd[1]: Started A high performance web server and a reverse proxy server.
 ```
 
-You'll see an output similar to the above. As the output mentions the service is **Active**, `nginx` process is running in background. Now you must be wondering that if `nginx` is already running, is there a way we can interact with it already? The answer is _Yes!_. `nginx` comes with a default website that shows a _Welcome_ page.
-
-You can visit the address `localhost` in your browser and see this page:
-
-![img](./img/nginx_welcome.png)
+You'll see an output similar to the above. As the output mentions the service is **Active**, `nginx` process is running in background.
 
 Super! Now that `nginx` is up and running, we'll learn how to modify the default page and setup our own web page in the future lessons.

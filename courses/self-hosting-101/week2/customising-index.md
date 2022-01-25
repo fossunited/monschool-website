@@ -8,7 +8,7 @@ The default place for `nginx` configuration is at the directory `/etc/nginx`.
 
 Let's visit the directory and explore around:
 
-```
+```bash
 $ cd /etc/nginx
 $ ls
 conf.d        fastcgi_params  koi-win     modules-available  nginx.conf    scgi_params      sites-enabled  uwsgi_params
@@ -32,13 +32,13 @@ We can see the config file `default` located here. Since we're interested in cus
 
 Let's open this config file to see if it has any clues:
 
-```
+```bash
 $ nano default
 ```
 
 On scrolling through, we see a `server` block. A `server` block represents a website and `nginx` config can contain multiple such blocks to represent multiple websites . The usual config when loaded in `nginx` looks like:
 
-```
+```bash
 http {
     server {
         ...
@@ -60,7 +60,7 @@ The _Welcome_ page is also located in this `server` block. On scrolling down a b
 
 The [root](http://nginx.org/en/docs/http/ngx_http_core_module.html#root) directive is to specify where the assets are stored which is used to process the requests. We can see the directory `/var/www/html` mentioned in the config, which means our _Welcome_ page is present here. Let's visit that directory and find out!
 
-```
+```bash
 $ cd /var/www/html
 $ ls       
 index.nginx-debian.html
@@ -76,7 +76,7 @@ sudo nano index.nginx-debian.html
 
 Once the file is saved, we need to _reload_ nginx configuration for the changes to take place. We can use the following command to do that:
 
-```
+```bash
 $ sudo nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
@@ -85,9 +85,5 @@ $ sudo nginx -s reload
 ```
 
 `nginx -t` checks if your configuration is valid or not. It's a good practice to run this before reloading the configuration as any syntax errors in the configuration will cause `nginx` to not restart properly and cause a downtime of your website.
-
-Alright, so once it reloaded, let's visit `localhost` on our browser and see our changes:
-
-![img](./img/nginx-monschool-index.png)
 
 Perfect! In this lesson we learnt how `nginx` stores it's configuration and how to modify the default _Welcome_ page. In the next lesson, we'll be setting up our own HTML/CSS website designed for this course.

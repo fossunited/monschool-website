@@ -105,10 +105,6 @@ server {
     listen      80;
     server_name blue.karan.monschool.net;
     root                    /var/www/blue.karan.monschool.net;
-
-    location / {
-        try_files $uri $uri/ /index.html;
-    }
 }
 ```
 
@@ -125,7 +121,7 @@ server {
 
 After saving the file as `blue.conf`, let's reload our NGINX:
 
-```
+```bash
 $ sudo nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
@@ -136,8 +132,3 @@ $ sudo nginx -s reload
 Let's visit the browser and type the URL http://blue.<user>.monschool.net/ in the address bar:
 
 ![img](./img/nginx-blue-site.png)
-
-
-todo: add conf.d note
-todo: remove location/
-todo: remove host header explanation
