@@ -34,48 +34,48 @@ description: |
   and scenario-based exercises, you will learn how to use Git with GitHub, a Git hosting service, 
   while employing a host of services.
 chapters:
-- name: version-control-system-and-git
-  title: Version Control System & Git
+- name: introduction-to-git
+  title: Introduction to Git
   description: Develop an understanding of version control systems and Git.
   lessons:
-  - version-control-system-and-git/why-version-control-system.md
-  - version-control-system-and-git/what-is-git.md
-  - version-control-system-and-git/git-workflow.md
-  - version-control-system-and-git/git-objects.md
-  - version-control-system-and-git/installing-configuring-git.md
-  - version-control-system-and-git/git-github.md
-- name: getting-started-with-git
-  title: Getting Started with Git
+  - introduction-to-git/why-version-control-system.md
+  - introduction-to-git/what-is-git.md
+  - introduction-to-git/git-workflow.md
+  - introduction-to-git/git-objects.md
+  - introduction-to-git/installing-configuring-git.md
+  - introduction-to-git/git-github.md
+- name: getting-started
+  title: Getting started
   description: Learn how to use Git to manage your projects.
   lessons:
-  - getting-started-with-git/git-repository.md
-  - getting-started-with-git/git-cloning.md
-  - getting-started-with-git/git-committing.md
-  - getting-started-with-git/best-practises.md
-  - getting-started-with-git/pushing-commits.md
-  - getting-started-with-git/time-travelling-with-git.md
-- name: git-and-github
-  title: Git & GitHub
+  - getting-started/git-repository.md
+  - getting-started/git-cloning.md
+  - getting-started/git-committing.md
+  - getting-started/best-practises.md
+  - getting-started/pushing-commits.md
+  - getting-started/time-travelling-with-git.md
+- name: collaborative-development
+  title: Collaborative Development
   description: Learn how to use Git and GitHub to collaborate on your projects.
   lessons:
-  - git-and-github/managing-collaborators.md
-  - git-and-github/pulling-changes.md
-  - git-and-github/merging.md
-  - git-and-github/resolving-merge-conflicts.md
-  - git-and-github/parallel-development.md
-  - git-and-github/code-reviews-pull-requests.md
-- name: contributing-git-github
-  title: Contributing using Git & GitHub
+  - collaborative-development/managing-collaborators.md
+  - collaborative-development/pulling-changes.md
+  - collaborative-development/merging.md
+  - collaborative-development/resolving-merge-conflicts.md
+  - collaborative-development/parallel-development.md
+  - collaborative-development/code-reviews-pull-requests.md
+- name: github-flow
+  title: The GitHub Flow
   description: Learn how to use GitHub flow of contribution to contribute to your projects.
   lessons:
-  - contributing-git-github/fork-cloning.md
-  - contributing-git-github/managing-remote-repositories.md
-  - contributing-git-github/fork-updating.md
-  - contributing-git-github/git-rebasing.md
-  - contributing-git-github/git-stashing.md
+  - github-flow/fork-cloning.md
+  - github-flow/managing-remote-repositories.md
+  - github-flow/fork-updating.md
+  - github-flow/git-rebasing.md
+  - github-flow/git-stashing.md
 - name: open-source
-  title: Open Source
-  description: Contributing to open source projects.
+  title: Contribute to Open Source projects
+  description: Get started with contributing to open source projects.
   lessons:
   - open-source/open-source-software.md
   - open-source/leveraging-documentation.md
