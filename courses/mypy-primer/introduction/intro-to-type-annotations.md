@@ -48,7 +48,7 @@ This could technically _work_, but this way of writing types would get cluttered
 and hard to read very quickly.
 
 Fortunately for us, Python 3.0 had anticipated the idea of code annotations, and
-tit added a way to add extra information on things like function definitions,
+it added a way to add extra information on things like function definitions,
 that are _completely ignored_ by the interpreter itself, but can be inspected by
 other tools.
 
