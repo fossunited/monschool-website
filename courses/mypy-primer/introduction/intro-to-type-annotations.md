@@ -155,6 +155,7 @@ value = double("some text")
 
 Mypy is able to tell that something is wrong with the code. The error message
 states that the function double expected an integer, but got a string instead.
+
 Isn’t this amazing? Now you have a tool that, with just a little bit of extra
 work of adding type hints in a few places, can catch a lot of the bugs in your
 code, even before you run it.
