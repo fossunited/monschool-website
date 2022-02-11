@@ -94,7 +94,7 @@ myproject
     └── foo.py
 ```
 
-Doing `mypy myproject` will check all the 3 files:
+Using the command `mypy <folder name>` will check all the 3 files:
 
 ```console
 $ mypy myproject
