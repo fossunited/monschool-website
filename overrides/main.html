@@ -5,7 +5,9 @@
 
   <template id="livecode-template">
     <div class="livecode-editor">
-      <div class="controls"><button class="run">Run</button></div>
+      <div class="controls">
+        <button class="run">Run</button>
+      </div>
       <div class="code-editor">
         <div class="code-wrapper">
           <textarea class="code"></textarea>
@@ -16,6 +18,37 @@
       </div>
     </div>
   </template>
+
+  <script type="text/javascript">
+    var livecode = {
+      buttons: [],
+      runtimes: {},
+      addRunButton(options) {
+        this.buttons.push(options);
+      },
+
+      getRuntime(lang) {
+        return lang in this.runtimes? this.runtimes[lang]: lang;
+      },
+
+      setRuntime(lang, runtime) {
+        this.runtimes[lang] = runtime;
+      },
+
+      setupEditor(e) {
+        for (var i=0; i<this.buttons.length; i++) {
+          var b = this.buttons[i];
+          $("<button></button>")
+            .addClass("run")
+            .data(b.args)
+            .html(b.label)
+            .appendTo($(e).find(".controls"));
+        }
+      }
+    };
+  </script>
+
+  <script type="text/javascript" src="../../course.js"></script>
 
   <script type="text/javascript">
   const CODEMIRROR_OPTIONS = {
@@ -38,16 +71,19 @@
       var editorLookup = {};
 
       function setupRun(livecodeElement, codemirror) {
-        var runtime = $(livecodeElement).find("code").attr("class").replace("language-", "");
+        var lang = $(livecodeElement).find("code").attr("class").replace("language-", "");
+        var runtime = livecode.getRuntime(lang);
         var server = "https://falcon.mon.school";
         var url = `${server}/runtimes/${runtime}`;
 
-        $(livecodeElement).find(".run").click(function() {
+        $(livecodeElement).find(".run").on('click', function() {
           var code = codemirror.doc.getValue();
+          var mode = $(this).data("mode") || "exec";
 
           fetch(url, {
             method: "POST",
-            body: code
+            body: code,
+            headers: {'x-falcon-mode': mode}
           })
           .then(response => response.text())
           .then(output => {
@@ -86,6 +122,7 @@
         var options = {...CODEMIRROR_OPTIONS, mode: mode};
         var codemirror = CodeMirror.fromTextArea(textarea, options);
 
+        livecode.setupEditor($(e).parent());
         setupRun($(e).parent(), codemirror);
       });
     });
