@@ -41,7 +41,7 @@ button {
 
 .output {
   overflow-x: auto;
-  width: 200px;
+  /* width: 200px; */
   white-space: pre-wrap;
   word-wrap: break-word;
   font-size: 0.8em;
