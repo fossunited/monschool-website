@@ -73,7 +73,7 @@
       function setupRun(livecodeElement, codemirror) {
         var lang = $(livecodeElement).find("code").attr("class").replace("language-", "");
         var runtime = livecode.getRuntime(lang);
-        var server = "http://localhost:8010";
+        var server = "https://falcon.mon.school";
         var url = `${server}/runtimes/${runtime}`;
 
         $(livecodeElement).find(".run").on('click', function() {
