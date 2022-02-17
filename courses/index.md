@@ -7,3 +7,4 @@
 * [Mypy Primer](mypy-primer/introduction/what-is-mypy/)
 * [Rust for Beginners](rust-for-beginners/introduction/welcome/)
 * [Self Hosting 101](self-hosting-101/week0/why-self-host/)
+* [Python Primer](python-primer/getting-started/hello-python/)
