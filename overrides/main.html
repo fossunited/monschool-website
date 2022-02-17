@@ -12,7 +12,7 @@
         <div class="code-wrapper">
           <textarea class="code"></textarea>
         </div>
-        <div class="output-wrapper">
+        <div class="output-wrapper hidden">
           <pre class="output"></pre>
         </div>
       </div>
@@ -80,6 +80,12 @@
           var code = codemirror.doc.getValue();
           var mode = $(this).data("mode") || "exec";
 
+          $(livecodeElement)
+            .find(".output")
+            .html("")
+            .parent()
+            .addClass("hidden");
+
           fetch(url, {
             method: "POST",
             body: code,
@@ -87,13 +93,20 @@
           })
           .then(response => response.text())
           .then(output => {
-            $(livecodeElement).find(".output").text(output);
+            $(livecodeElement)
+              .find(".output")
+              .text(output)
+              .parent()
+              .removeClass("hidden");
           });
         });
       }
 
       $("pre.example").each((i, e) => {
         var code = $(e).text();
+
+        // replace training newlines
+        code = code.replace(/\n+$/g, "");
 
         var template = document.querySelector('#livecode-template');
         var clone = template.content.cloneNode(true);
