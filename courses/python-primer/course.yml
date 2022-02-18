@@ -42,3 +42,4 @@ chapters:
     description:  Introduction to lists, for loop and discussion on iteration patterns.
     lessons:
       - lists/lists.md
+      - lists/dictionaries.md
