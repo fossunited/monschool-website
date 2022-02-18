@@ -41,5 +41,4 @@ chapters:
     title: Working with Lists
     description:  Introduction to lists, for loop and discussion on iteration patterns.
     lessons:
-      - lists/for-loop.md
-      - lists/list-indexing.md
+      - lists/lists.md
