@@ -180,7 +180,7 @@ def sumof(f, x, y):
 def square(n):
     return n*n
 
-def cube(n*n)
+def cube(n):
     return n*n*n
 
 print(sumof(square, 3, 4))
@@ -202,7 +202,7 @@ n = max(3, 4)
 print(n)
 
 n = max([3, 4, 5, 2])
-print(max(n)
+print(n)
 ```
 
 What do you think would be the value of `max(['one', 'two', 'three', 'four', 'five'])`?

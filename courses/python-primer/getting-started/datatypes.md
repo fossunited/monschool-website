@@ -190,14 +190,14 @@ We'll learn more about dictionaries in the latter chapters.
 
 Python has boolean values too. The keywords `True` and `False` represent the boolean truth and false.
 
-```
+```{.python .example}
 print(True)
 print(False)
 ```
 
 The conditional expressions are evalued to boolean values.
 
-```
+```{.python .example}
 filesize = 100
 print(filesize > 50)
 print(filesize > 200)
@@ -235,7 +235,7 @@ print(point[0], point[1])
 
 Python has a `set` datatype too. A set is an unordered collection of elements.
 
-```
+```{.python .example}
 x = {1, 2, 3}
 print(x)
 ```
