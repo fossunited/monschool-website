@@ -56,7 +56,7 @@ chapters:
     lessons:
       - the-typing-module/lists-dictionaries-collections.md
       - the-typing-module/union-optional.md
-      - mypy-errors/reading-mypy-error-messages.md
+      - the-typing-module/reading-mypy-error-messages.md
       - the-typing-module/type-checking-classes.md
       - the-typing-module/typing-args-kwargs.md
       - the-typing-module/any-type.md
