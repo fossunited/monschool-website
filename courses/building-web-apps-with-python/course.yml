@@ -4,9 +4,8 @@ is_published: false
 upcoming: true
 tags:
   - Web
-  - Flask
-  - Python
 video_link:
+preview_image: preview-image.png
 title: Build Web Applications with Python
 instructor: thejeshgn
 short_introduction: Build Web Applications with Python
