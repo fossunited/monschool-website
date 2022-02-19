@@ -12,7 +12,7 @@ about what it thinks the type of a variable is.
 
 Here's a quick demo:
 
-```{.python .example}
+```{.mypy .example}
 string = "This is a string"
 length = len(string)
 reveal_type(length)
@@ -34,7 +34,7 @@ your code, and you can debug your types.
 
 Let's use `reveal_type` to debug an older code example that we saw and fixed:
 
-```{.python .example}
+```{.mypy .example}
 import json
 from itertools import cycle
 
@@ -73,7 +73,7 @@ what it can be.
 
 With the fixed code, mypy understands the types correctly:
 
-```{.python .example}
+```{.mypy .example}
 import json
 from itertools import cycle
 from time import sleep
