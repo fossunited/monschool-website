@@ -30,6 +30,10 @@ extra_javascript:
   - assets/codemirror/mode/python/python.js
   - assets/codemirror/mode/rust/rust.js
   - assets/codemirror/mode/go/go.js
+  - assets/codemirror/mode/xml/xml.js
+  - assets/codemirror/mode/css/css.js
+  - assets/codemirror/mode/javascript/javascript.js
+  - assets/codemirror/mode/htmlmixed/htmlmixed.js
   - assets/codemirror/keymap/sublime.js
   - assets/codemirror/addon/edit/matchbrackets.js
   - assets/codemirror/addon/comment/comment.js
