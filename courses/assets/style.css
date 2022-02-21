@@ -50,3 +50,18 @@ button {
 header {
   z-index: 10 !important;
 }
+
+.hidden {
+  display: none;
+}
+
+.code-editor .preview-label {
+  font-weight: bold;
+  padding: 0px 10px;
+  background: #eee;
+}
+.code-editor iframe {
+  padding: 20px;
+  border: 1px solid #eee;
+  width: 100%;
+}
