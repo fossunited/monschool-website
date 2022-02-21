@@ -52,11 +52,15 @@ var TEMPLATE = `
     <div class="code-wrapper">
       <textarea class="code"></textarea>
     </div>
-    <div class="output-wrapper">
+    <div class="tabs">
+      <button class="tab-link tab-output active" data-target=".tab-content-output">Output</button>
+      <button class="tab-link tab-preview" data-target=".tab-content-preview">Preview</button>
+    </div>
+
+    <div class="output-wrapper tab-content tab-content-output">
       <pre class="output"></pre>
     </div>
-    <div class="preview hidden">
-      <div class='preview-label'>Preview</div>
+    <div class="preview tab-content tab-content-preview">
       <iframe frameborder="0" ></iframe>
     </div>
   </div>
@@ -72,10 +76,13 @@ function setupExample(element) {
     options: {
       language: '',
       autopreview: false,
+      outputPreview: false,
       mode: null,
       runtime: null,
       buttons: []
     },
+
+    outputHooks: [],
 
     findLanguage() {
       var languageClass = this.element.find("code").attr("class");
@@ -138,16 +145,24 @@ function setupExample(element) {
       this.addRunButtons();
       this.setupRun();
       this.setupPreview();
+      this.setupTabs();
     },
 
     setupPreview() {
-      if (!this.options.autopreview) {
-        return;
+      if (this.options.autopreview) {
+        this.setupAutoPreview();
       }
+      else if (this.options.outputPreview) {
+        this.setupOutputPreview();
+      }
+      else {
+        this.removePreview();
+      }
+    },
+    setupAutoPreview() {
+      $(this.editor).find(".controls, .tab-output, .tab-content-output").remove();
 
-      $(this.editor).find(".preview").removeClass("hidden");
-      $(this.editor).find(".controls").remove();
-      $(this.editor).find(".output-wrapper").remove();
+      $(this.editor).find(".tab-preview").addClass("active");
 
       var codemirror = this.codemirror;
       var $iframe = $(this.editor).find(".preview iframe");
@@ -158,6 +173,19 @@ function setupExample(element) {
       }
       codemirror.on("change", update);
       update();
+    },
+
+    setupOutputPreview() {
+      var $iframe = $(this.editor).find(".preview iframe");
+
+      function update(output) {
+          $iframe.attr("srcdoc", output);
+      }
+      this.outputHooks.push(update);
+    },
+
+    removePreview() {
+      $(this.editor).find(".tab-preview, .tab-content-preview").remove();
     },
 
     setupRun() {
@@ -184,14 +212,43 @@ function setupExample(element) {
         });
       });
     },
+
+    setupTabs() {
+      var editor = this.editor;
+      function updateTabs() {
+        var target = $(editor).find(".tab-link.active").data("target");
+
+        $(editor).find(".tab-content").hide();
+        $(editor).find(target).show();
+      }
+
+      $(function() {
+        updateTabs();
+
+        $(editor).find(".tab-link").click(function() {
+          $(editor).find(".tab-link").removeClass("active");
+          $(this).addClass("active");
+          updateTabs();
+        });
+      });
+    },
+
     showOutput(output) {
       $(this.editor).find(".output-wrapper").show();
       $(this.editor).find(".output").text(output);
+
+      for (var i=0; i < this.outputHooks.length; i++) {
+        this.outputHooks[i](output);
+      }
     },
 
     clearOutput() {
       $(this.editor).find(".output-wrapper").hide();
       $(this.editor).find(".output").text("");
+
+      for (var i=0; i < this.outputHooks.length; i++) {
+        this.outputHooks[i]("");
+      }
     },
 
     // extra run buttons specified in course.js
