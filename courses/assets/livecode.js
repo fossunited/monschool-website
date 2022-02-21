@@ -16,6 +16,13 @@ The supported languages are:
 - html
 - golang
 
+To enable instance preview for html examples, add .autopreview to the
+header.
+
+```{.html .example .autopreview}
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+```
 */
 
 const LIVECODE_BASE_URL = "https://falcon.mon.school";
@@ -47,6 +54,10 @@ var TEMPLATE = `
     </div>
     <div class="output-wrapper">
       <pre class="output"></pre>
+    </div>
+    <div class="preview hidden">
+      <div class='preview-label'>Preview</div>
+      <iframe frameborder="0" ></iframe>
     </div>
   </div>
 </div>
@@ -80,6 +91,13 @@ function setupExample(element) {
       var lang = this.findLanguage();
       this.options = {...this.options, ...livecode.getOptions(lang)};
       this.options.language = lang;
+
+      if (this.element.hasClass("autopreview")) {
+        this.options.autopreview = true;
+      }
+      else if (this.element.hasClass("no-autopreview")) {
+        this.options.autopreview = false;
+      }
     },
 
     getMode() {
@@ -119,6 +137,27 @@ function setupExample(element) {
 
       this.addRunButtons();
       this.setupRun();
+      this.setupPreview();
+    },
+
+    setupPreview() {
+      if (!this.options.autopreview) {
+        return;
+      }
+
+      $(this.editor).find(".preview").removeClass("hidden");
+      $(this.editor).find(".controls").remove();
+      $(this.editor).find(".output-wrapper").remove();
+
+      var codemirror = this.codemirror;
+      var $iframe = $(this.editor).find(".preview iframe");
+
+      function update() {
+          var html = codemirror.doc.getValue();
+          $iframe.attr("srcdoc", html);
+      }
+      codemirror.on("change", update);
+      update();
     },
 
     setupRun() {
@@ -179,7 +218,8 @@ var livecode = {
       mode: "go"
     },
     html: {
-      mode: "htmlmixed"
+      mode: "htmlmixed",
+      autopreview: true
     }
   },
 
