@@ -68,6 +68,7 @@ chapters:
       we will dive deep into these functionalities.
     lessons:
       - typing-module-deep-dive/static-duck-typing.md
+      - typing-module-deep-dive/generics.md
       - typing-module-deep-dive/the-namedtuple-class.md
       - typing-module-deep-dive/the-typeddict-class.md
       - typing-module-deep-dive/function-overloading.md
