@@ -9,7 +9,7 @@ projects.
 Running it on a single file is the most straightforward way. Let's make one and
 test it:
 
-```{.mypy .example}
+```{.python .example}
 def greet(name):
     print(f"Hello, {name}!")
 
@@ -32,7 +32,7 @@ Found 1 error in 1 file (checked 1 source file)
 Mypy says there's a problem in line 9, and yeah, we forgot to cast `age` to an
 integer. So let's do that:
 
-```{.mypy .example}
+```{.python .example}
 def greet(name):
     print(f"Hello, {name}!")
 
@@ -65,7 +65,7 @@ Found 2 errors in 1 file (checked 1 source file)
 It says accordingly, that we are missing type annotations on `def greet()`.
 Let's fix that:
 
-```{.mypy .example}
+```{.python .example}
 def greet(name):
     print(f"Hello, {name}!")
 

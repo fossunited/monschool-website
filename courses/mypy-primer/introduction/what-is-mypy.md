@@ -17,7 +17,7 @@ other words, Python's variables have dynamic types, not static types.
 What that means is that variables in Python don’t have a specific data type
 associated with them. Which means you can do things like this:
 
-```{.mypy .example}
+```{.python .example}
 variable = "A string"
 variable = 123
 variable = ["spam", "eggs", 1000]
@@ -32,7 +32,7 @@ In essence, Python defines the type of the data with the value itself, not with
 the variable that is storing it. You can ask Python at runtime what the type of
 a variable is, like so:
 
-```{.mypy .example}
+```{.python .example}
 variable = "A string"
 print(type(variable)) # Prints `<class 'str'>`
 variable = 123
@@ -90,7 +90,7 @@ Since there are various sections in each class and each student belongs to one
 section, you decide that a list of sections, each containing a list of students,
 would be ideal to store your information. Like so:
 
-```{.mypy .example}
+```{.python .example}
 sections = [
     ['Aron', 'Belle', 'Kyle'],
     ['Alice', 'Mike', 'Scott', 'Stacy']
@@ -101,7 +101,7 @@ There are seven students in total in this case: three in one section, and four
 in the other. Now, you go ahead and implement the search function to search for
 a student’s name in the class:
 
-```{.mypy .example}
+```{.python .example}
 def search_student(sections, search_name):
     for section in sections:
       for student in section:
@@ -113,7 +113,7 @@ def search_student(sections, search_name):
 
 You try to run this, and it works!
 
-```{.mypy .example}
+```{.python .example}
 >>> search_student(sections, "Mike")
 >>> 'Student found!'
 >>> search_student(sections, "Steve")
@@ -124,7 +124,7 @@ A few days later, you try to run the same code somewhere else, and for some
 reason it has stopped working correctly. You try to run the code with the same
 options as before, and it still doesn’t run! What happened?
 
-```{.mypy .example}
+```{.python .example}
 >>> search_student(sections, "Mike")
 >>> 'No student found with this name.'
 >>> search_student(sections, "Steve")
@@ -133,7 +133,7 @@ options as before, and it still doesn’t run! What happened?
 
 You look up the code implementation, and here’s what you find:
 
-```{.mypy .example}
+```{.python .example}
 sections = {
     'Section A': ['Aron', 'Belle', 'Kyle'],
     'Section B': ['Alice', 'Mike', 'Scott', 'Stacy']
@@ -151,14 +151,14 @@ If you’re unsure what happened and why it didn’t throw an error: the key thi
 to notice is that dictionaries in Python are iterable, and when you try to
 iterate over them, you get back the dictionary keys in the for-loop:
 
-```{.mypy .example}
+```{.python .example}
 sections = {
     'Section A': ['Aron', 'Belle', 'Kyle'],
     'Section B': ['Alice', 'Mike', 'Scott', 'Stacy']
 }
 ```
 
-```{.mypy .example}
+```{.python .example}
 def search_student(sections, search_name):
     for section in sections: # section: 'Section A', ‘Section B’
         for student in section: # student: 'S', ‘e’, ...

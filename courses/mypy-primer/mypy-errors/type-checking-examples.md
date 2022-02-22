@@ -12,7 +12,7 @@ them.
 
 Let's write something to find a user's favorite color:
 
-```{.mypy .example}
+```{.python .example}
 user_data = {
   'name': 'Mike Tyson',
   'color': 'red',
@@ -50,7 +50,7 @@ we're always going to have `color` in the dictionary.
 
 For that, let's add a runtime assertion:
 
-```{.mypy .example}
+```{.python .example}
 user_data = {
   'name': 'Mike Tyson',
   'color': 'red',

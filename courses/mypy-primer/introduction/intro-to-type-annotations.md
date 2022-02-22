@@ -5,7 +5,7 @@ include_in_preview: false
 
 Here's a Python function:
 
-```{.mypy .example}
+```{.python .example}
 age = 18
 
 def is_adult(age):
@@ -40,7 +40,7 @@ code works, but it should still be easy and flexible to add the annotations.
 Since they shouldn't affect the actual code, one obvious possibility is to use
 comments, maybe something like this?
 
-```{.mypy .example}
+```{.python .example}
 age = 18  # type: int
 ```
 
@@ -54,7 +54,7 @@ other tools.
 
 It looks like this:
 
-```{.mypy .example}
+```{.python .example}
 age: int = 18
 
 def is_adult(age: int) -> bool:
@@ -68,7 +68,7 @@ The annotations `: int` and `-> bool` here don’t do anything. They’re ignore
 when the code is run, almost like comments. In fact, you can use these
 annotations for pretty much anything else, like documentation for example:
 
-```{.mypy .example}
+```{.python .example}
 def compile(
     source: "something compilable",
     filename: "where the compilable thing comes from",
@@ -91,7 +91,7 @@ and try to get a bit familiar with mypy.
 
 Here’s the code:
 
-```{.mypy .example}
+```{.python .example}
 def double(n):
     return n * 2
 
@@ -116,7 +116,7 @@ parameter:
 
 [TODO: strict mode]
 
-```{.mypy .example}
+```{.python .example}
 def double(n):
     return n * 2
 
@@ -130,7 +130,7 @@ annotations (sometimes called type hints) are a vast topic and there’s a lot t
 cover about it, but in this case the types are really simple. We just have to
 tell the function double(n), what the type of “n” is. Like so:
 
-```{.mypy .example}
+```{.python .example}
 def double(n: int) -> int:
     return n * 2
 
@@ -146,7 +146,7 @@ code still runs just fine.
 Your code is now 100% type checked! To confirm, let’s try to call the function
 with something other than an integer:
 
-```{.mypy .example}
+```{.python .example}
 def double(n: int) -> int:
     return n * 2
 
