@@ -43,3 +43,4 @@ chapters:
     lessons:
       - lists/lists.md
       - lists/dictionaries.md
+      - lists/working-with-files.md
