@@ -44,3 +44,10 @@ chapters:
       - lists/lists.md
       - lists/dictionaries.md
       - lists/working-with-files.md
+
+  - name: classes
+    title: Classes & Objects
+    description: Learn how to model your code using classes.
+    lessons:
+      - classes/classes.md
+      - classes/exceptions.md
