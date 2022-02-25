@@ -48,6 +48,7 @@ var TEMPLATE = `
   <div class="controls">
     <button class="run">Run</button>
     <div class="labels hidden"></div>
+    <input type="text" class="run-args hidden" name="args" value="" placeholder="arguments"/>
   </div>
 
   <div class="filenames" id="file-tabs">
@@ -83,6 +84,7 @@ function setupExample(element) {
       autopreview: false,
       outputPreview: false,
       multifile: false,
+      showArgs: false,
       mode: null,
       runtime: null,
       buttons: [],
@@ -211,6 +213,10 @@ function setupExample(element) {
       if ("sourceFile" in this.options) {
         this.options.env['FALCON_SOURCE_FILE'] = this.options.sourceFile;
       }
+
+      if (this.element.hasClass("show-args")) {
+        this.options.showArgs = true;
+      }
     },
 
     getMode() {
@@ -223,7 +229,7 @@ function setupExample(element) {
 
 
     injectTextArea() {
-      var code = $(this.element).text();
+      var code = $(this.element).text().trim();
 
       this.element
         .wrap('<div></div>')
@@ -257,6 +263,7 @@ function setupExample(element) {
         this.prepareBuffers();
         this.setupFileTabs();
       }
+      this.setupArguments();
       this.triggerEvent("created");
     },
 
@@ -321,6 +328,9 @@ function setupExample(element) {
       if (Object.keys(this.options.env).length) {
         headers['X-FALCON-ENV'] = editor.getEnvHeader();
       }
+      if (this.options.showArgs) {
+        headers['X-FALCON-ARGS'] = editor.getArguments();
+      }
       return headers;
     },
 
@@ -346,6 +356,7 @@ function setupExample(element) {
         else {
           body = codemirror.doc.getValue();
         }
+        var args = editor.getArguments();
 
         editor.clearOutput();
 
@@ -389,6 +400,19 @@ function setupExample(element) {
         $(this).addClass("active");
       });
     },
+
+    setupArguments() {
+      if (this.options.showArgs) {
+        $(this.editor).find(".run-args").removeClass("hidden");
+      }
+    },
+
+    getArguments() {
+      return this.options.showArgs
+        ? $(this.editor).find(".run-args").val()
+        : "";
+    },
+
     showOutput(output) {
       $(this.editor).find(".output-wrapper").show();
       $(this.editor).find(".output").text(output);
