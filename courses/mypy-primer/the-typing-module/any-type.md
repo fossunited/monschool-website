@@ -50,6 +50,8 @@ object when type checking. You do this by using the `Any` type from the `typing`
 module:
 
 ```{.python .example}
+from typing import Any
+
 def do_quack(duck: Any) -> None:
     if hasattr(duck, "quack"):
         quack_function = duck.quack
