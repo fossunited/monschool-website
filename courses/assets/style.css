@@ -28,8 +28,8 @@
     flex: 1;
 }
 .output-wrapper {
-  background: #eee;
   padding: 5px 20px;
+  border: 1px solid #eee;
 }
 
 button {
@@ -49,4 +49,42 @@ button {
 
 header {
   z-index: 10 !important;
+}
+
+.hidden {
+  display: none;
+}
+
+.code-editor .preview-label {
+  font-weight: bold;
+  padding: 0px 10px;
+  background: #eee;
+}
+.code-editor iframe {
+  padding: 20px;
+  border: 1px solid #eee;
+  width: 100%;
+}
+
+.tabs {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tabs button {
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: 0.3s;
+}
+
+.tabs button:hover {
+  background-color: #ddd;
+}
+
+.tabs button.active {
+  background-color: #ccc;
 }

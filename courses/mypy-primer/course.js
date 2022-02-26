@@ -1,9 +1,12 @@
 
-livecode.addRunButton({
-    "label": "Validate",
-    "args": {
-        "mode": "mypy"
-    }
+livecode.setOptions("python", {
+    "runtime": "mypy",
+    "buttons": [{
+        "id": "validate",
+        "label": "Validate",
+        "args": {
+            "mode": "mypy"
+        }
+    }]
 });
 
-livecode.setRuntime("python", "mypy");
