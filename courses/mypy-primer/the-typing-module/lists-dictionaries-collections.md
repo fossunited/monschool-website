@@ -13,7 +13,7 @@ Collection types refer to things like lists, dictionaries and sets. The
 difference between a basic type like `str` or `int`, and collections, is that
 it's what's _inside_ the collection is what defines the type. For example:
 
-```{.mypy .example}
+```{.python .example}
 var1 = [1, 2, 3]
 var2 = ['a', 'b', 'c']
 var3 = [True, False]
@@ -22,7 +22,7 @@ var3 = [True, False]
 All the 3 variables are `list`s, but their types should be completely different.
 You could argue as to why, but this should clarify it:
 
-```{.mypy .example}
+```{.python .example}
 numbers = [1, 2, 3]
 letters = ['a', 'b', 'c']
 
@@ -40,7 +40,7 @@ unintentional, or a bug.
 
 Another example:
 
-```{.mypy .example}
+```{.python .example}
 words = ['word1', 'word2']
 words.append(['word3', 'word4'])
 print(words)
@@ -66,7 +66,7 @@ Collection types like `list` and `set` and a bunch of others are what's called a
 "generic type". What it means is that the type takes another type to define its
 instance. Here's what I mean:
 
-```{.mypy .example}
+```{.python .example}
 var1 = [1, 2, 3]
 reveal_type(var1)
 var2 = ['a', 'b', 'c']
@@ -87,7 +87,7 @@ So far we've relied on mypy to tell us the type of lists. But you can't do that
 for function definitions for example, you need to specify the kind of types a
 function should expect. Take this function for example:
 
-```{.mypy .example}
+```{.python .example}
 def buy(items):
     for item in items:
         print("Buying {item}")
@@ -99,7 +99,7 @@ We want `buy` to take a list of strings. To do that we'll use the `[]` syntax
 ourselves. But for it to work, we have to import the correct generic type from
 the built-in `typing` module:
 
-```{.mypy .example}
+```{.python .example}
 from typing import List
 
 def buy(items: List[str]) -> None:
@@ -111,7 +111,7 @@ buy(["Milk", "Eggs", "Spam"])
 
 The `typing` module has all the generic types you'll need:
 
-```{.mypy .example}
+```{.python .example}
 from typing import List, Dict, Set
 
 var1: List[int] = [1, 2, 3]
@@ -151,7 +151,7 @@ import the "Generic types" when the builtin types already exist for you to use.
 The good part is: You _can_ just use `list` and others, instead of importing
 `List`:
 
-```{.mypy .example}
+```{.python .example}
 var1: list[int] = [1, 2, 3]
 var2: dict[str, bool] = {'married': True, 'single': False}
 var3: set[str] = {'a', 'b', 'c'}
@@ -175,7 +175,7 @@ collection type?
 Well, if both the data types are already present in the definition, then you
 don't need to do anything:
 
-```{.mypy .example}
+```{.python .example}
 items = [1, 2, 3 'hello']
 items.append(4)
 items.append('world')
@@ -188,7 +188,7 @@ extend from `object`), the list ended up being of type `List[object]`.
 
 But what if it's not? What if you want this to work?
 
-```{.mypy .example}
+```{.python .example}
 items = [1, 2, 3]
 items.append(4)
 items.append('world')

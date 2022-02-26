@@ -5,7 +5,7 @@ include_in_preview: false
 
 We've seen that mypy says that this is an error:
 
-```{.mypy .example}
+```{.python .example}
 var = 123
 var = 'abc'
 ```
@@ -14,7 +14,7 @@ But what if you actually wanted to do this?
 
 It might seem like you'd never want to do this, but consider this example:
 
-```{.mypy .example}
+```{.python .example}
 chosen_number = "not found"
 
 for number in [1, 5, 7, 4]:
@@ -36,7 +36,7 @@ should be.
 Due to the definition, it's assuming that `chosen_number` should be of type
 `str`:
 
-```{.mypy .example}
+```{.python .example}
 chosen_number = "not found"
 reveal_type(chosen_number)
 ```
@@ -45,7 +45,7 @@ But we don't want that, we want the variable to be able to accept "either `str`
 or `int` values". And for that, you use the `Union` type from the `typing`
 module:
 
-```{.mypy .example}
+```{.python .example}
 from typing import Union
 
 chosen_number: Union[str, int] = "not found"
@@ -69,7 +69,7 @@ that can contain strings, integers and floats would be typed as
 Remember when we talked about a better way to make a collection type with
 multiple data types in it? The example we used was:
 
-```{.mypy .example}
+```{.python .example}
 items = [1, 2, 3]
 items.append(4)
 items.append('world')
@@ -78,7 +78,7 @@ items.append('world')
 The old solution that we used was to use `list[object]`, but that lends us into
 this problem:
 
-```{.mypy .example}
+```{.python .example}
 items = [1, 2, 3]
 items.append(4)
 items.append(False)
@@ -88,7 +88,7 @@ items.append({'this is': 'a dictionary'})
 Yeah, with `list[object]` you can suddenly append any object into the list. To
 limit it to just ints and strings, just use a union:
 
-```{.mypy .example}
+```{.python .example}
 from typing import Union
 
 items: list[Union[int, str]] = [1, 2, 3]
@@ -104,7 +104,7 @@ Cool right?
 
 However, consider this:
 
-```{.mypy .example}
+```{.python .example}
 from typing import Union
 
 items: list[Union[int, str]] = [1, 2, 3]
@@ -141,7 +141,7 @@ narrowing".
 
 To be fair, there is a bug in our code. If we make the list this:
 
-```{.mypy .example}
+```{.python .example}
 from typing import Union
 
 items: list[Union[int, str]] = [1, 2, 3, "A string"]
@@ -162,7 +162,7 @@ make sure that our code doesn't crash at runtime.
 So, how do we fix the code? Well, we could just check if each item is an `int`
 before adding it to the total:
 
-```{.mypy .example}
+```{.python .example}
 from typing import Union
 
 items: list[Union[int, str]] = [1, 2, 3, "A string"]
@@ -180,7 +180,7 @@ print(total)
 the `isinstance` block, `item` can _only_ be an integer. You can even confirm it
 by doing `reveal_type`:
 
-```{.mypy .example}
+```{.python .example}
 from typing import Union
 
 items = [1, 2, 3, "A string"]
@@ -198,7 +198,7 @@ Here's what we learned: You can use `isinstance` blocks that only run if the
 data is of a certain type, to narrow down a union of types to the one that we
 want. Here's another example:
 
-```{.mypy .example}
+```{.python .example}
 from typing import Union
 
 def buy(stuff: Union[str, list[str]]) -> None:
@@ -220,7 +220,7 @@ Because we checked for `list`s, Mypy understood that `list[str]` is the only
 possible type for `stuff`. On the other hand, inside the `else` block, `stuff`
 is seen as a string:
 
-```{.mypy .example}
+```{.python .example}
 from typing import Union
 
 def buy(stuff: Union[str, list[str]]) -> None:
@@ -236,7 +236,7 @@ def buy(stuff: Union[str, list[str]]) -> None:
 
 Take this function:
 
-```{.mypy .example}
+```{.python .example}
 def pop_word(words):
     """Takes one word out of given words."""
     if len(words) == 0:
@@ -272,7 +272,7 @@ Just like the use of `list` instead of `typing.List`, `Union` has also become
 unnecessary starting from Python 3.10. If you're going to run your code on 3.10
 or higher, you can use this syntax instead:
 
-```{.mypy .example}
+```{.python .example}
 items: list[int | str] = [1, 2, 3]
 ```
 
@@ -282,7 +282,7 @@ unions as you'd make with `Union[...]`. `int | str` means the same thing: Either
 
 Similarly, `Optional[bool]` can be written as `bool | None`, here's an example:
 
-```{.mypy .example}
+```{.python .example}
 user = {
     'name': 'Bryan',
     'likes': ['parkour', 'dogs']
