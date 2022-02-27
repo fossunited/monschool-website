@@ -47,7 +47,7 @@ programming language, this behavior might seem a bit odd.
 Let’s see the same piece of code in TypeScript, a similar but statically typed
 language, just to see what happens. The code would look something like this:
 
-```{.javascript .example}
+```javascript
 let variable = "abc"
 variable = "def"
 variable = 42
@@ -104,9 +104,9 @@ a student’s name in the class:
 ```python
 def search_student(sections, search_name):
     for section in sections:
-      for student in section:
-          if student == search_name:
-              return "Student found!"
+        for student in section:
+            if student == search_name:
+                return "Student found!"
 
     return "No student found with this name."
 ```
@@ -121,9 +121,9 @@ sections = [
 
 def search_student(sections, search_name):
     for section in sections:
-      for student in section:
-          if student == search_name:
-              return "Student found!"
+        for student in section:
+            if student == search_name:
+                return "Student found!"
 
     return "No student found with this name."
 
