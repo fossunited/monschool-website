@@ -65,6 +65,8 @@ if __name__ == "__main__":
     run_processes()
 ```
 
+> Remember to comment out the `reveal_type` lines when trying to run the code!
+
 Using reveal_type, we see a new result: it says the type of `items` is `Any`.
 
 We'll talk about `Any` type and its uses in detail in the next chapter, but you

@@ -76,7 +76,7 @@ perfectly valid.
 
 Try adding types to this code, and figure out if this code has any bugs:
 
-```python
+```{.python .example}
 def average(a, b, c):
     return (a + b + c) / 3
 
