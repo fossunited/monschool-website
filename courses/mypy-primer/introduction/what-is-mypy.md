@@ -56,13 +56,13 @@ variable = ["spam", "eggs", 1000]
 
 And this code immediately errors out when TypeScript tries to compile it:
 
-[TODO: add image #1]
+![TypeScript's error](../_images/typescript1.png)
 
 This is because TypeScript believes that variable is of the string type, and it
 won’t let you assign something to it that isn’t a string. So when we tried to
 assign a number to it on line 3, it throws a compiler error.
 
-[TODO: add image #2]
+![TypeScript's type inference](../_images/typescript2.png)
 
 This is the fundamental difference between static and dynamic typing: in a
 statically typed language, the type of variables is fixed, and defined even
