@@ -20,6 +20,8 @@ print(is_adult(25))
 Compare this code to the same code in the Go programming language:
 
 ```{.golang .example}
+package main
+
 var age int = 18
 
 func is_adult(age int) bool {
@@ -28,6 +30,10 @@ func is_adult(age int) bool {
   }
 
   return false
+}
+
+func main() {
+    print(is_adult(25))
 }
 ```
 
