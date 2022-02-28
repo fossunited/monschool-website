@@ -7,6 +7,13 @@ livecode.setOptions("python", {
         "args": {
             "mode": "mypy"
         }
-    }]
+    }],
+    events: {
+        created: function(editor) {
+            if (editor.options.stdin) {
+                editor.options.headers['X-FALCON-ENV'] = `FALCON_STDIN=${editor.options.stdin}`;
+            }
+        }
+    }
 });
 

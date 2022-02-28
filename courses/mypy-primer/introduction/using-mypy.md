@@ -9,7 +9,12 @@ projects.
 Running it on a single file is the most straightforward way. Let's make one and
 test it:
 
-```{.python .example}
+<span
+    id="livecode-options-mypy1"
+    data-stdin='Alice\n8\n'
+    ></span>
+
+```{#mypy1 .python .example}
 def greet(name):
     print(f"Hello, {name}!")
 
@@ -32,7 +37,13 @@ Found 1 error in 1 file (checked 1 source file)
 Mypy says there's a problem in line 9, and yeah, we forgot to cast `age` to an
 integer. So let's do that:
 
-```{.python .example}
+<span
+    id="livecode-options-mypy2"
+    data-stdin='Alice\n8\n'
+    ></span>
+
+
+```{#mypy2 .python .example}
 def greet(name):
     print(f"Hello, {name}!")
 
@@ -65,7 +76,12 @@ Found 2 errors in 1 file (checked 1 source file)
 It says accordingly, that we are missing type annotations on `def greet()`.
 Let's fix that:
 
-```{.python .example}
+<span
+    id="livecode-options-mypy3"
+    data-stdin='Alice\n8\n'
+    ></span>
+
+```{#mypy3 .python .example}
 def greet(name):
     print(f"Hello, {name}!")
 
