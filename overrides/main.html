@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 
 {% block scripts %}
+
+  <script type="text/javascript">
+    // clipboard integration from mkdocs-material overrides the id
+    // set by the fenced-code-block. This is a workaround to move the
+    // id to data-id attribute.
+    var elems = document.getElementsByTagName("pre");
+    for (var i=0; i<elems.length; i++) {
+      console.log(elems[i]);
+      if (elems[i].id) {
+        elems[i].setAttribute("data-id", elems[i].id);
+      }
+    }
+  </script>
+
   {{ super() }}
 
   <script type="text/javascript" src="../../course.js"></script>

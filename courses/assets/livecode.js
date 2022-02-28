@@ -79,7 +79,10 @@ function setupExample(element) {
       outputPreview: false,
       mode: null,
       runtime: null,
-      buttons: []
+      buttons: [],
+      env: {},
+      events: {},
+      headers: {}
     },
 
     outputHooks: [],
@@ -94,9 +97,23 @@ function setupExample(element) {
       }
     },
 
+    triggerEvent(name) {
+      if (name in this.options.events) {
+        this.options.events[name](this);
+      }
+    },
+
     parseOptions() {
       var lang = this.findLanguage();
-      this.options = {...this.options, ...livecode.getOptions(lang)};
+      var id = $(this.element).data("id") || "default";
+      var hasOptions = $(`#livecode-options-${id}`).length > 0;
+      var options =  hasOptions ? $(`#livecode-options-${id}`).data() : {};
+
+      this.options = {
+        ...this.options,
+        ...livecode.getOptions(lang),
+        ...options
+      };
       this.options.language = lang;
 
       if (this.element.hasClass("autopreview")) {
@@ -146,6 +163,8 @@ function setupExample(element) {
       this.setupRun();
       this.setupPreview();
       this.setupTabs();
+
+      this.triggerEvent("created");
     },
 
     setupPreview() {
@@ -192,6 +211,7 @@ function setupExample(element) {
       var runtime = this.getRuntime();
       var url = `${LIVECODE_BASE_URL}/runtimes/${runtime}`;
       var codemirror = this.codemirror;
+      var headers = this.options.headers;
 
       var editor = this;
 
@@ -204,7 +224,7 @@ function setupExample(element) {
         fetch(url, {
           method: "POST",
           body: code,
-          headers: {'x-falcon-mode': mode}
+          headers: {'x-falcon-mode': mode, ...headers}
         })
         .then(response => response.text())
         .then(output => {
@@ -267,9 +287,11 @@ function setupExample(element) {
   };
 
   editor.setup();
+  return editor;
 }
 
 var livecode = {
+  editors: [],
   defaultOptions: {
     golang: {
       mode: "go"
@@ -298,9 +320,11 @@ var livecode = {
   },
 
   setup() {
+    var livecode = this;
     $(function() {
       $("pre.example").each((i, e) => {
-        setupExample(e);
+        var editor = setupExample(e);
+        livecode.editors.push(editor);
       });
     });
   }
