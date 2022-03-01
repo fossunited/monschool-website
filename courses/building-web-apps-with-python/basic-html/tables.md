@@ -12,7 +12,7 @@ Tabular data or simple table are main part of any document. HTML gives you tags 
 - Usually header and footer will have only one row
 - Each rows can have cells
 
-```html
+```{.html .example}
 <table>
     <thead> </thead>
     <tbody> </tbody>
@@ -23,7 +23,7 @@ Tabular data or simple table are main part of any document. HTML gives you tags 
 ## How to add header
 `thead` can have a row, denoted by `tr`. And the row inside thead can have cells `th`.
 
-```html
+```{.html .example}
 <table>
     <thead> 
         <tr>
@@ -39,7 +39,7 @@ Tabular data or simple table are main part of any document. HTML gives you tags 
 ## How to add value rows and cells
 `tbody` can have many rows and cells  - here called `td`, along with the values.
 
-```html
+```{.html .example}
 <table>
     <thead> 
         <tr>
@@ -70,7 +70,7 @@ Tabular data or simple table are main part of any document. HTML gives you tags 
 
 You can ad footer just like header. Usually there will be only one row of it
 
-```html
+```{.html .example}
 <table>
     <thead> 
         <tr>

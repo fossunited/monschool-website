@@ -3,13 +3,10 @@ title: Handling Text
 include_in_preview: false
 ---
 
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-pwzGkkbKlQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## Create some paragraphs
 Let'd do some paragraphs
 
-```html
+```{.html .example}
 <p>
     text content of the paragraph
 </p>
@@ -17,7 +14,7 @@ Let'd do some paragraphs
 ## Let's add headings
 HTML has H1 to H6 headings. H1 being the highest and H6 the lowest
 
-```html
+```{.html .example}
 <h1>
     Main heading
 </h1>
@@ -25,13 +22,15 @@ HTML has H1 to H6 headings. H1 being the highest and H6 the lowest
 
 ## How to add a break break
 In HTML you have to add a tag to do line break. It doesn't happen otherwise
-```html
+
+```{.html .example}
     <br/>
 ```    
 
 ## How to make text bold, italized or underlined
 It's easy to make the text bold
-```html
+
+```{.html .example}
 <strong>Text in bold</strong>
 <u>Text in underlined</u>
 <em> - Emphasized text </em>
