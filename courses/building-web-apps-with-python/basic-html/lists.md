@@ -13,7 +13,7 @@ We usually start a list by `<ol>` and end it by `</ol>`. Each item in the list i
 
 So for example metros of India list will have
 
-```html
+```{.html .example}
 <ol>
     <li>Delhi</li>
     <li>Mumbai</li>
@@ -29,7 +29,7 @@ We can also do just a bulleted list
 ## How to unordered list
 By just changing the `ol` with 'ul'. Its called `unordered list`.
 
-```html
+```{.html .example}
 <ul>
     <li>Delhi</li>
     <li>Mumbai</li>

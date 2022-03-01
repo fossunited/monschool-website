@@ -3,15 +3,12 @@ title: Adding Links
 include_in_preview: false
 ---
 
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/f_1XSC8OHug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## Anchor tag
 
 The biggest feature of web is links. You can link various documents on the web using the an 'anchor tag'
 
 
-```html
+```{.html .example}
 <a href="https://en.wikipedia.org/wiki/India"> Wikipedia India Page</a>
 ```
 
@@ -25,7 +22,7 @@ Here
 
 ## How to add download links
 
-```html
+```{.html .example}
 <a href="https://www.gutenberg.org/ebooks/4908.epub"> Five of Maxwell's Papers by James Clerk Maxwell </a>
 
 ```
@@ -33,7 +30,7 @@ Here as you can see it's linked to an epub and not an HTML document. In this cas
 
 You can also add `download` attribute to force the browser to download.
 
-```html
+```{.html .example}
 <a href="my_first.html" download>Download this</a>
 ```
 
@@ -42,13 +39,13 @@ You can also add `download` attribute to force the browser to download.
 - The content of the anchor tag doesn't have to be text. It can contain other tags
 - For example you can make the text strong or add images etc
 
-```html
+```{.html .example}
 <a href="my_first.html" download><strong>Download this</strong></a>
 ```
 
 Sometimes you don't want the linked page to open in the same window. You want to open in a different window. Then you can use `target` attibute.
 
-```html
+```{.html .example}
 <a href="my_first.html" target="_blank"><strong>My first</strong></a>
 ```
 It can be 

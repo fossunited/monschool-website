@@ -5,8 +5,6 @@ include_in_preview: false
 
 # HTML Document
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/0oyaXavKtrE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ## What's HTML Document
 - A web document is a text file usually with .html or .htm extension
 - It usually contains HTML, Hyper Text Markup Language. It's a simple language, that is used to do
@@ -53,7 +51,7 @@ Now that we know this. Let's create a simple HTML document. Let's call `my_first
 - You can add any text you want and save it.
 - In this example we will take three paragraphs from the book Pride and Prejudice
 
-```text
+```{.html .example}
 Pride and Prejudice, by Jane Austen.
 
 From Chapter 3

@@ -5,13 +5,10 @@ include_in_preview: false
 
 # Images
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/yI-y8BJ-61c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-
 ## How to add images
 Images are very easy to include in the the document using `img` tag. `img` tag just needs to know where the image is.
 
-```html
+```{.html .example}
 <img src="path of the image" />
 ```
 
@@ -20,12 +17,12 @@ image tag doesn't need a seaparate closing tag. You can use the `/` in the openi
 `src` atrribute here needs to be supplied with the path. It can relative or absolute. For example if the image is in the same folder as HTML then just the file name of the image should be enough.
 
 
-```html
+```{.html .example}
 <img src="my_first_image.jpg" />
 ```
 
 
-```html
+```{.html .example}
 <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/320px-Flag_of_India.svg.png" />
 ```
 
