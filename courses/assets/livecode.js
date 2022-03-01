@@ -200,6 +200,10 @@ function setupExample(element) {
       if (this.element.hasClass("multi-file")) {
         this.options.multifile = true;
       }
+
+      if ("sourceFile" in this.options) {
+        this.options.env['FALCON_SOURCE_FILE'] = this.options.sourceFile;
+      }
     },
 
     getMode() {
@@ -289,24 +293,59 @@ function setupExample(element) {
       $(this.editor).find(".tab-preview, .tab-content-preview").remove();
     },
 
+    getEnvHeader() {
+      var env = this.options.env;
+      if (Object.keys(env).length == 0) {
+        return "";
+      }
+      var value = "";
+      for (var k in env) {
+        if (value) {
+          value += " ";
+        }
+        value += `${k}=${env[k]}`
+      }
+      return value;
+    },
+
+    getHeaders() {
+      var headers = {...this.options.headers};
+
+      if (Object.keys(this.options.env).length) {
+        headers['X-FALCON-ENV'] = editor.getEnvHeader();
+      }
+      return headers;
+    },
+
     setupRun() {
       var runtime = this.getRuntime();
       var url = `${LIVECODE_BASE_URL}/runtimes/${runtime}`;
       var codemirror = this.codemirror;
-      var headers = this.options.headers;
 
       var editor = this;
 
       $(this.editor).find(".run").on('click', function() {
-        var code = codemirror.doc.getValue();
         var mode = $(this).data("mode") || "exec";
+        var body;
+
+        if (editor.options.multifile) {
+          body = new FormData();
+          for (var i=0; i < editor.buffers.length; i++) {
+            var buf = editor.buffers[i];
+            var blob = new Blob([buf.doc.getValue()]);
+            body.append(buf.name, blob, buf.name);
+          }
+        }
+        else {
+          body = codemirror.doc.getValue();
+        }
 
         editor.clearOutput();
 
         fetch(url, {
           method: "POST",
-          body: code,
-          headers: {'x-falcon-mode': mode, ...headers}
+          body: body,
+          headers: {'x-falcon-mode': mode, ...editor.getHeaders()}
         })
         .then(response => response.text())
         .then(output => {
@@ -317,20 +356,20 @@ function setupExample(element) {
 
     setupTabs() {
       var editor = this.editor;
-      function updateTabs(e) {
-        var target = $(e).find(".tab-link.active").data("target");
+      function updateTabs() {
+        var target = $(editor).find(".tab-link.active").data("target");
 
-        $(e).find(".tab-content").hide();
+        $(editor).find(".tab-content").hide();
         $(editor).find(target).show();
       }
 
       $(function() {
-        updateTabs(".output-tabs");
+        updateTabs();
 
         $(editor).find(".tab-link").click(function() {
           $(this).parent().find(".tab-link").removeClass("active");
           $(this).addClass("active");
-          updateTabs($(this).parent());
+          updateTabs();
         });
       });
     },
