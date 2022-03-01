@@ -48,11 +48,15 @@ var TEMPLATE = `
   <div class="controls">
     <button class="run">Run</button>
   </div>
+
+  <div class="filenames" id="file-tabs">
+  </div>
+
   <div class="code-editor">
     <div class="code-wrapper">
       <textarea class="code"></textarea>
     </div>
-    <div class="tabs">
+    <div class="tabs" id="output-tabs">
       <button class="tab-link tab-output active" data-target=".tab-content-output">Output</button>
       <button class="tab-link tab-preview" data-target=".tab-content-preview">Preview</button>
     </div>
@@ -77,6 +81,7 @@ function setupExample(element) {
       language: '',
       autopreview: false,
       outputPreview: false,
+      showFilenames: false,
       mode: null,
       runtime: null,
       buttons: [],
@@ -84,6 +89,8 @@ function setupExample(element) {
       events: {},
       headers: {}
     },
+
+    buffers: [],
 
     outputHooks: [],
 
@@ -95,6 +102,36 @@ function setupExample(element) {
       else {
         return "";
       }
+    },
+
+    getBuffer(name) {
+      for (var i=0; i<this.buffers.length; i++) {
+        if (this.buffers[i].name == name)
+          return this.buffers[i];
+      }
+    },
+
+    selectBuffer(name) {
+      var buf = this.getBuffer(name);
+      this.codemirror.swapDoc(buf.doc);
+    },
+
+    newBuffer(name, text, mode) {
+      var doc = CodeMirror.Doc(text, mode);
+      var buf = {name: name, doc: doc}
+      this.buffers.push(buf);
+
+      this.addFileTab(name);
+    },
+
+    addFileTab(name) {
+      var parent = $(this.editor).find(".filenames");
+
+      $("<button></button>")
+      .addClass("file-link")
+      .text(name)
+      .data("name", name)
+      .appendTo(parent);
     },
 
     triggerEvent(name) {
@@ -163,6 +200,7 @@ function setupExample(element) {
       this.setupRun();
       this.setupPreview();
       this.setupTabs();
+      this.setupFileTabs();
 
       this.triggerEvent("created");
     },
@@ -235,24 +273,32 @@ function setupExample(element) {
 
     setupTabs() {
       var editor = this.editor;
-      function updateTabs() {
-        var target = $(editor).find(".tab-link.active").data("target");
+      function updateTabs(e) {
+        var target = $(e).find(".tab-link.active").data("target");
 
-        $(editor).find(".tab-content").hide();
+        $(e).find(".tab-content").hide();
         $(editor).find(target).show();
       }
 
       $(function() {
-        updateTabs();
+        updateTabs(".output-tabs");
 
         $(editor).find(".tab-link").click(function() {
-          $(editor).find(".tab-link").removeClass("active");
+          $(this).parent().find(".tab-link").removeClass("active");
           $(this).addClass("active");
-          updateTabs();
+          updateTabs($(this).parent());
         });
       });
     },
-
+    setupFileTabs() {
+      var that = this;
+      $(this.editor).find(".filenames").on('click', '.file-link', function() {
+        var name = $(this).html();
+        that.selectBuffer(name);
+        $(this).parent().find(".file-link").removeClass("active");
+        $(this).addClass("active");
+      });
+    },
     showOutput(output) {
       $(this.editor).find(".output-wrapper").show();
       $(this.editor).find(".output").text(output);

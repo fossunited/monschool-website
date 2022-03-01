@@ -55,6 +55,9 @@ header {
   display: none;
 }
 
+.code-editor {
+  clear: both;
+}
 .code-editor .preview-label {
   font-weight: bold;
   padding: 0px 10px;
@@ -72,7 +75,7 @@ header {
   background-color: #f1f1f1;
 }
 
-.tabs button {
+.tabs button, .file-link {
   float: left;
   border: none;
   outline: none;
@@ -81,10 +84,14 @@ header {
   transition: 0.3s;
 }
 
-.tabs button:hover {
+.tabs button:hover, .file-link:hover {
   background-color: #ddd;
 }
 
-.tabs button.active {
+.tabs button.active, .file-link.active {
   background-color: #ccc;
+}
+
+.filenames {
+  clear: both;
 }
