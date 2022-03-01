@@ -81,7 +81,7 @@ chapters:
       - advanced-type-checking/typing-decorators.md
       - advanced-type-checking/typing-generators.md
       - advanced-type-checking/the-type-type.md
-      - advanced-type-checking/type-checking-exercises.md
+      # - advanced-type-checking/type-checking-exercises.md
   - name: conclusion
     title: Conclusion
     description: |
