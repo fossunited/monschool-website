@@ -95,3 +95,11 @@ header {
 .filenames {
   clear: both;
 }
+
+.livecode-editor .labels {
+  float: right;
+  padding: 2px 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #ffe;
+}
