@@ -19,7 +19,9 @@ print(is_adult(25))
 
 Compare this code to the same code in the Go programming language:
 
-```{.go .example}
+```{.golang .example}
+package main
+
 var age int = 18
 
 func is_adult(age int) bool {
@@ -28,6 +30,10 @@ func is_adult(age int) bool {
   }
 
   return false
+}
+
+func main() {
+    print(is_adult(25))
 }
 ```
 
@@ -40,7 +46,7 @@ code works, but it should still be easy and flexible to add the annotations.
 Since they shouldn't affect the actual code, one obvious possibility is to use
 comments, maybe something like this?
 
-```{.python .example}
+```python
 age = 18  # type: int
 ```
 
@@ -62,13 +68,15 @@ def is_adult(age: int) -> bool:
         return True
 
     return False
+
+print(is_adult(25))
 ```
 
 The annotations `: int` and `-> bool` here don’t do anything. They’re ignored
 when the code is run, almost like comments. In fact, you can use these
 annotations for pretty much anything else, like documentation for example:
 
-```{.python .example}
+```python
 def compile(
     source: "something compilable",
     filename: "where the compilable thing comes from",
