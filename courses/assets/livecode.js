@@ -47,6 +47,7 @@ var TEMPLATE = `
 <div class="livecode-editor">
   <div class="controls">
     <button class="run">Run</button>
+    <div class="labels hidden"></div>
   </div>
 
   <div class="filenames" id="file-tabs">
@@ -87,12 +88,18 @@ function setupExample(element) {
       buttons: [],
       env: {},
       events: {},
-      headers: {}
+      headers: {},
     },
 
     buffers: [],
 
     outputHooks: [],
+
+    setLabel(label) {
+      $(this.editor).find(".labels")
+        .show()
+        .html(label);
+    },
 
     findLanguage() {
       var languageClass = this.element.find("code").attr("class");

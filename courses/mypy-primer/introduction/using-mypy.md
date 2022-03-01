@@ -81,7 +81,7 @@ Let's fix that:
     data-stdin='Alice\n8\n'
     ></span>
 
-```{#mypy3 .python .example}
+```{#mypy3 .python .example .mypy-strict}
 def greet(name):
     print(f"Hello, {name}!")
 
