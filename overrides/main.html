@@ -8,7 +8,6 @@
     // id to data-id attribute.
     var elems = document.getElementsByTagName("pre");
     for (var i=0; i<elems.length; i++) {
-      console.log(elems[i]);
       if (elems[i].id) {
         elems[i].setAttribute("data-id", elems[i].id);
       }

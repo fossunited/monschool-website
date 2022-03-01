@@ -48,11 +48,15 @@ var TEMPLATE = `
   <div class="controls">
     <button class="run">Run</button>
   </div>
+
+  <div class="filenames" id="file-tabs">
+  </div>
+
   <div class="code-editor">
     <div class="code-wrapper">
       <textarea class="code"></textarea>
     </div>
-    <div class="tabs">
+    <div class="tabs" id="output-tabs">
       <button class="tab-link tab-output active" data-target=".tab-content-output">Output</button>
       <button class="tab-link tab-preview" data-target=".tab-content-preview">Preview</button>
     </div>
@@ -77,6 +81,7 @@ function setupExample(element) {
       language: '',
       autopreview: false,
       outputPreview: false,
+      multifile: false,
       mode: null,
       runtime: null,
       buttons: [],
@@ -84,6 +89,8 @@ function setupExample(element) {
       events: {},
       headers: {}
     },
+
+    buffers: [],
 
     outputHooks: [],
 
@@ -95,6 +102,73 @@ function setupExample(element) {
       else {
         return "";
       }
+    },
+
+    getBuffer(name) {
+      for (var i=0; i<this.buffers.length; i++) {
+        if (this.buffers[i].name == name)
+          return this.buffers[i];
+      }
+    },
+
+    selectBuffer(name) {
+      var buf = this.getBuffer(name);
+      this.codemirror.swapDoc(buf.doc);
+      this.codemirror.focus();
+    },
+
+    newBuffer(name, text, mode) {
+      var doc = CodeMirror.Doc(text, mode);
+      var buf = {name: name, doc: doc}
+      this.buffers.push(buf);
+
+      this.addFileTab(name);
+    },
+
+    prepareBuffers() {
+      // codemirror is already setup with current text in <pre>
+      var text = this.codemirror.doc.getValue();
+      var tokens = text.split(/=== (.*)/);
+
+      // skip the first empty token and move in steps of two
+      for (var i=1; i<tokens.length; i+=2) {
+        var filename = tokens[i];
+        var code = tokens[i+1].trim();
+        var mode = this.guessFileMode(filename);
+        this.newBuffer(filename, code, mode);
+      }
+      $(this.editor).find(".filenames .file-link:first").addClass('active');
+      this.selectBuffer(this.buffers[0].name);
+    },
+
+    guessFileMode(filename) {
+      if (filename.indexOf(".") == -1) {
+        return "htmlmixed";
+      }
+      var ext = filename.split(".")[1];
+      var modes = {
+        "py": "python",
+        "rs": "rust",
+        "html": "htmlmixed",
+        "css": "css",
+        "js": "javascript"
+      };
+      if (ext in modes) {
+        return modes[ext];
+      }
+      else {
+        return ext;
+      }
+    },
+
+    addFileTab(name) {
+      var parent = $(this.editor).find(".filenames");
+
+      $("<button></button>")
+      .addClass("file-link")
+      .text(name)
+      .data("name", name)
+      .appendTo(parent);
     },
 
     triggerEvent(name) {
@@ -121,6 +195,14 @@ function setupExample(element) {
       }
       else if (this.element.hasClass("no-autopreview")) {
         this.options.autopreview = false;
+      }
+
+      if (this.element.hasClass("multi-file")) {
+        this.options.multifile = true;
+      }
+
+      if ("sourceFile" in this.options) {
+        this.options.env['FALCON_SOURCE_FILE'] = this.options.sourceFile;
       }
     },
 
@@ -164,6 +246,10 @@ function setupExample(element) {
       this.setupPreview();
       this.setupTabs();
 
+      if (this.options.multifile) {
+        this.prepareBuffers();
+        this.setupFileTabs();
+      }
       this.triggerEvent("created");
     },
 
@@ -207,24 +293,59 @@ function setupExample(element) {
       $(this.editor).find(".tab-preview, .tab-content-preview").remove();
     },
 
+    getEnvHeader() {
+      var env = this.options.env;
+      if (Object.keys(env).length == 0) {
+        return "";
+      }
+      var value = "";
+      for (var k in env) {
+        if (value) {
+          value += " ";
+        }
+        value += `${k}=${env[k]}`
+      }
+      return value;
+    },
+
+    getHeaders() {
+      var headers = {...this.options.headers};
+
+      if (Object.keys(this.options.env).length) {
+        headers['X-FALCON-ENV'] = editor.getEnvHeader();
+      }
+      return headers;
+    },
+
     setupRun() {
       var runtime = this.getRuntime();
       var url = `${LIVECODE_BASE_URL}/runtimes/${runtime}`;
       var codemirror = this.codemirror;
-      var headers = this.options.headers;
 
       var editor = this;
 
       $(this.editor).find(".run").on('click', function() {
-        var code = codemirror.doc.getValue();
         var mode = $(this).data("mode") || "exec";
+        var body;
+
+        if (editor.options.multifile) {
+          body = new FormData();
+          for (var i=0; i < editor.buffers.length; i++) {
+            var buf = editor.buffers[i];
+            var blob = new Blob([buf.doc.getValue()]);
+            body.append(buf.name, blob, buf.name);
+          }
+        }
+        else {
+          body = codemirror.doc.getValue();
+        }
 
         editor.clearOutput();
 
         fetch(url, {
           method: "POST",
-          body: code,
-          headers: {'x-falcon-mode': mode, ...headers}
+          body: body,
+          headers: {'x-falcon-mode': mode, ...editor.getHeaders()}
         })
         .then(response => response.text())
         .then(output => {
@@ -246,13 +367,21 @@ function setupExample(element) {
         updateTabs();
 
         $(editor).find(".tab-link").click(function() {
-          $(editor).find(".tab-link").removeClass("active");
+          $(this).parent().find(".tab-link").removeClass("active");
           $(this).addClass("active");
           updateTabs();
         });
       });
     },
-
+    setupFileTabs() {
+      var that = this;
+      $(this.editor).find(".filenames").on('click', '.file-link', function() {
+        var name = $(this).html();
+        that.selectBuffer(name);
+        $(this).parent().find(".file-link").removeClass("active");
+        $(this).addClass("active");
+      });
+    },
     showOutput(output) {
       $(this.editor).find(".output-wrapper").show();
       $(this.editor).find(".output").text(output);
