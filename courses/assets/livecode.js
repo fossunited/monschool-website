@@ -81,7 +81,7 @@ function setupExample(element) {
       language: '',
       autopreview: false,
       outputPreview: false,
-      showFilenames: false,
+      multifile: false,
       mode: null,
       runtime: null,
       buttons: [],
@@ -114,6 +114,7 @@ function setupExample(element) {
     selectBuffer(name) {
       var buf = this.getBuffer(name);
       this.codemirror.swapDoc(buf.doc);
+      this.codemirror.focus();
     },
 
     newBuffer(name, text, mode) {
@@ -122,6 +123,42 @@ function setupExample(element) {
       this.buffers.push(buf);
 
       this.addFileTab(name);
+    },
+
+    prepareBuffers() {
+      // codemirror is already setup with current text in <pre>
+      var text = this.codemirror.doc.getValue();
+      var tokens = text.split(/=== (.*)/);
+
+      // skip the first empty token and move in steps of two
+      for (var i=1; i<tokens.length; i+=2) {
+        var filename = tokens[i];
+        var code = tokens[i+1].trim();
+        var mode = this.guessFileMode(filename);
+        this.newBuffer(filename, code, mode);
+      }
+      $(this.editor).find(".filenames .file-link:first").addClass('active');
+      this.selectBuffer(this.buffers[0].name);
+    },
+
+    guessFileMode(filename) {
+      if (filename.indexOf(".") == -1) {
+        return "htmlmixed";
+      }
+      var ext = filename.split(".")[1];
+      var modes = {
+        "py": "python",
+        "rs": "rust",
+        "html": "htmlmixed",
+        "css": "css",
+        "js": "javascript"
+      };
+      if (ext in modes) {
+        return modes[ext];
+      }
+      else {
+        return ext;
+      }
     },
 
     addFileTab(name) {
@@ -158,6 +195,10 @@ function setupExample(element) {
       }
       else if (this.element.hasClass("no-autopreview")) {
         this.options.autopreview = false;
+      }
+
+      if (this.element.hasClass("multi-file")) {
+        this.options.multifile = true;
       }
     },
 
@@ -200,8 +241,11 @@ function setupExample(element) {
       this.setupRun();
       this.setupPreview();
       this.setupTabs();
-      this.setupFileTabs();
 
+      if (this.options.multifile) {
+        this.prepareBuffers();
+        this.setupFileTabs();
+      }
       this.triggerEvent("created");
     },
 
