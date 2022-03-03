@@ -37,13 +37,13 @@ chapters:
       - program-structure/functions.md
       - program-structure/modules.md
 
-  - name: lists
-    title: Working with Lists
+  - name: working-with-data
+    title: Working with Data
     description:  Introduction to lists, for loop and discussion on iteration patterns.
     lessons:
-      - lists/lists.md
-      - lists/dictionaries.md
-      - lists/working-with-files.md
+      - working-with-data/lists.md
+      - working-with-data/dictionaries.md
+      - working-with-data/working-with-files.md
 
   - name: classes
     title: Classes & Objects
