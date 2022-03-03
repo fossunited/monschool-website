@@ -29,6 +29,7 @@ chapters:
     lessons:
       - getting-started/hello-python.md
       - getting-started/datatypes.md
+      - getting-started/control-flow.md
 
   - name: program-structure
     title: Program Structure
