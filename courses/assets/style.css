@@ -103,3 +103,9 @@ header {
   border-radius: 20px;
   background: #ffe;
 }
+
+input.run-args {
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 300px;
+}
