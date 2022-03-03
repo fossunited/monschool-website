@@ -1,0 +1,53 @@
+name: python-primer
+suffix: py
+is_published: true
+upcoming: true
+tags:
+  - python
+video_link:
+title: Python Primer
+instructor: anand
+image: python-logo.png
+short_introduction: Master the essentials of the Python programming language
+description: |
+  Python Primer is a hands-on course for mastering the essentials of the Python programming language and using it to solve real-world problems.
+
+  With many examples and over 100 exercises, this course covers many practical applications, demonstrating how to use Python programming language to solve day to day problems very effectively.
+
+  Apart from introducing the elegant constructs of Python programming language, this course also teaches how to organize your code and how to write idomatic Python code that is easy to read and maintain.
+
+  This course is an outcome of many trainings done by Anand at Pipal Academy over a decade to his clients, including LinkedIn, VMware, D. E. Shaw, Intuit, to a name a few.
+
+  Target Audience:
+
+  This course is targeted at programmers how are new to Python. It is expected that the student knows about basic programming constructs like functions, loops etc.. Prior exposure to Python is not required.
+
+chapters:
+  - name: getting-started
+    title: Getting Started
+    description: Introduction to the Python programming language
+    lessons:
+      - getting-started/hello-python.md
+      - getting-started/datatypes.md
+
+  - name: program-structure
+    title: Program Structure
+    description: Learn how to organize your code as functions, modules and scripts.
+    lessons:
+      - program-structure/functions.md
+      - program-structure/modules.md
+
+  - name: lists
+    title: Working with Lists
+    description:  Introduction to lists, for loop and discussion on iteration patterns.
+    lessons:
+      - lists/lists.md
+      - lists/dictionaries.md
+      - lists/working-with-files.md
+
+  - name: classes
+    title: Classes & Objects
+    description: Learn how to model your code using classes.
+    lessons:
+      - classes/classes.md
+      - classes/exceptions.md
