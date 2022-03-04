@@ -48,7 +48,7 @@ var TEMPLATE = `
   <div class="controls">
     <button class="run">Run</button>
     <div class="labels hidden"></div>
-    <input type="text" class="run-args hidden" name="args" value="" placeholder="arguments"/>
+    <span class="run-args-label hidden">Arguments: </span><input type="text" class="run-args hidden" name="args" value="" placeholder="arguments"/>
   </div>
 
   <div class="filenames" id="file-tabs">
@@ -91,6 +91,7 @@ function setupExample(element) {
       env: {},
       events: {},
       headers: {},
+      args: ''
     },
 
     buffers: [],
@@ -403,7 +404,11 @@ function setupExample(element) {
 
     setupArguments() {
       if (this.options.showArgs) {
-        $(this.editor).find(".run-args").removeClass("hidden");
+        $(this.editor).find(".run-args")
+          .removeClass("hidden")
+          .val(this.options.args);
+        $(this.editor).find(".run-args-label")
+          .removeClass("hidden")
       }
     },
 

@@ -4,14 +4,14 @@
     height: auto;
 }
 .CodeMirror-scroll {
-    max-height: 300px;
-    min-height: 208px;
+    /* max-height: 300px; */
+    /* min-height: 208px; */
 }
 .controls {
     padding: 10px 0px;
 }
 .code-wrapper {
-    min-height: 200px;
+    /* min-height: 200px; */
 }
 
 .clearfix {
@@ -24,7 +24,7 @@
 }
 
 .code-wrapper {
-    min-width: 300px;
+    /* min-width: 300px; */
     flex: 1;
 }
 .output-wrapper {
