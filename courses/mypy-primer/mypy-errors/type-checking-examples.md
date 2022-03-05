@@ -84,7 +84,7 @@ english, science, math = 75, 87, 90
 avg_score = average(english, science, math)
 
 def print_scorecard(score):
-    print(f"Average score is: {avg_score}")
+    print(f"Average score is: {score}")
 
 if avg_score.is_integer():
     print_scorecard(int(avg_score))
