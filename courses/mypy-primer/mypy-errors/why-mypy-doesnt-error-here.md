@@ -8,7 +8,7 @@ see how it can help us along the way.
 
 Here's the code example that we'll be working with:
 
-```{.python .example .mypy-strict}
+```{.python .example}
 import json
 from itertools import cycle
 
