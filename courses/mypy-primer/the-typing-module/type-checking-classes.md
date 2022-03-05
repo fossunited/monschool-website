@@ -9,7 +9,7 @@ most part and you'll be good.
 
 Here's an example class, that just implements a stack of numbers:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 class Stack:
     def __init__(self):
         self._values = []
@@ -75,7 +75,7 @@ So our annotations look something like this:
 
 Here's what the class looks like after annotating the function signatures:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 class Stack:
     def __init__(self) -> None:
         self._values = []
@@ -128,7 +128,7 @@ is fully convinced that the signature is perfectly good. Why is that?
 
 Take this code for example:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def only_evens(number: int) -> int:
     if number % 2 != 0:
         raise ValueError("Not even!")

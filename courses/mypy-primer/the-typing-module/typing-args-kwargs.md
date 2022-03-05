@@ -11,7 +11,7 @@ variables anything).
 All the extra arguments passed to `*args` get turned into a tuple, and kewyord
 arguments turn into a dictionay, with the keys being the string keywords:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def i_can_take_any_values(first_arg, *args, **kwargs):
     print('got extra args:', args)
     print('got kwargs:', kwargs)
@@ -24,7 +24,7 @@ be of type `Dict[str, X]`, we only need to provide one type `X` to be able to
 define their type. Here's a practical example, that takes keywords of marks in a
 subject, and creates a `Scorecard`:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 class Scorecard:
     def __init__(
         self,
@@ -52,7 +52,7 @@ print(scorecard.maths)
 
 To verify, you can use `reveal_type`:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def build_scorecard(**marks: int) -> None:
     reveal_type(marks)
 ```

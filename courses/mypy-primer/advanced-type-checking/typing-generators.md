@@ -9,7 +9,7 @@ comes to manipulating lists of data.
 
 Here's an example of how it can be useful:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def odd_squares() -> list[int]:
     result = []
     for num in range(2_000_000):
@@ -35,7 +35,7 @@ and throw away all the other work. What a waste.
 Generators allow us to avoid this, by only calculating each next value when we
 ask for it. Converting the code to use generators is fairly simple:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def odd_squares():
     for num in range(2_000_000):
         square = num ** 2
@@ -61,7 +61,7 @@ Now let's get to adding types to this thing! Generator functions that have a
 annotate the return type of the function as such. There's actually quite a few
 ways to do that, the simplest being to just make it as an `Iterator`:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Iterator
 
 def odd_squares() -> Iterator[int]:
@@ -94,7 +94,7 @@ that communicate data back and forth.
 Here's an example, where we send data to a generator that doubles our number,
 and we send it back the number incremented by one:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def doubler():
     num = yield 0  # To get the first value
 
@@ -123,7 +123,7 @@ print("Done.")
 
 You can try to type annotate this method like before:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Iterator
 
 def doubler() -> Iterator[int]:
@@ -154,7 +154,7 @@ syntax:
 
 So we can do this:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Generator
 
 def doubler() -> Generator[int, int, None]:
@@ -187,7 +187,7 @@ it's pretty simple to use its type as the 3rd argument.
 Also, in our case, both the sent data and yielded data are `int`s, but you can
 similarly make a generator that has different `send` an `yield` types, like so:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Generator
 
 def echo_round() -> Generator[int, float, str]:

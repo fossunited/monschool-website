@@ -122,9 +122,7 @@ default.
 We can, however, force mypy to check all your code, by using the `--strict`
 parameter:
 
-[TODO: strict mode]
-
-```{.python .example}
+```{.python .example .mypy-strict}
 def double(n):
     return n * 2
 
@@ -138,7 +136,7 @@ annotations (sometimes called type hints) are a vast topic and there’s a lot t
 cover about it, but in this case the types are really simple. We just have to
 tell the function double(n), what the type of “n” is. Like so:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def double(n: int) -> int:
     return n * 2
 
@@ -154,7 +152,7 @@ code still runs just fine.
 Your code is now 100% type checked! To confirm, let’s try to call the function
 with something other than an integer:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def double(n: int) -> int:
     return n * 2
 

@@ -17,7 +17,7 @@ these errors mean, maybe even predict what the code looks like.
 
 Here's the actual code:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def foo() -> None:
     return 42
 
@@ -43,7 +43,7 @@ most of them boil down to just two things:
 
 Let's see a couple more examples to explain this in detail:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def print_spendings(purchases: list) -> None:
     total_spendings = 0
     for item, value in purchases:
@@ -69,7 +69,7 @@ We can see that it's a list of 2-tuples, but how would you write that as a type
 hint? I could tell you, but you can also use `reveal_type` to figure it out
 yourself:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 purchases = [
   ("Eggs", 10),
   ("Cheese", 25),
@@ -111,7 +111,7 @@ Once you do that, mypy should report no errors.
 
 Let's see another example:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def unique_count(nums: list[int]) -> int:
     """counts the number of unique items in the list"""
     uniques = set()

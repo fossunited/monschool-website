@@ -6,7 +6,7 @@ include_in_preview: false
 `Type` is a type used to type classes. It derives from python's way of figuring
 out the type of an object at runtime:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 a, b = 1, 2
 s = 'hello'
 
@@ -19,7 +19,7 @@ print(type(a) == type(s))  # False
 
 Since `type(x)` returns the class of `x`, the type of a class `C` is `Type[C]`.
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Any, Type, TypeVar
 
 class MyClass:

@@ -36,8 +36,8 @@ chapters:
     lessons:
       - introduction/what-is-mypy.md
       - introduction/intro-to-type-annotations.md
-      - introduction/using-mypy.md
       - introduction/installing-mypy.md
+      - introduction/using-mypy.md
   - name: mypy-errors
     title: Mypy errors, and how to debug them
     description: |

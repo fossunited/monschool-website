@@ -26,7 +26,7 @@ Writing good tests is hard, especially in a dynamically typed language. It's
 very easy to write tests that forget to check all the possible invalid types
 that you could pass to the function. For example:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def process(items):
     for item in items:
         print("Processing", item.value.id)
@@ -39,7 +39,7 @@ error raised at runtime.
 If the schema of each `item` object was well defined beforehand, the problem
 would've easily been caught beforehand:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from dataclasses import dataclass
 from typing import Iterable
 
@@ -69,7 +69,7 @@ Tests are important, because they are necessary for checking your logic.
 Logical errors can't be possibly tested through type checking. For example,
 here's a perfectly type checked code:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def sum(a: int, b: int) -> int:
     return (a + b) // 2
 ```
