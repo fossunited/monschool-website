@@ -47,12 +47,18 @@ var TEMPLATE = `
 <div class="livecode-editor">
   <div class="controls">
     <button class="run">Run</button>
+    <div class="labels hidden"></div>
+    <span class="run-args-label hidden">Arguments: </span><input type="text" class="run-args hidden" name="args" value="" placeholder="arguments"/>
   </div>
+
+  <div class="filenames" id="file-tabs">
+  </div>
+
   <div class="code-editor">
     <div class="code-wrapper">
       <textarea class="code"></textarea>
     </div>
-    <div class="tabs">
+    <div class="tabs" id="output-tabs">
       <button class="tab-link tab-output active" data-target=".tab-content-output">Output</button>
       <button class="tab-link tab-preview" data-target=".tab-content-preview">Preview</button>
     </div>
@@ -77,12 +83,26 @@ function setupExample(element) {
       language: '',
       autopreview: false,
       outputPreview: false,
+      multifile: false,
+      showArgs: false,
       mode: null,
       runtime: null,
-      buttons: []
+      buttons: [],
+      env: {},
+      events: {},
+      headers: {},
+      args: ''
     },
 
+    buffers: [],
+
     outputHooks: [],
+
+    setLabel(label) {
+      $(this.editor).find(".labels")
+        .show()
+        .html(label);
+    },
 
     findLanguage() {
       var languageClass = this.element.find("code").attr("class");
@@ -94,9 +114,90 @@ function setupExample(element) {
       }
     },
 
+    getBuffer(name) {
+      for (var i=0; i<this.buffers.length; i++) {
+        if (this.buffers[i].name == name)
+          return this.buffers[i];
+      }
+    },
+
+    selectBuffer(name) {
+      var buf = this.getBuffer(name);
+      this.codemirror.swapDoc(buf.doc);
+      this.codemirror.focus();
+    },
+
+    newBuffer(name, text, mode) {
+      var doc = CodeMirror.Doc(text, mode);
+      var buf = {name: name, doc: doc}
+      this.buffers.push(buf);
+
+      this.addFileTab(name);
+    },
+
+    prepareBuffers() {
+      // codemirror is already setup with current text in <pre>
+      var text = this.codemirror.doc.getValue();
+      var tokens = text.split(/=== (.*)/);
+
+      // skip the first empty token and move in steps of two
+      for (var i=1; i<tokens.length; i+=2) {
+        var filename = tokens[i];
+        var code = tokens[i+1].trim();
+        var mode = this.guessFileMode(filename);
+        this.newBuffer(filename, code, mode);
+      }
+      $(this.editor).find(".filenames .file-link:first").addClass('active');
+      this.selectBuffer(this.buffers[0].name);
+    },
+
+    guessFileMode(filename) {
+      if (filename.indexOf(".") == -1) {
+        return "htmlmixed";
+      }
+      var ext = filename.split(".")[1];
+      var modes = {
+        "py": "python",
+        "rs": "rust",
+        "html": "htmlmixed",
+        "css": "css",
+        "js": "javascript"
+      };
+      if (ext in modes) {
+        return modes[ext];
+      }
+      else {
+        return ext;
+      }
+    },
+
+    addFileTab(name) {
+      var parent = $(this.editor).find(".filenames");
+
+      $("<button></button>")
+      .addClass("file-link")
+      .text(name)
+      .data("name", name)
+      .appendTo(parent);
+    },
+
+    triggerEvent(name) {
+      if (name in this.options.events) {
+        this.options.events[name](this);
+      }
+    },
+
     parseOptions() {
       var lang = this.findLanguage();
-      this.options = {...this.options, ...livecode.getOptions(lang)};
+      var id = $(this.element).data("id") || "default";
+      var hasOptions = $(`#livecode-options-${id}`).length > 0;
+      var options =  hasOptions ? $(`#livecode-options-${id}`).data() : {};
+
+      this.options = {
+        ...this.options,
+        ...livecode.getOptions(lang),
+        ...options
+      };
       this.options.language = lang;
 
       if (this.element.hasClass("autopreview")) {
@@ -104,6 +205,18 @@ function setupExample(element) {
       }
       else if (this.element.hasClass("no-autopreview")) {
         this.options.autopreview = false;
+      }
+
+      if (this.element.hasClass("multi-file")) {
+        this.options.multifile = true;
+      }
+
+      if ("sourceFile" in this.options) {
+        this.options.env['FALCON_SOURCE_FILE'] = this.options.sourceFile;
+      }
+
+      if (this.element.hasClass("show-args")) {
+        this.options.showArgs = true;
       }
     },
 
@@ -117,7 +230,7 @@ function setupExample(element) {
 
 
     injectTextArea() {
-      var code = $(this.element).text();
+      var code = $(this.element).text().trim();
 
       this.element
         .wrap('<div></div>')
@@ -146,6 +259,13 @@ function setupExample(element) {
       this.setupRun();
       this.setupPreview();
       this.setupTabs();
+
+      if (this.options.multifile) {
+        this.prepareBuffers();
+        this.setupFileTabs();
+      }
+      this.setupArguments();
+      this.triggerEvent("created");
     },
 
     setupPreview() {
@@ -188,6 +308,33 @@ function setupExample(element) {
       $(this.editor).find(".tab-preview, .tab-content-preview").remove();
     },
 
+    getEnvHeader() {
+      var env = this.options.env;
+      if (Object.keys(env).length == 0) {
+        return "";
+      }
+      var value = "";
+      for (var k in env) {
+        if (value) {
+          value += " ";
+        }
+        value += `${k}=${env[k]}`
+      }
+      return value;
+    },
+
+    getHeaders() {
+      var headers = {...this.options.headers};
+
+      if (Object.keys(this.options.env).length) {
+        headers['X-FALCON-ENV'] = editor.getEnvHeader();
+      }
+      if (this.options.showArgs) {
+        headers['X-FALCON-ARGS'] = editor.getArguments();
+      }
+      return headers;
+    },
+
     setupRun() {
       var runtime = this.getRuntime();
       var url = `${LIVECODE_BASE_URL}/runtimes/${runtime}`;
@@ -196,15 +343,28 @@ function setupExample(element) {
       var editor = this;
 
       $(this.editor).find(".run").on('click', function() {
-        var code = codemirror.doc.getValue();
         var mode = $(this).data("mode") || "exec";
+        var body;
+
+        if (editor.options.multifile) {
+          body = new FormData();
+          for (var i=0; i < editor.buffers.length; i++) {
+            var buf = editor.buffers[i];
+            var blob = new Blob([buf.doc.getValue()]);
+            body.append(buf.name, blob, buf.name);
+          }
+        }
+        else {
+          body = codemirror.doc.getValue();
+        }
+        var args = editor.getArguments();
 
         editor.clearOutput();
 
         fetch(url, {
           method: "POST",
-          body: code,
-          headers: {'x-falcon-mode': mode}
+          body: body,
+          headers: {'x-falcon-mode': mode, ...editor.getHeaders()}
         })
         .then(response => response.text())
         .then(output => {
@@ -226,11 +386,36 @@ function setupExample(element) {
         updateTabs();
 
         $(editor).find(".tab-link").click(function() {
-          $(editor).find(".tab-link").removeClass("active");
+          $(this).parent().find(".tab-link").removeClass("active");
           $(this).addClass("active");
           updateTabs();
         });
       });
+    },
+    setupFileTabs() {
+      var that = this;
+      $(this.editor).find(".filenames").on('click', '.file-link', function() {
+        var name = $(this).html();
+        that.selectBuffer(name);
+        $(this).parent().find(".file-link").removeClass("active");
+        $(this).addClass("active");
+      });
+    },
+
+    setupArguments() {
+      if (this.options.showArgs) {
+        $(this.editor).find(".run-args")
+          .removeClass("hidden")
+          .val(this.options.args);
+        $(this.editor).find(".run-args-label")
+          .removeClass("hidden")
+      }
+    },
+
+    getArguments() {
+      return this.options.showArgs
+        ? $(this.editor).find(".run-args").val()
+        : "";
     },
 
     showOutput(output) {
@@ -267,9 +452,11 @@ function setupExample(element) {
   };
 
   editor.setup();
+  return editor;
 }
 
 var livecode = {
+  editors: [],
   defaultOptions: {
     golang: {
       mode: "go"
@@ -298,9 +485,11 @@ var livecode = {
   },
 
   setup() {
+    var livecode = this;
     $(function() {
       $("pre.example").each((i, e) => {
-        setupExample(e);
+        var editor = setupExample(e);
+        livecode.editors.push(editor);
       });
     });
   }

@@ -4,14 +4,14 @@
     height: auto;
 }
 .CodeMirror-scroll {
-    max-height: 300px;
-    min-height: 208px;
+    /* max-height: 300px; */
+    /* min-height: 208px; */
 }
 .controls {
     padding: 10px 0px;
 }
 .code-wrapper {
-    min-height: 200px;
+    /* min-height: 200px; */
 }
 
 .clearfix {
@@ -24,7 +24,7 @@
 }
 
 .code-wrapper {
-    min-width: 300px;
+    /* min-width: 300px; */
     flex: 1;
 }
 .output-wrapper {
@@ -55,6 +55,9 @@ header {
   display: none;
 }
 
+.code-editor {
+  clear: both;
+}
 .code-editor .preview-label {
   font-weight: bold;
   padding: 0px 10px;
@@ -72,7 +75,7 @@ header {
   background-color: #f1f1f1;
 }
 
-.tabs button {
+.tabs button, .file-link {
   float: left;
   border: none;
   outline: none;
@@ -81,10 +84,28 @@ header {
   transition: 0.3s;
 }
 
-.tabs button:hover {
+.tabs button:hover, .file-link:hover {
   background-color: #ddd;
 }
 
-.tabs button.active {
+.tabs button.active, .file-link.active {
   background-color: #ccc;
+}
+
+.filenames {
+  clear: both;
+}
+
+.livecode-editor .labels {
+  float: right;
+  padding: 2px 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: #ffe;
+}
+
+input.run-args {
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 300px;
 }

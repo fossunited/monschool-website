@@ -47,7 +47,7 @@ programming language, this behavior might seem a bit odd.
 Let’s see the same piece of code in TypeScript, a similar but statically typed
 language, just to see what happens. The code would look something like this:
 
-```{.typescript .example}
+```javascript
 let variable = "abc"
 variable = "def"
 variable = 42
@@ -90,7 +90,7 @@ Since there are various sections in each class and each student belongs to one
 section, you decide that a list of sections, each containing a list of students,
 would be ideal to store your information. Like so:
 
-```{.python .example}
+```python
 sections = [
     ['Aron', 'Belle', 'Kyle'],
     ['Alice', 'Mike', 'Scott', 'Stacy']
@@ -101,12 +101,12 @@ There are seven students in total in this case: three in one section, and four
 in the other. Now, you go ahead and implement the search function to search for
 a student’s name in the class:
 
-```{.python .example}
+```python
 def search_student(sections, search_name):
     for section in sections:
-      for student in section:
-          if student == search_name:
-              return "Student found!"
+        for student in section:
+            if student == search_name:
+                return "Student found!"
 
     return "No student found with this name."
 ```
@@ -114,17 +114,28 @@ def search_student(sections, search_name):
 You try to run this, and it works!
 
 ```{.python .example}
->>> search_student(sections, "Mike")
->>> 'Student found!'
->>> search_student(sections, "Steve")
->>> 'No student found with this name.'
+sections = [
+    ['Aron', 'Belle', 'Kyle'],
+    ['Alice', 'Mike', 'Scott', 'Stacy']
+]
+
+def search_student(sections, search_name):
+    for section in sections:
+        for student in section:
+            if student == search_name:
+                return "Student found!"
+
+    return "No student found with this name."
+
+print(search_student(sections, "Mike"))
+print(search_student(sections, "Steve"))
 ```
 
-A few days later, you try to run the same code somewhere else, and for some
+A few days later, you try to run the same code in the terminal, and for some
 reason it has stopped working correctly. You try to run the code with the same
 options as before, and it still doesn’t run! What happened?
 
-```{.python .example}
+```python
 >>> search_student(sections, "Mike")
 >>> 'No student found with this name.'
 >>> search_student(sections, "Steve")
@@ -133,7 +144,7 @@ options as before, and it still doesn’t run! What happened?
 
 You look up the code implementation, and here’s what you find:
 
-```{.python .example}
+```python
 sections = {
     'Section A': ['Aron', 'Belle', 'Kyle'],
     'Section B': ['Alice', 'Mike', 'Scott', 'Stacy']
@@ -151,14 +162,7 @@ If you’re unsure what happened and why it didn’t throw an error: the key thi
 to notice is that dictionaries in Python are iterable, and when you try to
 iterate over them, you get back the dictionary keys in the for-loop:
 
-```{.python .example}
-sections = {
-    'Section A': ['Aron', 'Belle', 'Kyle'],
-    'Section B': ['Alice', 'Mike', 'Scott', 'Stacy']
-}
-```
-
-```{.python .example}
+```python
 def search_student(sections, search_name):
     for section in sections: # section: 'Section A', ‘Section B’
         for student in section: # student: 'S', ‘e’, ...
