@@ -81,7 +81,7 @@ other bug going on. And yet mypy is perfectly happy with the code. Why is that?
 
 Before that, let's try to debug the code. Here's what the code should look like:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 import json
 from itertools import cycle
 
@@ -139,7 +139,7 @@ to ensure such cases yourself.
 There are however, a few things we can do. Let's fix the code and add some
 assertions for good measure:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 import json
 from itertools import cycle
 from time import sleep

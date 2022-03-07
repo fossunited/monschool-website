@@ -18,7 +18,7 @@ but the values are of various different types. Often you can define a schema for
 the data type, i.e. you know that the dictionary will have a string `"name"`,
 and an integer `"age"`. But with normal dictionaries, it doesn't work that way:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 user = {
     'name': 'Mike',
     'age': 21,
@@ -34,7 +34,7 @@ But not in this specific case.
 Maybe you can try to define a schema by making a dictionary with the types? If
 you try to do that you'll get weird errors, about `Type[int]` and `Type[str]`:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 user = {
     'name': str,
     'age': int
@@ -47,7 +47,7 @@ Mypy knows about this usecase, and it has a feature that allows making such dict
 types. The solution is to use `TypedDict` to define a `User` type first, and to
 tell mypy that we want the `user` dictionary to adhere to that shape:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import TypedDict
 
 User = TypedDict('User', {
@@ -67,7 +67,7 @@ reveal_type(user['age'])
 Another option is to use the same syntax as `NamedTuple`. But unlike NamedTuple,
 you don't need to instantiate the `User` class, a regular dictionary also works.
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import TypedDict
 
 class User(TypedDict):
@@ -85,7 +85,7 @@ reveal_type(user['age'])
 
 You can even define deeply nested data in this way:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import TypedDict
 
 class UserDetails(TypedDict):

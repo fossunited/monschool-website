@@ -12,7 +12,7 @@ integers, but it didn't really have to. If you try to run it with strings
 instead, it will still work just fine. This is a good indication that `Stack`
 should've been a generic type. So let's do that:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Generic, TypeVar
 
 T = TypeVar('T')
@@ -57,7 +57,7 @@ Note that we don't have to use just one type variable, we can use as many as we
 want! We've already seen it with dictionaries for example: `dict[str, int]`.
 Let's define a `Map` type that just wraps over a dictionary:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Generic, TypeVar
 
 K = TypeVar('K')
@@ -86,7 +86,7 @@ take them a step further: by making them generic. Right now we have hard-coded
 that we want `__next__` to return a `str`, but let's replace that with a type
 variable so that we can extend it to any type we want:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Protocol, Generic, TypeVar
 
 T = TypeVar('T', invariant=True)
@@ -131,7 +131,7 @@ A really useful generic type would be a "generic callable" type. Where you could
 define the types a callable would take in as arguments, and the return type.
 Thankfully `typing.Callable` gives you exactly that:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Callable
 
 def add(x: int, y: int) -> int:
@@ -153,7 +153,7 @@ pass it to another function.
 
 One last thing to learn would be defining generic functions. Take this function:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def make_pair(item: str) -> tuple[str, str]:
     return (item, item)
 
@@ -164,7 +164,7 @@ print(make_pair(42))
 The code works, but the type hint prevents mypy from working. So let's just make
 the function generic:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import TypeVar
 
 T = TypeVar('T')

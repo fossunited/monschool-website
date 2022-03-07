@@ -7,7 +7,7 @@ include_in_preview: false
 name, and they have some syntactic sugar which allow you to access its
 properties like attributes on an object:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from collections import namedtuple
 
 Person = namedtuple('Person', ('name', 'age', 'bio'))
@@ -25,7 +25,7 @@ provide any type information to namedtuples, by default this will have a type of
 To combat this, Python has added a `NamedTuple` class which you can extend to
 have the typed equivalent of the same. Their syntax allows adding types:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import NamedTuple
 
 class Person(NamedTuple):

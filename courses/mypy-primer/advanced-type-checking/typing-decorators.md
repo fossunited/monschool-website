@@ -12,7 +12,7 @@ below it.
 For example, take this decorator that just logs everytime you call a specific
 function:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def log(function):
     """Log everytime you call the function"""
     def wrapper():
@@ -35,7 +35,7 @@ the same `@log` decorator on many functions, and it'll work on all of them.
 So, how do we add type hints to this function? We've already seen one method to
 do this: use a `Protocol`:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Protocol
 
 class LogFunction(Protocol):
@@ -59,7 +59,7 @@ fortytwo()
 But it becomes clear very quickly that this code needs some fixes, when you try
 to call it with a function that takes arguments:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Protocol
 
 class LogFunction(Protocol):
@@ -159,7 +159,7 @@ For decorators however, usually they don't change the signature of a function.
 So we can just make the decorator generic, to allow it to work with any callable
 type:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Any, Callable, TypeVar
 
 T = TypeVar('T', bound=Callable[..., Any])

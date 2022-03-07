@@ -12,7 +12,7 @@ them.
 
 Let's write something to find a user's favorite color:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 user_data = {
   'name': 'Mike Tyson',
   'color': 'red',
@@ -50,7 +50,7 @@ we're always going to have `color` in the dictionary.
 
 For that, let's add a runtime assertion:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 user_data = {
   'name': 'Mike Tyson',
   'color': 'red',
@@ -76,7 +76,7 @@ perfectly valid.
 
 Try adding types to this code, and figure out if this code has any bugs:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def average(a, b, c):
     return (a + b + c) / 3
 
@@ -84,7 +84,7 @@ english, science, math = 75, 87, 90
 avg_score = average(english, science, math)
 
 def print_scorecard(score):
-    print(f"Average score is: {avg_score}")
+    print(f"Average score is: {score}")
 
 if avg_score.is_integer():
     print_scorecard(int(avg_score))

@@ -21,7 +21,7 @@ place.
 
 A common example of such a pattern is _duck typing_:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def do_quack(duck):
     if hasattr(duck, "quack"):
         quack_function = duck.quack
@@ -49,7 +49,7 @@ For this reason, usually what you do is tell mypy to just ignore checking this
 object when type checking. You do this by using the `Any` type from the `typing`
 module:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Any
 
 def do_quack(duck: Any) -> None:
@@ -79,7 +79,7 @@ say you have to build a library around an API, that returns some data for your
 users. The API is currently in development, and the data returned by the API can
 change at any time:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 data = {
   'name': 'Mr. User',
   'age': 33,
@@ -93,7 +93,7 @@ can change in the future at any time, and you want to avoid spending time
 defining exact types for this data, until it is finalized. You can also use
 `Any` for this case:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Any
 
 def pretty_print_data(user: Any) -> None:

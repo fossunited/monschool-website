@@ -7,7 +7,7 @@ Another fairly common pattern in Python is polymorphic functions, i.e. functions
 that can take various types of arguments and behave differently. Take this silly
 function for example:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def double(item):
     if isinstance(item, str):
         return f'2 {item}s'
@@ -21,7 +21,7 @@ print(double(16) + 10)
 We've already seen some code like this in the "type narrowing" section before.
 Let's try to add types to it:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def double(item: str | int) -> str | int:
     if isinstance(item, str):
         return f'2 {item}s'
@@ -38,7 +38,7 @@ what we actually meant was: "If you get a `str` you return a `str`, and if you
 get an `int` you return an `int`. Overloads were designed to be able to express
 this notion. They're used like this:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import overload
 
 @overload
@@ -72,7 +72,7 @@ Let's see a few more examples of overloads and why we'd use them. Here's an
 `average` function that has two separate behaviours: round the result, or don't
 round it:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def average(x, y, rounding):
     average = (x + y) / 2
     if rounding:
@@ -87,7 +87,7 @@ print(average(2, 5, rounding=True))
 When `rounding` is `False`, we return a `float`, but when it's `True` we return
 an `int`. So we can define these overloads:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import overload
 
 @overload
@@ -103,7 +103,7 @@ as the value. For example, a variable of type `Literal[True]` will only ever
 accept `True` as a value, while `Literal['get', 'post']` will accept either the
 string `'get'` or `'post'`. So let's use that to define the overloads:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Literal, overload
 
 @overload
@@ -129,7 +129,7 @@ and `reveal_type(average(2, 5, rounding=True))` gets `int`.
 
 One more example: a function that can take either one or two arguments:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def add(x, y=None):
     if y is None:
         return x + 1
@@ -142,7 +142,7 @@ print(add(5))
 
 `add(5)` just increments `5` to `6`. Typing it is also simple with `@overload`:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 @overload
 def add(x: int) -> int: ...
 

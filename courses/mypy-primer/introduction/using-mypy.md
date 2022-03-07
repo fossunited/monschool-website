@@ -42,7 +42,6 @@ integer. So let's do that:
     data-stdin='Alice\n8\n'
     ></span>
 
-
 ```{#mypy2 .python .example}
 def greet(name):
     print(f"Hello, {name}!")

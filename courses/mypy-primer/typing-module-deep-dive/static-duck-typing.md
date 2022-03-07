@@ -19,7 +19,7 @@ present on the object. As long as they're available, the code works.
 We've already seen an example of this in the course, although a much more
 simplified one:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Any
 
 def do_quack(duck: Any) -> None:
@@ -44,7 +44,7 @@ without doing anything. That's not very good.
 
 Let's go the other way around, by asking for a concrete type:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 class Duck:
     def quack(self) -> None:
         print("Duck goes 'quack'.")
@@ -63,7 +63,7 @@ do_quack(goose)
 This code 'works', but mypy complains that it expected an object of type `Duck`.
 You could just extend `Goose` from `Duck`:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 class Duck:
     def quack(self) -> None:
         print("Duck goes 'quack'.")
@@ -87,7 +87,7 @@ behaviour, you add new behaviour too. In general, it's not as flexible.
 What we *really* need, is a way to make `Duck` a type that can accept any type
 that implements `quack`. This concept is called a `Protocol` in Python:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Protocol
 
 class Duck(Protocol):
@@ -124,7 +124,7 @@ mypy, we can rest assured.
 There's a lot more that can be done using protocols. A nice example would be the
 "callable" protocol:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def func() -> int:
     return 42
 
@@ -144,7 +144,7 @@ them like a function, if you define a `__call__` method on that object's class.
 This function is run when you do `obj()`. This is an excellent place for using a
 protocol:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Protocol
 
 class Callable(Protocol):
@@ -180,7 +180,7 @@ We were able to create our own "callable" counter object, and pass it to
 Another example would be the "iterable" protocol. It refers to any object that
 can be iterated over using a `for` loop, like this for example:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 def count_unique(items: list[str]) -> int:
     """Returns the number of unique items present"""
     unique_count = 0
@@ -209,7 +209,7 @@ But does that really matter to us? I don't think so. We do know that
 `greetings.values()` returns us something that *resembles* a list, and we can
 definitely iterate over it:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 greetings = {1: 'hello', 2: 'hi', 3: 'hello'}
 for greeting in greetings.values():
     print(greeting)
@@ -218,7 +218,7 @@ for greeting in greetings.values():
 And all we care about is the item being *iterable* and having strings inside it,
 what we really want is a protocol:
 
-```{.python .example}
+```{.python .example .mypy-strict}
 from typing import Protocol
 
 class StringIterator(Protocol):
