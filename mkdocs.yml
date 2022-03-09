@@ -16,6 +16,9 @@ docs_dir: courses
 markdown_extensions:
   - meta
   - fenced_code
+  - macros:
+      registry:
+        Image: "macro:image_macro"
 
 repo_url: https://github.com/fossunited/monschool-website
 
