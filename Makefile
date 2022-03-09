@@ -1,4 +1,4 @@
 
 .PHONY: serve
 serve:
-	mkdocs serve
+	PYTHONPATH=. mkdocs serve

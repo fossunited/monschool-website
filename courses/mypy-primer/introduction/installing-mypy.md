@@ -66,7 +66,7 @@ You can however, enable mypy support in VSCode as well, by adding the following 
 
 You should then be able to see type checking issues directly in your code:
 
-![mypy on VSCode](../_images/vscode.png)
+{{ Image("vscode.png") }}
 
 If you don’t, restart your editor and that should resolve any issues.
 
@@ -74,4 +74,4 @@ If you don’t, restart your editor and that should resolve any issues.
 
 PyCharm has created its own type inference and refactoring system that works quite well and provides things like attribute auto-completion in the IDE by default. If you want to integrate `mypy` however, a Plugin called “Mypy” made by Roberto Leinardi exists in the JetBrains Marketplace. Simply installing it should enable mypy checks for you:
 
-![mypy on PyCharm](../_images/pycharm.png)
+{{ Image("pycharm.png") }}
