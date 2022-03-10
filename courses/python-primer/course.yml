@@ -53,3 +53,8 @@ chapters:
       - classes/classes.md
       - classes/designing-with-classes.md
       - classes/exceptions.md
+  - name: next-steps
+    title: Next Steps
+    description: Some tips to continue this learning journey
+    lessons:
+      - next-steps/next-steps.md
