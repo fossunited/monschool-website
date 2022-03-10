@@ -73,7 +73,7 @@ We'll implement a simple version that just prints the first argument.
 ```{#args2 .python .example .show-args .multi-file}
 === echo.py
 import sys
-print(sys.argv)
+print(sys.argv[1])
 ```
 
 Command-line arguments are most common way to take user inputs. We are going to use this a lot more in the examples of upcoming lessons.

@@ -11,7 +11,7 @@ An object contains some data and some behavior, defined by the methods on that o
 
 ```{.python .example}
 filename = "hello.py"
-extension = filename.split()[1]
+extension = filename.split(".")[1]
 print(extension)
 ```
 

@@ -89,7 +89,7 @@ class ScientificCalculator(Calculator):
         return a**b
 
     def square(self, a):
-        return super().mul(a, a)
+        return self.mul(a, a)
 
 calc = ScientificCalculator()
 print("2 + 3 = ", calc.add(2, 3))
@@ -98,8 +98,7 @@ print("2 ** 3 = ", calc.exp(2, 3))
 print("square(3) = ", calc.square(3))
 ```
 
-In the above example, `ScientificCalculator` is
-
+In the above example, `ScientificCalculator` is a specialized `Calculator`. It has all the functionality of a Calculator and some more.
 
 ### Example: Charts and Dashboard
 

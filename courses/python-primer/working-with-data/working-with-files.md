@@ -78,8 +78,13 @@ $ wc numbers.txt
 
 What does it take to implement this in Python?
 
+<span id="livecode-options-wordcount"
+    data-args="numbers.txt"
+    data-source-file="wc.py"></span>
 
-```{.python .example .show-args}
+
+```{#wordcount .python .example .multi-file .show-args}
+=== wc.py
 """Implements the wc command of unix.
 
 Prints the line count, wordcount, char count and the filename.
