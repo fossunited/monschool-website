@@ -51,5 +51,5 @@ chapters:
     description: Learn how to model your code using classes.
     lessons:
       - classes/classes.md
-      - classes/inheritance.md
+      - classes/designing-with-classes.md
       - classes/exceptions.md

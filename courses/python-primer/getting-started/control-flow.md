@@ -1,6 +1,6 @@
 ---
 title: Control Flow
-include_in_preview: false
+include_in_preview: true
 ---
 
 In this lesson we'll look at constructs for control flow in Python, including conditional expressions, `if` statement, `while` loop and `for` loop.
