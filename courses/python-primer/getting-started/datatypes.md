@@ -75,7 +75,7 @@ print("=" * 20)
 
 The built-in function `len` can be used to find the length of a string.
 
-```
+```{.python .example}
 name = "Python"
 print(len(name))
 ```
