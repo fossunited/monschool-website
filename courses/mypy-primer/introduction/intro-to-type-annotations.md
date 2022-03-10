@@ -1,6 +1,6 @@
 ---
 title: Introduction to Python's type annotation syntax
-include_in_preview: false
+include_in_preview: true
 ---
 
 Here's a Python function:

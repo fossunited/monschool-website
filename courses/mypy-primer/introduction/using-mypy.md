@@ -1,6 +1,6 @@
 ---
 title: Using mypy to type-check your code
-include_in_preview: false
+include_in_preview: true
 ---
 
 Now that we have mypy set up, let's figure out how to use it for your files and

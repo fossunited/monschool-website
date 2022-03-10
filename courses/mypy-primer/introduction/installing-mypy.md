@@ -1,6 +1,6 @@
 ---
 title: Installing mypy on your machine, and in your code editor
-include_in_preview: false
+include_in_preview: true
 ---
 
 Before we move ahead with the rest of the course, I want to explain how you can
