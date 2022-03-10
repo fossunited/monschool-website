@@ -5,7 +5,7 @@ upcoming: true
 tags:
   - python
   - typing
-video_link:
+video_link: https://youtube.com/embed/3y6BIeZSS3Q
 title: Mypy Primer
 instructor: tusharsadhwani
 image: mypy-image.png
