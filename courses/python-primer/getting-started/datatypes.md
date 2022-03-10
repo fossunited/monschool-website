@@ -1,6 +1,6 @@
 ---
 title: Datatypes
-include_in_preview: false
+include_in_preview: true
 ---
 
 Python, like any other programming language, supports multiple datatypes. In this lesson, we'll review the most common datatypes used in Python.

@@ -1,6 +1,6 @@
 ---
 title: Hello Python
-include_in_preview: false
+include_in_preview: true
 ---
 
 ## Running the Python Interpreter
