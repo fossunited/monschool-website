@@ -360,37 +360,37 @@ List slicing allows us to create a slice or part of a list very eaily.
 ```{.python .example}
 x = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 
-print("x ->", x)
+print("x -", x)
 
 # from index 0 unto index 2 (end is not included)
-print("x[0:2] ->", x[0:2])
+print("x[0:2] -", x[0:2])
 
 # upto index 2
-print("x[:2] ->", x[:2])
+print("x[:2] -", x[:2])
 
 # from index 1 upto 6
-print("x[1:6] ->", x[1:6])
+print("x[1:6] -", x[1:6])
 
 # from index 2 onwards
-print("x[2:] ->", x[2:])
+print("x[2:] -", x[2:])
 
 # every alternative element, from index 0 to 6th in steps of 2
-print("x[:6:2]", x[:6:2])`
+print("x[:6:2] -", x[:6:2])
 
 # from index 1 upto 6, take every 2nd element
-print("x[1:6:2]", x[1:6:2])
+print("x[1:6:2] -", x[1:6:2])
 
 # all except the last element
-print("x[:-1]", x[:-1])
+print("x[:-1] -", x[:-1])
 
 # How to get the last two elements?
-print("x[:-2]", x[:-2])
+print("x[:-2] -", x[:-2])
 
 # copy of x
-print("x[:]", x[:])
+print("x[:] -", x[:])
 
 # how to get the list in reverse order?
-print(x[::-1], x[::-1])
+print("x[::-1] -", x[::-1])
 ```
 
 #### Sorting Lists
@@ -413,7 +413,7 @@ names = ["alice", "dave", "charlie", "bob"]
 names2 = sorted(names)
 print(names2)
 
-# The name would remain unchanged
+# The names list would remain unchanged
 print(names)
 ```
 

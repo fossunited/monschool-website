@@ -247,7 +247,12 @@ ten zero
 
 If you notice, the word `zero` is occuring 2 times, `five` 5 times etc.
 
-```{.python .example}
+<span id="livecode-options-wordfreq"
+    data-args="words.txt"
+    data-source-file="wordfreq.py"></span>
+
+```{#wordfreq .python .example .multi-file .show-args}
+=== wordfreq.py
 """Program to compute frequency of words in the given file.
 
 USAGE: python wordfreq.py words.txt
