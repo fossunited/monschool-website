@@ -1,6 +1,6 @@
 ---
 title: What is mypy?
-include_in_preview: false
+include_in_preview: true
 ---
 
 Welcome to Mypy Primer! The course will teach you everything you need to know
