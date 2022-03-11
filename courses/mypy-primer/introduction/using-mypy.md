@@ -81,7 +81,7 @@ Let's fix that:
     ></span>
 
 ```{#mypy3 .python .example .mypy-strict}
-def greet(name):
+def greet(name: str) -> None:
     print(f"Hello, {name}!")
 
 if __name__ == '__main__':
