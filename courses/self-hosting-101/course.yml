@@ -1,30 +1,36 @@
 name: self-hosting-101
 title: Self Hosting 101
-instructor: mrkaran
+instructors:
+  - mrkaran
+  - anand
 is_published: false
 upcoming: true
 tags:
   - Self Hosting
+image: selfhosting-logo.png
 video_link:
 suffix: sh
 short_introduction: Learn how to self host and manage applications on servers.
 description: |
-  This course is aimed towards beginners who are new to self hosting journey.
-  The course starts with fundamentals like setting up a server, installing apps,
-  configuring the machine, installing dependencies, setting up web server and goes
-  further in explaining Day 2 tasks like setting up background services, debugging
-  breaking applications using logs etc.
+  Have you ever wanted to host your website or your favorite app on your own server,
+  but not sure how to get started?
+
+  Welcome to _Self Hosting 101_, the beginners guide to self hosting.
+
+  This course starts with fundamentals of setting up a new server, installing system packges and goes all the way to deploying static websites and deploying database backed web applications. It will also conver how to troubleshoot when things goes wrong.
+
+  With step by step instructions and tasks, this hands-on course introduces you the complex world of self hosting in a very simple way.
 
 chapters:
   - name: week0
-    title: Week 0
+    title: "Week 0: Getting Started"
     description: Some reading material will be shared to ignite interest in Self Hosting.
     lessons:
       - week0/why-self-host.md
       - week0/what-things-can-you-self-host.md
       - week0/course-outline.md
   - name: week1
-    title: Week 1
+    title: "Week 1: Setup a VPS in the Cloud"
     description: Setup and configure a VPS.
     lessons:
       - week1/overview.md
@@ -35,7 +41,7 @@ chapters:
       - week1/setting-up-ssh.md
       - week1/using-tmux.md
   - name: week2
-    title: Week 2
+    title: "Week 2: Deploy a Static Website"
     description: Deploy a static website with HTML, CSS, JS
     lessons:
       - week2/_overview.md
@@ -44,18 +50,18 @@ chapters:
       - week2/creating-a-site.md
       - week2/setup-using-git.md
   - name: week3
-    title: Week 3
+    title: "Week 3: Deploy a Python application"
     description: Deploy a Python application
     lessons: []
   - name: week4
-    title: Week 4
+    title: "Week 4: System Services"
     description: Understanding and setting up system services
     lessons: []
   - name: week5
-    title: Week 5
+    title: "Week 5: Troubleshooting"
     description: Logs, Debugging and Fixing
     lessons: []
   - name: week6
-    title: Week 6
+    title: "Week 6: Recap and Next Steps"
     description: Recap + Further Reads
     lessons: []
