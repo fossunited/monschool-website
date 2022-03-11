@@ -22,6 +22,4 @@ im2 = Image.new(mode="RGBA", size=(350, 200), color=(0, 0, 0, 0))
 offset = (im2.width-im.width) // 2, (im2.height-im.height)//2
 im2.paste(im, offset)
 im2.save("a.png")
-
-
-ae
+print("saved the new image as a.png")
