@@ -1,7 +1,7 @@
 name: python-primer
 suffix: py
 is_published: true
-upcoming: true
+upcoming: false
 tags:
   - python
 video_link:
