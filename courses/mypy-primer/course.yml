@@ -1,7 +1,7 @@
 name: mypy-primer
 suffix: mypy
 is_published: true
-upcoming: true
+upcoming: false
 tags:
   - python
   - typing
