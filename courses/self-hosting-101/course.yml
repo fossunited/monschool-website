@@ -1,5 +1,9 @@
 name: self-hosting-101
 title: Self Hosting 101
+
+# XXX-Anand: to fix the build
+instructor: mrkaran
+
 instructors:
   - mrkaran
   - anand
