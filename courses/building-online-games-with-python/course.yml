@@ -1,6 +1,6 @@
 name: building-online-games-with-python
 suffix: pg
-is_published: true
+is_published: false
 upcoming: true
 tags:
   - python
