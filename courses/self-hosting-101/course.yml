@@ -7,7 +7,7 @@ instructor: mrkaran
 instructors:
   - mrkaran
   - anand
-is_published: false
+is_published: true
 upcoming: true
 tags:
   - Self Hosting
