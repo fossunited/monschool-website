@@ -51,8 +51,8 @@ chapters:
   - getting-started/git-repository.md
   - getting-started/git-cloning.md
   - getting-started/git-committing.md
-  - getting-started/best-practises.md
   - getting-started/pushing-commits.md
+  - getting-started/best-practises.md
   - getting-started/time-travelling-with-git.md
 - name: collaborative-development
   title: Collaborative Development
