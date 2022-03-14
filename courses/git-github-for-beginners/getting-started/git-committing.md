@@ -18,18 +18,22 @@ In a similar way, using Git, you can stage the specific files that you wish to b
 
 ## Staging changes using Git
 
-Before you start, let's make a change to the repository. In the previous chapter, we have cloned the `monschool-repository`. In your case, the repository has been created under your profile and hence you would be working on your own personal repository.
+Before you start, let's make a change to the repository. In the previous chapter, we have cloned the `monschool-calculator`. In your case, the repository has been created under your profile and hence you would be working on your own personal repository.
 
-Go ahead and make a new file in the repository. Let's call it `main.py`. We will add a simple function to this file to add two arithmetical numbers.
+Go ahead and make a new file in the repository. Let's call it `index.html`. We will add a simple template to this file.
 
-```
-def sum(a, b):
-    """Sum of two numbers"""
-
-    return a + b
-
-if __name__ == "__main__":
-    print(sum(2, 3))
+```html
+<!doctype html>
+<html>
+<head>
+  <title>Calculator</title>
+  <meta name="description" content="MonSchool Calculator">
+  <meta name="keywords" content="monschool calculator project">
+</head>
+<body>
+  MonSchool Calculator
+</body>
+</html>
 ```
 
 Save the file. Let's check the status of the repository by using `git status`.
@@ -42,7 +46,7 @@ Your branch is up to date with 'origin/main'.
 
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
-	main.py
+	index.html
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
@@ -50,7 +54,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 We see a message stating `nothing added to commit` which means that the file is not tracked by Git. We can use `git add` to track the file. This would make the file ready for commit.
 
 ```sh
-git add main.py
+git add index.html
 ```
 
 You will see that the terminal did not show any output which means that the command has successfully executed. Let's do another status check:
@@ -63,10 +67,10 @@ Your branch is up to date with 'origin/main'.
 
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
-	new file:   main.py
+	new file:   index.html
 ```
 
-The file `main.py` would be highlighted in green which means that it is ready for commit.
+The file `index.html` would be highlighted in green which means that it is ready for commit.
 
 ## Committing changes using Git
 
@@ -78,14 +82,14 @@ git commit -m "Name of your Commit Message"
 
 The `-m` flag is interesting here. It provides a human-readable message which is used to describe the changes that you are committing. This message will be displayed to other collaborators and even your own future-self who will be able to see the changes that you have made and would like to infer the context of the changes.
 
-Let's see what happens after we make a commit with the `main.py` file:
+Let's see what happens after we make a commit with the `index.html` file:
 
-```
-$ git commit -m "add a Python file to add two numbers"
+```sh
+$ git commit -m "add a basic HTML template"
 
-[main 815e01f] add a Python file to add two numbers
-1 file changed, 8 insertions(+)
-create mode 100644 main.py
+[main ae4a133] add a basic HTML template
+1 file changed, 12 insertions(+)
+create mode 100644 index.html
 ```
 
 It means that we have successfully made a commit and the changes that we have made are now permanent. The first line of the output is the commit message while the second line displays the number of insertions and deletions that have happened.
@@ -102,18 +106,18 @@ Your branch is ahead of 'origin/main' by 1 commit.
 nothing to commit, working tree clean
 ```
 
-Interestingly, the status of the repository is now clean. This means that there are no changes that are staged for commit. It means that we are up-to-date and there are no uncommitted changes. If you edit the `main.py` file again, you will see a message stating that there are changes that are not staged for commit.
+Interestingly, the status of the repository is now clean. This means that there are no changes that are staged for commit. It means that we are up-to-date and there are no uncommitted changes. If you edit the `index.html` file again, you will see a message stating that there are changes that are not staged for commit.
 
 You can use `git log` to generate a log about all the commits inside the repository. Let us check our logs and see what effect our commit has on the repository:
 
 ```sh
 $ git log
 
-commit 815e01f0aa805398cda470c6e8dfd416641ec256 (HEAD -> main)
+commit ae4a133ae0fb235a0714718b36cb7cba5ee7028d (HEAD -> main)
 Author: HarshCasper <erbeusgriffincasper@gmail.com>
-Date:   Tue Mar 8 14:03:59 2022 +0530
+Date:   Mon Mar 14 13:57:40 2022 +0530
 
-    add a Python file to add two numbers
+    add a basic HTML template
 ```
 
 The output will display the commit message and the commit hash. The commit hash is a unique identifier for the commit. You can also see the author, the date and the time of the commit. In the above example we only see one commit, but git will generate a continuous log of it. You can exit out of it by pressing the `q` key to return to the terminal.

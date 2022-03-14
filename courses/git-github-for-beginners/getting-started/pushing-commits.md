@@ -14,16 +14,16 @@ Enumerating objects: 4, done.
 Counting objects: 100% (4/4), done.
 Delta compression using up to 10 threads
 Compressing objects: 100% (3/3), done.
-Writing objects: 100% (3/3), 387 bytes | 387.00 KiB/s, done.
+Writing objects: 100% (3/3), 427 bytes | 427.00 KiB/s, done.
 Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
 remote: Resolving deltas: 100% (1/1), completed with 1 local object.
-To github.com:HarshCasper/monschool-repository.git
-   e6ee48a..815e01f  main -> main
+To github.com:HarshCasper/monschool-calculator.git
+   57d21bb..ae4a133  main -> main
 ```
 
 If you navigate to the GitHub repository, you will see that a new commit and a new file has been added to the repository.
 
-![Snapshot of the push operation for the Mon-school repository](images/git-push-operation-snapshot.png)
+![Snapshot of the push operation for the MonSchool Calculator repository](../_images/git-push-operation-snapshot.png)
 
 In case you are working on a parallel branch, you can push your changes to the remote repository using the command:
 
@@ -35,20 +35,20 @@ The `remote_name` is the URL which has been pre-configured by Git. If you wish t
 
 ```sh
 $ git remote -v
-origin	git@github.com:HarshCasper/monschool-repository.git (fetch)
-origin	git@github.com:HarshCasper/monschool-repository.git (push)
+origin	git@github.com:HarshCasper/monschool-calculator.git (fetch)
+origin	git@github.com:HarshCasper/monschool-calculator.git (push)
 ```
 
-Here, `git@github.com:HarshCasper/monschool-repository.git` is a remote URL where we can push or pull our changes. You can add a new remote using the command `git remote add <remote_name> <remote_url>`. Let us try adding the same URL as a new remote named `remote-check`:
+Here, `git@github.com:HarshCasper/monschool-calculator.git` is a remote URL where we can push or pull our changes. You can add a new remote using the command `git remote add <remote_name> <remote_url>`. Let us try adding the same URL as a new remote named `remote-check`:
 
 ```
-$ git remote add remote-check git@github.com:HarshCasper/monschool-repository.git
+$ git remote add remote-check git@github.com:HarshCasper/monschool-calculator.git
 $ git remote -v
 
-origin	git@github.com:HarshCasper/monschool-repository.git (fetch)
-origin	git@github.com:HarshCasper/monschool-repository.git (push)
-remote-check	git@github.com:HarshCasper/monschool-repository.git (fetch)
-remote-check	git@github.com:HarshCasper/monschool-repository.git (push)
+origin	git@github.com:HarshCasper/monschool-calculator.git (fetch)
+origin	git@github.com:HarshCasper/monschool-calculator.git (push)
+remote-check	git@github.com:HarshCasper/monschool-calculator.git (fetch)
+remote-check	git@github.com:HarshCasper/monschool-calculator.git (push)
 ```
 
 You can now push to the alternate remote URL named `remote-check` using the command:
