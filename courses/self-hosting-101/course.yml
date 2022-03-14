@@ -48,7 +48,7 @@ chapters:
     title: "Week 2: Deploy a Static Website"
     description: Deploy a static website with HTML, CSS, JS
     lessons:
-      - week2/_overview.md
+      - week2/overview.md
       - week2/installing-nginx.md
       - week2/customising-index.md
       - week2/creating-a-site.md

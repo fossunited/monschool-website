@@ -78,4 +78,4 @@ You can move around the panes with `mod + Right/Left/Up/Down` arrow keys.
 - `mod p`: Switch to previous window index.
 - `mod n`: Switch to next window index.
 
-You can explore some handy cheatsheets like https://tmuxcheatsheet.com/ and https://devhints.io/tmux for more commands.
+You can explore some handy cheatsheets like [https://tmuxcheatsheet.com/](https://tmuxcheatsheet.com/) and [https://devhints.io/tmux](https://devhints.io/tmux) for more commands.

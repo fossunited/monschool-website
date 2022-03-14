@@ -40,15 +40,11 @@ sudo ln -s ~/red.<user>.monschool.net to /var/www/
 
 Now, using the knowledge from previous lesson where we created a `blue.conf`, let's create a `red.conf` as well:
 
-TODO: Same config, paste here.
-
 ## Project: Setup a blog using Hugo
 
 Now that you understand how sites are setup, cloned etc, it's time that you setup your own website using a static site generator. For this course, we will use `hugo`. Hugo is a popular static site generator written in Golang. It's a single binary program that can be downloaded and used to create websites using Markdown content. For this exercise, your task is to install Hugo, build a basic website and host it via NGINX.
 
 You can refer to following links:
 
-- https://gohugo.io/getting-started/installing/
-- https://gohugo.io/getting-started/quick-start/
-
-todo: rename red.<>.monschool folder
+- [https://gohugo.io/getting-started/installing/](https://gohugo.io/getting-started/installing/)
+- [https://gohugo.io/getting-started/quick-start/](https://gohugo.io/getting-started/quick-start/)
