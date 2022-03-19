@@ -20,7 +20,7 @@ description: |
 
   Target Audience:
 
-  This course is targeted at programmers how are new to Python. It is expected that the student knows about basic programming constructs like functions, loops etc.. Prior exposure to Python is not required.
+  This course is targeted at programmers who are new to Python. It is expected that the student knows about basic programming constructs like functions, loops etc.. Prior exposure to Python is not required.
 
 chapters:
   - name: getting-started
