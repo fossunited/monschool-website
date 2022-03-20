@@ -121,3 +121,11 @@ Date:   Mon Mar 14 13:57:40 2022 +0530
 ```
 
 The output will display the commit message and the commit hash. The commit hash is a unique identifier for the commit. You can also see the author, the date and the time of the commit. In the above example we only see one commit, but git will generate a continuous log of it. You can exit out of it by pressing the `q` key to return to the terminal.
+
+## Why do we need a `-m` flag?
+
+We use the `-m` flag purely for human-readable purposes. It is not necessary for Git to understand the message that you are committing. A proper commit message helps you to take notes for your self and others while specific changes are being committed and made a part of the Git history. It is also a good practice to use a meaningful commit message.
+
+If you miss out the `-m` flag, Git will open your default text-editor and ask you to enter the commit message. On Linux & macOS, you will be able to see the `vi` editor where you might find yourself stuck in the environment. In this case, you can get into insert mode by pressing the `I` key. All of the characters that you type on that first line will be inserted in front of all of the lines in the selection, right before the selected block.
+
+You can further enter your commit message, and save it by pressing the escape key, typing `:wq` and pressing enter. You can press `control` + `c` on the keyboard to abort any commits you wanted to perform.
