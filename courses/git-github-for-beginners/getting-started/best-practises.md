@@ -82,7 +82,7 @@ The above content is a standard `.gitignore` file for a NodeJS project. You can 
 
 ## Avoid altering Git history
 
-After a commit has been made, pushed to a remote repository and merged to the default branch, it is recommended to avoid altering any published history. In previous sections, we have discussed how Git is a permanent record of your project's history. However, using `git rebase`, you can alter the history of your project. This operation is recommended when you are working on your local machine and on your branch.
+After a commit has been made, it can be pushed to a remote repository. In previous sections, we have discussed how Git is a permanent record of your project's history. However, using `git rebase`, you can alter the history of your project. This operation is recommended when you are working on your local machine.
 
 It is not a good practise to alter the published Git history because you might loose valuable changes that you have made. These can include past commits which contains valuable information around how the project has evolved. In the next section, we will discuss how to use `git rebase` to alter the history of your project, and how to exercise caution when using it.
 
