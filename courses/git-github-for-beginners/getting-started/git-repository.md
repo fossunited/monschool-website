@@ -9,40 +9,9 @@ A repository is a folder where the contents of the files are tracked by the Git 
 
 ## Creating a Git Repository
 
-You can create a Git repository in two ways:
+You can create a Git repository on GitHub. As mentioned earlier, GitHub is a cloud-based Git-service provider, which is accessible through the Internet on any device. We can create a Git repository on GitHub and later clone it for our use. Through GitHub, you can make your project accessible to public or continue working on it privately.
 
-- Initializing a Git repository locally
-- Creating a Git repository on GitHub.
-
-As mentioned earlier, GitHub is a cloud-based Git-service provider, which is accessible through the Internet on any device. We can create a Git repository on GitHub and later clone it for our use. Through GitHub, you can make your project accessible to public or continue working on it privately.
-
-On the other hand, you can forego the need to use a cloud-based Git-service provider and create a Git repository on your local machine. This is the case when you are working on your own computer and you want to keep your project private. Let us explore both these processes in detail.
-
-### Initializing a Git Repository locally
-
-Initializing a project folder to act as a Git repository is a simple task. You can do this by using the `git init` command. As we configure Git on our local machine, we don't task it to track each and every file on our computer. Instead we specifically mention, folders that we are working on and would like to track.
-
-Let us create a new folder and `cd` inside it:
-
-```sh
-mkdir git-repository
-cd git-repository
-```
-
-We can now initialize a Git repository by using the `git init` command:
-
-```sh
-git init
-Initialized empty Git repository in /Users/harsh/git-repository/.git/
-```
-
-Git has now created a folder called `.git` in the root of the repository. Internally, Git uses a data structure that is responsible for storing the history of the files and the changes that are being made to them. Since we don't have any files in our repository, Git has created an empty repository and will track any changes that are made to it.
-
-Though we have created a repository now, we have not told to take any snapshot (or "commits") yet. For now, Git just knows that the folder exists and then can take a snapshot of the files in it. We have also not pushed our repository anywhere which means that only you can work on it. Let's explore how we can have a cloud repository.
-
-## Creating a Git repository on GitHub
-
-Creating a Git repository on GitHub is even simpler. If you have not already made a GitHub account, you can do so by navigating to the [GitHub website](https://github.com) and making one!
+Creating a Git repository on GitHub is simple. If you have not already made a GitHub account, you can do so by navigating to the [GitHub website](https://github.com) and making one!
 
 After making a GitHub account, you can create a repository by navigating to your dashboard and clicking the `+` button at the top right corner:
 
