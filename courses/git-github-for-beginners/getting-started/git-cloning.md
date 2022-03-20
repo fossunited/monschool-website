@@ -15,7 +15,9 @@ Let's see how we can clone a repository from GitHub. First, we need to know the 
 
 Navigate to the repository's URL and you will see a green `Code` button on the right side of the repository. The button allows you clone this repository, open it using GitHub Desktop, download it as a ZIP, or open it on an online cloud editor. At first you will see a highlighted text stating `HTTPS`. Beside it you will notice a `SSH` button as well.
 
-You can either choose HTTPS or SSH to clone the repository. For this chapter, we will use SSH. Click on `SSH` and copy out the text in the box. Now that we have the text copied, we can use it directly clone the repository.
+You can either choose HTTPS or SSH to clone the repository. HyperText Transfer Protocol Secure (HTTPS) and Secure Shell (SSH) are communication protocols that are used to securely transfer data between computers. HTTPS is the underlying protocol of the World Wide Web (WWW) and defines how messages are to be formatted and transmitted. SSH uses the built-in authentication system to establish a connection and uses cryptographic techniques to authenticate users.
+
+For this chapter, we will use SSH. SSH, once configured, is faster and won't require you to authenticate with GitHub everytime you make a network connection. Click on `SSH` and copy out the text in the box. Now that we have the text copied, we can use it directly clone the repository.
 
 ![Snapshot of the clone box of Monschool Git & GitHub course repository](../_images/git-clone-box-snapshot.png)
 
