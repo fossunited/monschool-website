@@ -63,7 +63,7 @@ chapters:
   - collaborative-development/parallel-development.md
   - collaborative-development/merging.md
   - collaborative-development/resolving-merge-conflicts.md
-  - collaborative-development/code-reviews-pull-requests.md
+  - collaborative-development/pull-requests.md
 - name: github-flow
   title: The GitHub Flow
   description: Learn how to use GitHub flow of contribution to contribute to your projects.
