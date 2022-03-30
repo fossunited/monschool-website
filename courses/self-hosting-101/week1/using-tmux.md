@@ -27,7 +27,7 @@ Let's create a new session with:
 tmux
 ```
 
-![img](./img/tmux.png)
+{{ Image("tmux.png") }}
 
 You'll be logged into your current user account. `tmux` is controlled using what is called as **Modifier Key** (Mod). The default hotkey for that is `Ctrl+b`. This combination will be referred to as `mod` from now onwards.
 

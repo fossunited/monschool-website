@@ -45,7 +45,7 @@ $ nano .bashrc
 
 Now you can see the contents of `.bashrc`.
 
-![img](./img/nano_bashrc.png)
+{{ Image("nano_bashrc.png") }}
 
 We need to scroll to the bottom, so keep hitting `down` arrow key or `Pg Down` and scroll to the end of the file.
 

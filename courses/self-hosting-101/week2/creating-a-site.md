@@ -48,7 +48,7 @@ http {
 }
 ```
 
-![img](./img/nginx-route.png)
+{{ Image("nginx-route.png") }}
 
 With the above configuration block, NGINX will route the requests on `/bye` to the second server block which is listening on port `8000`.
 
@@ -113,7 +113,7 @@ server {
 - **listen**: Specifies which port number to listen on.
 - **server_name**: Specifies the hostname of our site. Whenever we visit a website from our browser, our browsers send _Headers_ in the request. These _Headers_ contain meta information about the request. One of the headers is called **Host** header. When we visit the URL `http://blue.karan.monschool.net`, the header is passed as `Host: blue.karan.monschool.net`. This information helps NGINX decide where to route the request to. Since we have a `server_name` that matches this Host header, the request comes inside this server block.
 
-![img](./img/nginx-request-headers.png)
+{{ Image("nginx-request-headers.png") }}
 
 - **root**: Specifies the directory path where our files are present.
 - **location**: You've seen websites have multiple paths like `/login`, `/logout` etc. If you want to have custom rules for each path, you can do that with a `location` directive.
@@ -131,4 +131,4 @@ $ sudo nginx -s reload
 
 Let's visit the browser and type the URL http://blue.<user>.monschool.net/ in the address bar:
 
-![img](./img/nginx-blue-site.png)
+{{ Image("./img/nginx-blue-site.png") }}
