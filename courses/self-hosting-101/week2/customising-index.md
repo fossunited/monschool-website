@@ -72,7 +72,7 @@ We can see the `.html` file for the _Welcome_ page here. Let's edit the file and
 sudo nano index.nginx-debian.html
 ```
 
-![img](./img/nginx-index-edit.png)
+{{ Image("nginx-index-edit.png") }}
 
 Once the file is saved, we need to _reload_ nginx configuration for the changes to take place. We can use the following command to do that:
 
