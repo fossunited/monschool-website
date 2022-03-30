@@ -31,7 +31,7 @@ To create a Droplet, you'll need to signup for a DigitalOcean account. Head over
 
 Let's create a new droplet by visiting "Droplets" in the sidebar.
 
-![img](./img/create_droplet_toggle.png)
+{{ Image("create_droplet_toggle.png") }}
 
 A form will pop up asking you to enter some configuration details for the droplet. For this course, the following config should be enough:
 
@@ -46,7 +46,7 @@ A form will pop up asking you to enter some configuration details for the drople
 
 Here's how it should look once you enter all the details:
 
-![img](./img/create_droplet_form.png)
+{{ Image("create_droplet_form.png") }}
 
 Once you verify the details are correct, click on **Create Project** and wait for a minute or so for the droplet creation to happen. You will be able to access it soon after.
 
