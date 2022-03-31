@@ -4,6 +4,8 @@ This repository maintains all the courses published on [Mon School][].
 
 [Mon School]: (https://mon.school/).
 
+NOTE: This repository is no longer used to submit changes to mon.school. Please use the web interface on https://mon.school/ make updates to the courses.
+
 ## Setup
 
 To make it easier to author courses, [Material for MkDocs][mkdocs] is used to serve the website as HTML. Even though there will be differences the layout of this and the final website, this is a convenient interface to author courses for [Mon School][].
